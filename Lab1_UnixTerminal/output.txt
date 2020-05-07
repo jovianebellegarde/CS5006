@@ -1,1 +1,22 @@
 # Simply copy and paste the output from your terminal here!
+-bash-4.2$ pwd
+/home/jbellegarde
+-bash-4.2$ ls
+Contacts     Desktop      Downloads  My Music     My Videos
+CS5006_SU20  desktop.ini  Links      My Pictures  $RECYCLE.BIN
+-bash-4.2$ cd CS5006_SU20
+-bash-4.2$ ls
+CS5006_SU20  CS5006_SU20_jbellegarde
+-bash-4.2$ cd CS5006_SU20_jbellegarde
+-bash-4.2$ pwd
+/home/jbellegarde/CS5006_SU20/CS5006_SU20_jbellegarde
+-bash-4.2$ ls
+Assignment1_GuessingGame  Lab1_UnixTerminal
+-bash-4.2$ mkdir testing
+-bash-4.2$ ls
+Assignment1_GuessingGame  Lab1_UnixTerminal  testing
+-bash-4.2$ rmdir testing
+-bash-4.2$ ls
+Assignment1_GuessingGame  Lab1_UnixTerminal
+-bash-4.2$ 
+
