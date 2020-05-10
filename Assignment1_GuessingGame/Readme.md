@@ -1,13 +1,20 @@
 ### TODO Please edit the following information in your assignment
 
-- Name(s):
+- Name(s): Joviane Bellegarde
 - How many hours did it take you to complete this Assignment?
+ - It took me about 5 hours to do this assignment 
+
 - Did you collaborate with any other students/TAs/Professors?
+ - Yes, I went to Theresa for OH.
+
 - Did you use any external resources? (Cite them below)
-  - tbd
-  - tbd
+  -https://stackoverflow.com/questions/3876635/how-to-randomly-print-1-to-10-in-c 
+
 - (Optional) What was your favorite part of the assignment?
+ - I liked working on the while loop.
+
 - (Optional) How would you improve the assignment?
+ - I am not entirely sure.
 
 # Prompt
 
