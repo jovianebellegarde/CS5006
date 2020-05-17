@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h> // contains the functions free/malloc
 
+// Used the video given to us for the lab https://www.youtube.com/watch?v=SB9si64asSk&index=8&list=PLvv0ScY6vfd8qupx0owF78ZcbvySvbWfx
+
 // Create your node_t type here
 typedef struct node {
 	struct node* next;
