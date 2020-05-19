@@ -109,7 +109,7 @@ int queue_enqueue(queue_t* q, int item){
 	
 	// Checcking to see if myQueue has space to enqueue an item
 	if (q == NULL) {
-		return -1
+		return -1;
 	
 	} else if (q->size == q->capacity) {
 		return 0;
