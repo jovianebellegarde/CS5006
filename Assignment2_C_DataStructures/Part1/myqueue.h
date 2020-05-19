@@ -91,7 +91,7 @@ int queue_full(queue_t* q){
 	
 	// Checking to see if the queue is completely full
 	} else if (q->size == q->capacity) {
-		return 0; 
+		return 1; 
 
 	// Returning 0 if the queue has more space avaialable 
 	} else {
@@ -111,7 +111,7 @@ int queue_enqueue(queue_t* q, int item){
 	if (q == NULL) {
 		return -1;
 	
-	} else if (q->size == q->capacity) {
+	} else if (queue_full(q)) {
 		return 0;
 	
 	} else {
@@ -140,8 +140,8 @@ int queue_dequeue(queue_t *q){
 	
 	// Checking to see that the queue is empty before attempting to remove
 	// from an empty queue 
-	} else if (q->size == 0) {
-			return -1;
+	} else if (queue_empty(q)) {
+		return -1;
 	
 	} else {
 		// Creating a variable to save what is being removed from front
@@ -178,9 +178,11 @@ unsigned int queue_size(queue_t* q){
 void free_queue(queue_t* q){
 	
 	// If the value assigned to the queue is not NULL, then we can free
-	// the data insde the queue  and the entire queue
+	// the data insde the queue and the entire queue
+	if (q != NULL) {
 	free(q->data);
 	free(q);
+	}
 }
 
 
