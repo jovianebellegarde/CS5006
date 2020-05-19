@@ -56,6 +56,16 @@ void unitTest3() {
         free_queue(test3b);
 
 }	
+
+void unitTest4() {
+	queue_t* test4 = create_queue(0);
+        printf("Test 4: Attempting to add %d\n\n", 5);
+	
+        queue_enqueue(0, 0);
+        printf("Removing: %d\n\n", queue_dequeue(test4));
+
+	free_queue(0);
+}
 // ====================================================
 // ================== Program Entry ===================
 // ====================================================
@@ -65,5 +75,6 @@ int main(){
 	unitTest1();
 	unitTest2();
 	unitTest3();
+	unitTest4();
 	return 0;
 }

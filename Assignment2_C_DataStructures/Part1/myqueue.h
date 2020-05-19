@@ -63,14 +63,15 @@ queue_t* create_queue(unsigned int _capacity){
 // Returns -1 if the queue is NULL
 int queue_empty(queue_t* q){
 	
-	// Checking to see if the queue is empty
-	if(q->size == 0) {
-		return 1;
-	
-	// Checking to see if the value is set to NULL
-	} else if (q == NULL) {
+	// Checking to see if the queue is assigned to NULL
+	if (q == NULL) {
 		return -1;
 	
+	// Checking to see if the queue is completely empty
+	} else if(q->size == 0) {
+		return 1;
+
+	// Returning 0 because the queue is not completely empty	
 	} else {
 		return 0;
 
@@ -84,10 +85,15 @@ int queue_empty(queue_t* q){
 // Returns -1 if the queue is NULL.
 int queue_full(queue_t* q){
 	
-	// Checking to see if myQueue is completely full, if not, returning 0
-	if (q->size == q->capacity) {
-		return 1;
+	// Checking to see if the queue is assigned NULL
+	if (q == NULL) {
+		return -1;
 	
+	// Checking to see if the queue is completely full
+	} else if (q->size == q->capacity) {
+		return 1; 
+
+	// Returning 0 if the queue has more space avaialable 
 	} else {
 		return 0;
 	}
@@ -102,11 +108,11 @@ int queue_full(queue_t* q){
 int queue_enqueue(queue_t* q, int item){
 	
 	// Checcking to see if myQueue has space to enqueue an item
-	if (q->size == q->capacity) {
-		return 0;
+	if (q == NULL) {
+		return -1
 	
-	} else if (q == NULL) {
-		return -1;
+	} else if (q->size == q->capacity) {
+		return 0;
 	
 	} else {
 		// Enqueue item
@@ -118,7 +124,6 @@ int queue_enqueue(queue_t* q, int item){
 		// Increasing the size of the queue since adding item
 		q->size++;
 
-
 		return 1;
 	}
 }
@@ -129,14 +134,14 @@ int queue_enqueue(queue_t* q, int item){
 // Returns -1 if the queue is NULL. Assumption there is not going to be negative numbers in the queue
 int queue_dequeue(queue_t *q){
 	
-	// Checking to see that the queue is empty before attempting to remove
-	// from an empty queue
-	if (q->size == 0) {
-		return 0;
-	
-	// Checking to see if myQueue has a NULL value 
-	} else if (q == NULL) {
+	// Checking to see if the queue is assigned a NULL value
+	if (q == NULL) {
 		return -1;
+	
+	// Checking to see that the queue is empty before attempting to remove
+	// from an empty queue 
+	} else if (q->size == 0) {
+			return -1;
 	
 	} else {
 		// Creating a variable to save what is being removed from front
