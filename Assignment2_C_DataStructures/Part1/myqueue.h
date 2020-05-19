@@ -119,7 +119,7 @@ int queue_enqueue(queue_t* q, int item){
 		q->data[q->back] = item;
 
 		// Updating the queue's back b/c we added an item to the back
-		q->back = (q->back + 1) % q->capacity;
+		q->back += 1 % q->capacity;
 
 		// Increasing the size of the queue since adding item
 		q->size++;
@@ -146,6 +146,9 @@ int queue_dequeue(queue_t *q){
 	} else {
 		// Creating a variable to save what is being removed from front
 		int tempFront = q->data[q->front];
+		
+		// Updating the queue's front b/c we removed an item from the front
+		q->front +=  1 % q->capacity;
 		
 		// Decreasing the size since the front was removed
 		q->size--;
