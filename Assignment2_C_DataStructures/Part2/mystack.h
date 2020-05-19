@@ -176,6 +176,7 @@ void free_stack(stack_t* s){
 		free(tempNode);
 		tempNode = nextNode;
 	}
+	free(s->head);
 	free(s);
 }
 
