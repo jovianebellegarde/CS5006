@@ -157,21 +157,22 @@ unsigned int queue_size(queue_t* q){
 
 	// Checking to see if there is a NULL value
 	if (q != NULL) {
-	
-		// Freeing the queue's data first
-		free(q->data);
+		return -1;
 
-		// Freeing the actual quque since the data was freed
-		free(q); 
+	} else {
+		return q->size;
 	}
 }
-
 
 // Free queue
 // Removes a queue and all of its elements from memory.
 // This should be called before the proram terminates.
 void free_queue(queue_t* q){
-
+	
+	// If the value assigned to the queue is not NULL, then we can free
+	// the data insde the queue  and the entire queue
+	free(q->data);
+	free(q);
 }
 
 
