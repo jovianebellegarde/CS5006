@@ -116,9 +116,10 @@ int queue_enqueue(queue_t* q, int item){
 		// Increasing the size of the queue since adding item
 		q->size++;
 
-		return 1;
-}
 
+		return 1;
+	}
+}
 // Dequeue an item
 // Returns the item at the front of the queue and
 // removes an item from the queue.
@@ -140,7 +141,7 @@ int queue_dequeue(queue_t *q){
 		int tempFront = q->data[q->front];
 		
 		// Decreasing the size since the front was removed
-		size--;
+		q->size--;
 
 		return tempFront;
 	}
