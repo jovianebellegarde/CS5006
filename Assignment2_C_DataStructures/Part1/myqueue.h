@@ -74,6 +74,7 @@ int queue_empty(queue_t* q){
 	} else {
 		return 0;
 
+	}	
 }
 
 // Queue Full
@@ -89,7 +90,8 @@ int queue_full(queue_t* q){
 	
 	} else {
 		return 0;
-}
+	}
+}	
 
 // Enqueue a new item
 // i.e. push a new item into our data structure
