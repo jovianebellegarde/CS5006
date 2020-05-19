@@ -34,11 +34,24 @@ typedef struct queue queue_t;
 queue_t* create_queue(unsigned int _capacity){
 	// Allocating space for myQueue
 	queue_t* myQueue = (queue_t*)malloc(sizeof(queue_t));
+	
 	// Checking to see if the value assigned to myQueue is NULL
 	if (myQueue == NULL) { 
 		return NULL;
 	}
+	// Setting initial values for myQueue
+	myQueue->back = 0;
+	myQueue->front = 0;
+	myQueue->size = 0;
+	myQueue->capacity = _capacity;
 
+	// Allocating space for data in myQueue
+	myQueue->data = (int*)malloc(_capacity * sizeof(int));
+	
+	// Checking to see if the data is NULL
+	if(myQueue->data == NULL) {
+		return NULL;
+	} 
 	return myQueue;
 }
 
@@ -48,6 +61,14 @@ queue_t* create_queue(unsigned int _capacity){
 // Returns 0 if false (the queue has at least one element enqueued)
 // Returns -1 if the queue is NULL
 int queue_empty(queue_t* q){
+	// Checking to see if the queue is empty
+	if(q->size == 0) {
+		return 1;
+	
+	// Checking to see if the value is set to NULL
+	} else if (q == NULL) {
+		return -1;
+	}
 
 	return 0;
 }
