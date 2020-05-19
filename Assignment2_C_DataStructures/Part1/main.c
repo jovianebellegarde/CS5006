@@ -59,17 +59,17 @@ void unitTest3() {
 
 void unitTest4() {
 	queue_t* test4 = create_queue(0);
-        printf("Test 4: Attempting to add %d\n\n", 5);
+        printf("Test 4: Attempting to add %d\n\n", 0);
 	
-        queue_enqueue(0, 0);
+        queue_enqueue(test4, 0);
         printf("Removing: %d\n\n", queue_dequeue(test4));
 
-	free_queue(0);
+	free_queue(test4);
 }
 
 void unitTest5() {
 	queue_t* test5 = create_queue(7);
-	
+	queue_enqueue(test5, 7);	
 	int checking_empty = queue_empty(test5);
 	
 	if (checking_empty == 1) {
