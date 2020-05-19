@@ -42,24 +42,32 @@ typedef struct stack{
 // The stacks fields should also be initialized to default values.
 // Returns NULL if we couldnt allocate memory.
 stack_t* create_stack(unsigned int capacity) { 
+	
 	// Modify the body of this function as needed.
 	stack_t* myStack = (stack_t*)malloc(sizeof(stack_t));
 	if (myStack == NULL) {
 		return NULL;
-	}	
-	// Initializing variables
-	if (capacity < MAX_DEPTH) {
+	
+	// Need to check if the capacity is not greater than the max depth 
+	} else if (capacity > MAX_DEPTH) {
 		return NULL;
-	}
-	// Initializing variables
-	if (capacity < MAX_DEPTH) {
+
+	// Need to check if the capacity is less than max depth. If so, we can 
+	// initialize the capacity now.
+	} else if (capacity < MAX_DEPTH) {
 		myStack->capacity = capacity;
 
+	// If these checks all failed at this point, then memory could not be
+	// allocated. 
 	} else {
 		return NULL;
 	}
 	myStack->count = 0;
-	myStack->head = NULL;
+	
+	myStack->head = (node_t*)malloc(sizeof(node_t*));
+	if (myStack->head == NULL) {
+		return NULL;
+	}
 	return myStack;
 }
 
@@ -69,10 +77,12 @@ stack_t* create_stack(unsigned int capacity) {
 // Returns 0 if false (the stack has at least one element)
 // Returns -1 if the stack is NULL.
 int stack_empty(stack_t* s){
+	
+	// Checking to see if the stack is assigned to NULL
 	if(s == NULL) {
 		return -1;
 
-	} else if (s-> count == 0) {
+	} else if (s->count == 0) {
 		return 1;
 	
 	} else {
