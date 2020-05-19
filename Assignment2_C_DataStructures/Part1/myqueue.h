@@ -68,9 +68,10 @@ int queue_empty(queue_t* q){
 	// Checking to see if the value is set to NULL
 	} else if (q == NULL) {
 		return -1;
-	}
+	
+	} else {
+		return 0;
 
-	return 0;
 }
 
 // Queue Full
@@ -79,8 +80,13 @@ int queue_empty(queue_t* q){
 // Returns 0 if false (the queue has more space available to enqueue items)
 // Returns -1 if the queue is NULL.
 int queue_full(queue_t* q){
-
-	return 0;
+	
+	// Checking to see if myQueue is completely full, if not, returning 0
+	if (q->size == q->capacity) {
+		return 1;
+	
+	} else {
+		return 0;
 }
 
 // Enqueue a new item
@@ -90,7 +96,25 @@ int queue_full(queue_t* q){
 // Returns -1 if the queue is NULL.
 // (i.e. if the queue is full that is an error).
 int queue_enqueue(queue_t* q, int item){
-		return -1; // Note: you should have two return statements in this function.
+	
+	// Checcking to see if myQueue has space to enqueue an item
+	if (q->size == q->capacity) {
+		return 0;
+	
+	} else if (q == NULL) {
+		return -1,
+	
+	} else {
+		// Enqueue item
+		q->data[q->back] = item;
+
+		// Updating the queue's back b/c we added an item to the back
+		q->back = (q->back + 1) % q->capacity;
+
+		// Increasing the size of the queue since adding item
+		q->size++;
+
+		return 1;
 }
 
 // Dequeue an item
