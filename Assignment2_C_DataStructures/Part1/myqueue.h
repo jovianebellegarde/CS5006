@@ -91,7 +91,7 @@ int queue_full(queue_t* q){
 	
 	// Checking to see if the queue is completely full
 	} else if (q->size == q->capacity) {
-		return 1; 
+		return 0; 
 
 	// Returning 0 if the queue has more space avaialable 
 	} else {
