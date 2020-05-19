@@ -38,7 +38,24 @@ void unitTest2() {
 
 
 }
-	
+
+
+void unitTest3() {
+	queue_t* test3 = create_queue(5);
+        printf("Test 3: Attempting to add %d\n\n", 5);
+        queue_enqueue(test3, 5);
+        printf("Removing: %d\n\n", queue_dequeue(test3));
+
+	free_queue(test3);	
+
+	queue_t* test3b = create_queue(5);
+        printf("Test 3: Attempting to add %d again \n\n", 5);
+        queue_enqueue(test3b, 5);
+        printf("Removing: %d again\n\n", queue_dequeue(test3b));
+
+        free_queue(test3b);
+
+}	
 // ====================================================
 // ================== Program Entry ===================
 // ====================================================
@@ -47,5 +64,6 @@ int main(){
 	// List of Unit Tests to test your data structure	
 	unitTest1();
 	unitTest2();
+	unitTest3();
 	return 0;
 }
