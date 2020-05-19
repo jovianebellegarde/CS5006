@@ -32,6 +32,7 @@ typedef struct queue queue_t;
 // The queue should be initialized with data on the heap.
 // If you weren't able to allocate memory, return NULL.
 queue_t* create_queue(unsigned int _capacity){
+	
 	// Allocating space for myQueue
 	queue_t* myQueue = (queue_t*)malloc(sizeof(queue_t));
 	
@@ -61,6 +62,7 @@ queue_t* create_queue(unsigned int _capacity){
 // Returns 0 if false (the queue has at least one element enqueued)
 // Returns -1 if the queue is NULL
 int queue_empty(queue_t* q){
+	
 	// Checking to see if the queue is empty
 	if(q->size == 0) {
 		return 1;
@@ -123,7 +125,27 @@ int queue_enqueue(queue_t* q, int item){
 // Removing from an empty gueue should return 0 // assume all entries are going to be > 0.
 // Returns -1 if the queue is NULL. Assumption there is not going to be negative numbers in the queue
 int queue_dequeue(queue_t *q){
-		return 99999; // Note: This line is a filler so the code compiles.
+	
+	// Checking to see that the queue is empty before attempting to remove
+	// from an empty queue
+	if (q->size == 0) {
+		return 0;
+	
+	// Checking to see if myQueue has a NULL value 
+	} else if (q == NULL) {
+		return -1;
+	
+	} else {
+		// Creating a variable to save what is being removed from front
+		int tempFront = q->data[q->front];
+		
+		// Decreasing the size since the front was removed
+		size--;
+
+		return tempFront;
+	}
+
+
 }
 
 
@@ -131,7 +153,16 @@ int queue_dequeue(queue_t *q){
 // Queries the current size of a queue
 // Returns -1 if the queue is NULL.
 unsigned int queue_size(queue_t* q){
-	return 0;
+
+	// Checking to see if there is a NULL value
+	if (q != NULL) {
+	
+		// Freeing the queue's data first
+		free(q->data);
+
+		// Freeing the actual quque since the data was freed
+		free(q); 
+	}
 }
 
 
