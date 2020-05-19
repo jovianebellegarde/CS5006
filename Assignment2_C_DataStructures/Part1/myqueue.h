@@ -144,8 +144,6 @@ int queue_dequeue(queue_t *q){
 
 		return tempFront;
 	}
-
-
 }
 
 
