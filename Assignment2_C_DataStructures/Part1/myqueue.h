@@ -11,16 +11,17 @@
 // ==================================================
 #ifndef MYQUEUE_H
 #define MYQUEUE_H
+#include <stdlib.h>
 
 // The main data structure for the queue
 struct queue{
-	unsigned int back;	    // The next free position in the queue
-				                  // (i.e. the end or tail of the line)
-	unsigned int front;	    // Current 'head' of the queue
-				                  // (i.e. the front or head of the line)
-	unsigned int size;	    // How many total elements we currently have enqueued.
+	unsigned int back;  // The next free position in the queue
+			    	// (i.e. the end or tail of the line)
+	unsigned int front; // Current 'head' of the queue
+				// (i.e. the front or head of the line)
+	unsigned int size; // How many total elements we currently have enqueued.
 	unsigned int capacity;  // Maximum number of items the queue can hold
-	int* data; 		          // The 'integer' data our queue holds	
+	int* data; 		// The 'integer' data our queue holds	
 };
 // Creates a global definition of 'queue_t' so we 
 // do not have to retype 'struct queue' everywhere.
@@ -31,7 +32,12 @@ typedef struct queue queue_t;
 // The queue should be initialized with data on the heap.
 // If you weren't able to allocate memory, return NULL.
 queue_t* create_queue(unsigned int _capacity){
-	queue_t* myQueue = NULL;
+	// Allocating space for myQueue
+	queue_t* myQueue = (queue_t*)malloc(sizeof(queue_t));
+	// Checking to see if the value assigned to myQueue is NULL
+	if (myQueue == NULL) { 
+		return NULL;
+	}
 
 	return myQueue;
 }
