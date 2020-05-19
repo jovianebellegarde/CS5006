@@ -106,7 +106,7 @@ int queue_enqueue(queue_t* q, int item){
 		return 0;
 	
 	} else if (q == NULL) {
-		return -1,
+		return -1;
 	
 	} else {
 		// Enqueue item
