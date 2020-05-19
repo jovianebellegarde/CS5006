@@ -64,9 +64,7 @@ stack_t* create_stack(unsigned int capacity) {
 	}
 	myStack->count = 0;
 	
-	myStack->head = (node_t*)malloc(sizeof(node_t*));
-	if (myStack->head == NULL) {
-		return NULL;
+	myStack->head = NULL;
 	}
 	return myStack;
 }
@@ -176,7 +174,6 @@ void free_stack(stack_t* s){
 		free(tempNode);
 		tempNode = nextNode;
 	}
-	free(s->head);
 	free(s);
 }
 
