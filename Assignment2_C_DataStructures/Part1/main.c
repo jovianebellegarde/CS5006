@@ -46,24 +46,24 @@ void unitTest1(){
 	
 	// Checking to see if queue is full
 	if (queue_full(test1) == 1) {
-		printf("The queue is full.from full\n\n");
+		printf("The queue is full.\n\n");
 
 	} else if (queue_full(test1) == -1) {
-		printf("The queue is NULL.from full\n\n.");
+		printf("The queue is NULL.\n\n");
 
 	} else {
-		printf("The queue is not full.from full\n\n");
+		printf("The queue is not full.\n\n");
 	}
 
 	// Checking to see if the queue is empty
 	if (queue_empty(test1) == -1) {
-		printf("The queue is NULL.from empty\n\n");
+		printf("The queue is NULL.\n\n");
 
 	} else if (queue_empty(test1) == 0) {
-		printf("The queue is empty.from empty\n\n");
+		printf("The queue is empty.\n\n");
 	
 	} else {
-		printf("The queue is not empty.from empty\n\n");
+		printf("The queue is not empty.\n\n");
 
 	}
 	// Checking the size of the queue
@@ -78,23 +78,60 @@ void unitTest1(){
 void unitTest2() {
 	
 	queue_t* test2 = create_queue(0);
-	printf("\nAttempting to add %d\n\n", 1);
-	queue_enqueue(test2, 1);
-	
-	if (queue_dequeue(test2) == 0) {
-		printf("The queue size is 0.\n\n");
-	
-	} else if (queue_dequeue(test2) == -1) {
-		printf("The queue is assigned to NULL.\n\n");
-	
-	} else {
-		printf("Removing: %d\n\n", queue_dequeue(test2));
 
-	}
-	printf("The queue size is %d\n\n", queue_size(test2));
-	
-	free(test2);
+        printf("Attempting to add %d\n\n", 1);
+        queue_enqueue(test2, 1);
 
+        printf("Removing: %d\n\n", queue_dequeue(test2));
+
+        printf("Attempting to add %d\n\n", 1);
+        queue_enqueue(test2, 1);
+
+        printf("Removing: %d\n\n", queue_dequeue(test2));
+
+        printf("Attempting to add %d\n\n", 1);
+        queue_enqueue(test2, 1);
+
+        printf("Attempting to add %d\n\n", 1);
+        queue_enqueue(test2, 1);
+
+        printf("Attempting to add %d\n\n", 1);
+        queue_enqueue(test2, 1);
+
+        printf("Attempting to add %d\n\n", 1);
+        queue_enqueue(test2, 1);
+
+        // Checking to see if the queue is full
+	if (queue_full(test2) == 1) {
+                printf("The queue is full.\n\n");
+
+        } else if (queue_full(test2) == -1) {
+                printf("The queue is NULL.\n\n");
+
+        } else {
+                printf("The queue is not full.\n\n");
+        }
+
+        // Checking to see if the queue is empty
+	if (queue_empty(test2) == -1) {
+                printf("The queue is NULL.\n\n");
+
+        } else if (queue_empty(test2) == 0) {
+                printf("The queue is empty.\n\n");
+
+        } else {
+                printf("The queue is not empty.\n\n");
+	}	
+
+	// Checking the size of the queue
+        if (queue_size(test2) == -1) {
+                printf("The queue is NULL.\n\n");
+
+        } else {
+                printf("The queue size is %d.\n\n", queue_size(test2));
+        }
+
+	free_queue(test2);
 }
 
 void unitTest3() {
