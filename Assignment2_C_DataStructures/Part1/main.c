@@ -22,27 +22,33 @@ void unitTest1(){
 	// left.
 	queue_t* test1 = create_queue(7);
 	
-	printf("Attempting to add %d\n\n", 1);
-	queue_enqueue(test1, 1);
-
-	printf("Removing: %d\n\n", queue_dequeue(test1));
-
-	printf("Attempting to add %d\n\n", 1);
-	queue_enqueue(test1, 1);
-
-	printf("Removing: %d\n\n", queue_dequeue(test1));
+	if (create_queue(7) == NULL) {
+		print("The queue has a NULL value."\n\n);
 	
-	printf("Attempting to add %d\n\n", 1);
-        queue_enqueue(test1, 1);
+	} else {
+		print("%d", create_queue(7));
 
-        printf("Attempting to add %d\n\n", 1);
-        queue_enqueue(test1, 1);
+	printf("Attempting to add %d\n\n", queue_enqueue(test1, 1));
+	
+	if (queue_enqueue(test1, 1) == -1) {
+		printf("The queue is NULL.\n\n");
 
-        printf("Attempting to add %d\n\n", 1);
-        queue_enqueue(test1, 1);
-        
-	printf("Attempting to add %d\n\n", 1);
-        queue_enqueue(test1, 1);
+	} else if (queue_enqueue(test1, 1) == 0) {
+		printf("The queue is at the maximum.\n\n");
+	
+	} else {
+		printf("The queue has a size of %d", queue_enqueue(test1, 1));
+
+
+	if (queue_dequeue(test1) == -1) {
+		printf("The queue has a NULL value.\n\n")
+	
+	} else if (queue_dequeue(test1) == 0)
+		printf("The queue is empty and can't remove.\n\n");
+	
+	} else {
+		printf("Removing: %d\n\n", queue_dequeue(test1));
+ 	}
 	
 	// Checking to see if queue is full
 	if (queue_full(test1) == 1) {
@@ -78,6 +84,9 @@ void unitTest1(){
 void unitTest2() {
 	
 	queue_t* test2 = create_queue(0);
+	if (create_queue(0) == NULL) {
+		printf("The queue is NULL");
+	}
 
         printf("Attempting to add %d\n\n", 1);
         queue_enqueue(test2, 1);
