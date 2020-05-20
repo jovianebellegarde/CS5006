@@ -68,23 +68,8 @@ void unitTest4() {
 	free_queue(test4);
 }
 
-void unitTest5() {
-	queue_t* test5 = create_queue(7);
-	queue_enqueue(test5, 7);	
-	int checking_empty = queue_empty(test5);
-	
-	if (checking_empty == 1) {
-		printf("The queue is empty.\n");
-
-	} else {
-		printf("The queue is not empty.\n");
-
-	queue_dequeue(test5);
-	free(test5);
-	}
 
 
-}
 
 
 
@@ -98,6 +83,6 @@ int main(){
 	unitTest2();
 	unitTest3();
 	unitTest4();
-//	unitTest5();
+
 	return 0;
 }
