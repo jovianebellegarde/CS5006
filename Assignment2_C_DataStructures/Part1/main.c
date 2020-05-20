@@ -1,5 +1,4 @@
 // Compile this assignment with: gcc main.c -o main
-//
 // Include parts of the C Standard Library
 // These have been written by some other really
 // smart engineers.
@@ -19,56 +18,17 @@
 // You need to add sufficient testing.
 void unitTest1(){
 
-	queue_t* test1 = create_queue(1);
-	printf("Test 1: Attempting to add %d\n\n",1);
-	queue_enqueue(test1,1);	
-	printf("Removing: %d\n\n",queue_dequeue(test1));	
+	queue_t* test1 = create_queue(10);
+	printf("Attempting to add %d\n\n", 10);
+	queue_enqueue(test1, 10);
 
-	free_queue(test1);
+	printf("Attempting to add %d\n\n", 10);
+	queue_enqueue(test1, 10);
+
+	printf("Removing: %d\n\n", queue_dequeue(test1));
+	printf("The stack size is %d\n\n", stack_size(test1));
+	free(test1);
 }
-
-
-void unitTest2() {
-	queue_t* test2 = create_queue(0);
-	printf("Test 2: Attempting to add %d\n\n", 0);
-	queue_enqueue(test2, 0);
-	printf("Removing: %d\n\n", queue_dequeue(test2));
-
-	free_queue(test2);
-
-
-}
-
-
-void unitTest3() {
-	queue_t* test3 = create_queue(5);
-        printf("Test 3: Attempting to add %d\n\n", 5);
-        queue_enqueue(test3, 5);
-        printf("Removing: %d\n\n", queue_dequeue(test3));
-
-		
-
-	queue_t* test3b = create_queue(5);
-        printf("Test 3: Attempting to add %d again \n\n", 5);
-        queue_enqueue(test3b, 5);
-        printf("Removing: %d again\n\n", queue_dequeue(test3b));
-
-	free_queue(test3);
-        free_queue(test3b);
-
-}	
-
-void unitTest4() {
-	queue_t* test4 = create_queue(0);
-        printf("Test 4: Attempting to add %d\n\n", 0);
-	
-        queue_enqueue(test4, 0);
-        printf("Removing: %d\n\n", queue_dequeue(test4));
-
-	free_queue(test4);
-}
-
-
 
 
 
@@ -80,9 +40,6 @@ int main(){
 
 	// List of Unit Tests to test your data structure	
 	unitTest1();
-	unitTest2();
-	unitTest3();
-	unitTest4();
 
 	return 0;
 }
