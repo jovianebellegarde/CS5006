@@ -46,13 +46,14 @@ void unitTest3() {
         queue_enqueue(test3, 5);
         printf("Removing: %d\n\n", queue_dequeue(test3));
 
-	free_queue(test3);	
+		
 
 	queue_t* test3b = create_queue(5);
         printf("Test 3: Attempting to add %d again \n\n", 5);
         queue_enqueue(test3b, 5);
         printf("Removing: %d again\n\n", queue_dequeue(test3b));
 
+	free_queue(test3);
         free_queue(test3b);
 
 }	
@@ -66,7 +67,7 @@ void unitTest4() {
 
 	free_queue(test4);
 }
-
+/*
 void unitTest5() {
 	queue_t* test5 = create_queue(7);
 	queue_enqueue(test5, 7);	
@@ -81,7 +82,11 @@ void unitTest5() {
 	queue_dequeue(test5);
 	free(test5);
 	}
+
+
 }
+*/
+
 
 // ====================================================
 // ================== Program Entry ===================
@@ -93,6 +98,6 @@ int main(){
 	unitTest2();
 	unitTest3();
 	unitTest4();
-	unitTest5();
+//	unitTest5();
 	return 0;
 }
