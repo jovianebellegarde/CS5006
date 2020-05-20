@@ -56,7 +56,7 @@ void unitTest1(){
 void unitTest2() {
 	
 	queue_t* test2 = create_queue(0);
-	printf("Attempting to add %d\n\n", 1);
+	printf("\nAttempting to add %d\n\n", 1);
 	queue_enqueue(test2, 1);
 	
 	if (queue_dequeue(test2) == 0) {
@@ -79,8 +79,8 @@ void unitTest3() {
 	
 	// Creating a NULL queue
 	queue_t* test3 = NULL;
-	printf("Check if queue is NULL, should give me a %d\n", 
-	queue_full(test3));
+	i	
+	queue_full(test3);
 	free_queue(test3);
 }
 
