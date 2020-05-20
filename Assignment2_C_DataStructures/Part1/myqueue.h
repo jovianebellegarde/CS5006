@@ -111,7 +111,7 @@ int queue_enqueue(queue_t* q, int item){
 	if (q == NULL) {
 		return -1;
 	
-	} else if (queue_full(q)) {
+	} else if (queue_full(q)== 1) {
 		return 0;
 	
 	} else {
@@ -140,8 +140,8 @@ int queue_dequeue(queue_t *q){
 	
 	// Checking to see that the queue is empty before attempting to remove
 	// from an empty queue 
-	} else if (queue_empty(q)) {
-		return -1;
+	} else if (queue_empty(q) == 1) {
+		return 0;
 	
 	} else {
 		// Creating a variable to save what is being removed from front
