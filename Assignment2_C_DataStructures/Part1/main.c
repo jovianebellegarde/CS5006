@@ -23,7 +23,7 @@ void unitTest1(){
 	queue_t* test1 = create_queue(7);
 	
 	if (create_queue(7) == NULL) {
-		print("The queue has a NULL value."\n\n);
+		print("The queue has a NULL value.\n\n");
 	
 	} else {
 		print("%d", create_queue(7));
@@ -38,12 +38,12 @@ void unitTest1(){
 	
 	} else {
 		printf("The queue has a size of %d", queue_enqueue(test1, 1));
-
+	}
 
 	if (queue_dequeue(test1) == -1) {
-		printf("The queue has a NULL value.\n\n")
+		printf("The queue has a NULL value.\n\n");
 	
-	} else if (queue_dequeue(test1) == 0)
+	} else if (queue_dequeue(test1) == 0) {
 		printf("The queue is empty and can't remove.\n\n");
 	
 	} else {
