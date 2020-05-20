@@ -46,24 +46,24 @@ void unitTest1(){
 	
 	// Checking to see if queue is full
 	if (queue_full(test1) == 1) {
-		printf("The queue is full.\n\n");
+		printf("The queue is full.from full\n\n");
 
 	} else if (queue_full(test1) == -1) {
-		printf("The queue is NULL.\n\n.");
+		printf("The queue is NULL.from full\n\n.");
 
 	} else {
-		printf("The queue is not full.\n\n");
+		printf("The queue is not full.from full\n\n");
 	}
 
 	// Checking to see if the queue is empty
 	if (queue_empty(test1) == -1) {
-		printf("The queue is NULL.\n\n");
+		printf("The queue is NULL.from empty\n\n");
 
 	} else if (queue_empty(test1) == 0) {
-		printf("The queue is empty.\n\n");
+		printf("The queue is empty.from empty\n\n");
 	
 	} else {
-		printf("The queue is not empty.\n\n");
+		printf("The queue is not empty.from empty\n\n");
 
 	}
 	// Checking the size of the queue
