@@ -54,18 +54,13 @@ stack_t* create_stack(unsigned int capacity) {
 
 	// Need to check if the capacity is less than max depth. If so, we can 
 	// initialize the capacity now.
-	} else if (capacity < MAX_DEPTH) {
+	} else {
 		myStack->capacity = capacity;
 
-	// If these checks all failed at this point, then memory could not be
-	// allocated. 
-	} else {
-		return NULL;
 	}
 	myStack->count = 0;
-	
 	myStack->head = NULL;
-	}
+
 	return myStack;
 }
 
@@ -94,7 +89,7 @@ int stack_empty(stack_t* s){
 // Returns -1 if the stack is NULL.
 int stack_full(stack_t* s){
 	if (s == NULL) {
-	return -1;
+		return -1;
 
 	} else if (s->count == s->capacity) {
 		return 1;
@@ -113,7 +108,7 @@ int stack_enqueue(stack_t* s, int item) {
 	if (s == NULL) {
 		return -1;
 	
-	} else if (s->count == s->capacity) {
+	} else if (stack_full(s)) {
 		return 0;
 
 	} else {
@@ -136,7 +131,7 @@ int stack_dequeue(stack_t* s) {
 	if (s == NULL) {
 		return -1;
 
-	} else if (s->count == 0) {
+	} else if (stack_empty(s)) {
 		return 0;
 
 	} else {
@@ -172,7 +167,6 @@ void free_stack(stack_t* s){
 	while (tempNode != NULL) {
 		node_t* nextNode = tempNode->next;
 		free(tempNode);
-		tempNode = nextNode;
 	}
 	free(s);
 }
