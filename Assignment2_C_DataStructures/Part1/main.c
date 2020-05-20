@@ -67,7 +67,7 @@ void unitTest4() {
 
 	free_queue(test4);
 }
-/*
+
 void unitTest5() {
 	queue_t* test5 = create_queue(7);
 	queue_enqueue(test5, 7);	
@@ -85,7 +85,7 @@ void unitTest5() {
 
 
 }
-*/
+
 
 
 // ====================================================
