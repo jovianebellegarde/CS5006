@@ -164,7 +164,7 @@ int queue_dequeue(queue_t *q){
 unsigned int queue_size(queue_t* q){
 
 	// Checking to see if there is a NULL value
-	if (q != NULL) {
+	if (q == NULL) {
 		return -1;
 
 	} else {

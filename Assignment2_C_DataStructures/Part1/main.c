@@ -26,7 +26,8 @@ void unitTest1(){
 	queue_enqueue(test1, 10);
 
 	printf("Removing: %d\n\n", queue_dequeue(test1));
-	printf("The stack size is %d\n\n", stack_size(test1));
+	
+	printf("The queue size is %d\n\n", queue_size(test1));
 	free(test1);
 }
 
