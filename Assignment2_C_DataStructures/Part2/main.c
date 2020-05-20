@@ -20,14 +20,19 @@
 void unitTest1(){
 
 	stack_t* test1 = create_stack(MAX_DEPTH);
-	printf("Attempting to push %d\n",1);
+	printf("Attempting to push %d\n\n", 1);
 	stack_enqueue(test1,1);	
-	printf("Removing: %d\n",stack_dequeue(test1));	
+	printf("Removing: %d\n\n",stack_dequeue(test1));	
 
 	free_stack(test1);
 }
 
+void unitTest2() {
+	
 
+
+
+}
 // ====================================================
 // ================== Program Entry ===================
 // ====================================================
