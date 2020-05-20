@@ -18,14 +18,14 @@
 // You need to add sufficient testing.
 void unitTest1(){
 
-	queue_t* test1 = create_queue(10);
-	printf("Attempting to add %d\n\n", 10);
-	queue_enqueue(test1, 10);
+	queue_t* test1 = create_queue(4);
+	printf("Attempting to add %d\n\n", 1);
+	queue_enqueue(test1, 1);
 
-	printf("Attempting to add %d\n\n", 10);
-	queue_enqueue(test1, 10);
+	printf("Attempting to add %d\n\n", 2);
+	queue_enqueue(test1, 2);
 
-	printf("Removing: %d\n\n", queue_dequeue(test1));
+//	printf("Removing: %d\n\n", queue_dequeue(test1));
 	
 	printf("The queue size is %d\n\n", queue_size(test1));
 	free(test1);
