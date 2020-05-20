@@ -59,8 +59,16 @@ void unitTest2() {
 	printf("Attempting to add %d\n\n", 1);
 	queue_enqueue(test2, 1);
 	
-	printf("Removing: %d\n\n", queue_dequeue(test2));	
+	if (queue_dequeue(test2) == 0) {
+		printf("The queue size is 0.\n\n");
+	
+	} else if (queue_dequeue(test2) == -1) {
+		printf("The queue is assigned to NULL.\n\n");
+	
+	} else {
+		printf("Removing: %d\n\n", queue_dequeue(test2));
 
+	}
 	printf("The queue size is %d\n\n", queue_size(test2));
 	
 	free(test2);
