@@ -60,10 +60,10 @@ void unitTest1(){
 		printf("The queue is NULL.\n\n");
 
 	} else if (queue_empty(test1) == 0) {
-		printf("You have a full queue.\n\n");
+		printf("The queue is empty.\n\n");
 	
 	} else {
-		printf("The queue is empty.\n\n");
+		printf("The queue is not empty.\n\n");
 
 	}
 	// Checking the size of the queue
