@@ -162,6 +162,80 @@ void unitTest2() {
 	
 }		
 
+void unitTest3() {
+	stack_t* test3 = NULL;
+	stack_full(test3);
+
+	if (create_stack(0) == NULL) {
+		printf("The stack has a NULL value.\n\n");
+	
+	} else {
+		printf("The stack does not have a NULL value.\n\n");
+
+	}
+	printf("Attempting to add %d\n\n", stack_enqueue(test3, 1));
+	
+	printf("Attempting to add %d\n\n", stack_enqueue(test3, 1));
+	
+	printf("Attempting to add %d\n\n", stack_enqueue(test3, 1));
+
+	if (stack_enqueue(test3, 1) == -1) {
+		printf("Can't enqueue on a NULL stack.\n\n");
+
+	} else if (stack_enqueue(test3, 1) == 0) {
+		printf("Can't enqueue on a full stack.\n\n");
+	
+	} else {
+		printf("Continuing.\n\n");
+	}
+	printf("Removing %d:\n\n", stack_dequeue(test3));
+
+	if (stack_dequeue(test3) == -1) {
+		printf("The stack has a NULL value.\n\n");
+	
+	} else if (stack_dequeue(test3) == 0) {
+		printf("The stack is empty and can't remove from it.\n\n");
+	
+	} else if (stack_dequeue(test3) == 1) {
+		printf("Decreasing the stack size by 1.\n\n");
+ 	} else {
+		printf("Checking to see if the stack is full.\n\n");
+
+	}
+	stack_full(test3);
+
+	// Checking to see if stack is full
+	if (stack_full(test3) == 1) {
+		printf("The stack is full.\n\n");
+	
+	} else if (stack_full(test3) == -1) {
+		printf("The stack is NULL.\n\n");
+	
+	} else {
+		printf("The stack is not full.\n\n");
+	}
+
+	// Checking to see if stack is empty
+	if (stack_empty(test3) == -1) {
+		printf("The stack is NULL.\n\n");
+
+	} else if (stack_empty(test3) == 0) {
+		printf("The stack is not empty.\n\n");
+	
+	} else if (stack_empty(test3) == 1) {
+		printf("The stack is empty.\n\n");
+
+	}
+	// Checking the size of stack
+	if (stack_size(test3) == -1) {
+		printf("The stack is NULL.\n\n");
+	
+	} else {
+		printf("The stack size is %d.\n\n", stack_size(test3)); 
+	}		
+			
+}
+
 
 
 
@@ -172,6 +246,7 @@ int main(){
 
 	// List of Unit Tests to test your data structure	
 	unitTest1();
-
+	unitTest2();
+	
 	return 0;
 }
