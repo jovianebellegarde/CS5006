@@ -68,7 +68,7 @@ int queue_empty(queue_t* q){
 		return -1;
 	
 	// Checking to see if the queue is completely empty
-	} else if(q->size == 0) {
+	} else if (q->size == 0) {
 		return 1;
 
 	// Returning 0 because the queue is not completely empty	
@@ -111,7 +111,7 @@ int queue_enqueue(queue_t* q, int item){
 	if (q == NULL) {
 		return -1;
 	
-	} else if (queue_full(q)== 1) {
+	} else if (queue_full(q) == 1) {
 		return 0;
 	
 	} else {
