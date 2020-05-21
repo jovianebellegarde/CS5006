@@ -1,11 +1,13 @@
 # TODO Please edit the following information in your assignment
 
-- Name:
+- Name: Joviane
 - How many hours did it take you to complete this assignment?
+- Too many to count. I lost a whole 1.5 days because I lost my work on the server.
 - Did you collaborate with any other students/TAs/Professors?
+- I collaborated with Theresa.
 - Did you use any external resources? (Cite them below)
-  - tbd
-  - tbd
+  - No
+  - No
 - (Optional) What was your favorite part of the assignment?
 - (Optional) How would you improve the assignment?
 
