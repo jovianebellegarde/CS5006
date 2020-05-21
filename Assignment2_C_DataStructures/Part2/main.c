@@ -19,19 +19,75 @@
 // You need to add sufficient testing.
 void unitTest1(){
 
-	stack_t* test1 = create_stack(MAX_DEPTH);
-	printf("Attempting to push %d\n\n", 1);
-	stack_enqueue(test1,1);	
-	printf("Removing: %d\n\n",stack_dequeue(test1));	
-
-	free_stack(test1);
-}
-
-void unitTest2() {
+	stack_t* test1 = create_stack(8);
+	if (create_stack(8) == NULL) {
+		printf("The stack has a NULL value.\n\n");
 	
+	} else {
+		printf("The stack does not have a NULL value.\n\n");
 
+	}
+	printf("Attempting to add %d\n\n", stack_enqueue(test1, 1));
+	
+	printf("Attempting to add %d\n\n", stack_enqueue(test1, 1));
+	
+	printf("Attempting to add %d\n\n", stack_enqueue(test1, 1));
 
+	if (stack_enqueue(test1, 1) == -1) {
+		printf("Can't enqueue on a NULL stack.\n\n");
 
+	} else if (stack_enqueue(test1, 1) == 0) {
+		printf("Can't enqueue on a full stack.\n\n");
+	
+	} else {
+		printf("Continuing.\n\n");
+	}
+
+	printf("Removing %d:\n\n", stack_dequeue(test1));
+
+	if (stack_dequeue(test1) == -1) {
+		printf("The stack has a NULL value.\n\n");
+	
+	} else if (stack_dequeue(test1) == 0) {
+		printf("The stack is empty and can't remove from it.\n\n");
+	
+	} else if (stack_dequeue(test1) == 1) {
+		printf("Decreasing the stack size by 1.\n\n");
+ 	} else {
+		printf("Checking to see if the stack is full.\n\n");
+
+	}
+	stack_full(test1);
+	
+	// Checking to see if queue is full
+	if (stack_full(test1) == 1) {
+		printf("The stack is full.\n\n");
+	
+	} else if (stack_full(test1) == -1) {
+		printf("The stack is NULL.\n\n");
+	
+	} else {
+		printf("The stack is not full.\n\n");}
+
+	// Checking to see if stack is empty
+	if (stack_empty(test1) == -1) {
+		printf("The stack is NULL.\n\n");
+
+	} else if (stack_empty(test1) == 0) {
+		printf("The stack is not empty.\n\n");
+	
+	} else if (stack_empty(test1) == 1) {
+		printf("The stack is empty.\n\n");
+
+	}
+	// Checking the size of the stack
+	if (stack_size(test1) == -1) {
+		printf("The stack is NULL.\n\n");
+	
+	} else {
+		printf("The stack size is %d.\n\n", stack_size(test1)); 
+	}		
+	
 }
 // ====================================================
 // ================== Program Entry ===================

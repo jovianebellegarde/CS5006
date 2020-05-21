@@ -108,7 +108,7 @@ int stack_enqueue(stack_t* s, int item) {
 	if (s == NULL) {
 		return -1;
 	
-	} else if (stack_full(s)) {
+	} else if (stack_full(s) == 1) {
 		return 0;
 
 	} else {
@@ -131,10 +131,11 @@ int stack_dequeue(stack_t* s) {
 	if (s == NULL) {
 		return -1;
 
-	} else if (stack_empty(s)) {
+	} else if (stack_empty(s) == 1) {
 		return 0;
 
 	} else {
+		// Updating the head of the node
 		int tempData = s->head->data;
 		node_t* tempNode = s->head;
 		s->head = s->head->next;
