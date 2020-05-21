@@ -247,6 +247,6 @@ int main(){
 	// List of Unit Tests to test your data structure	
 	unitTest1();
 	unitTest2();
-	
+	unitTest3();	
 	return 0;
 }
