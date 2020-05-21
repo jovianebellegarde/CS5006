@@ -70,6 +70,8 @@ void unitTest1(){
 
 	} else {
 		printf("The queue is not full.\n\n");
+
+	}
 	// Checking to see if the queue is empty
 	if (queue_empty(test1) == -1) {
 		printf("The queue is NULL.\n\n");
@@ -93,6 +95,70 @@ void unitTest1(){
 void unitTest2() {
 	
 	queue_t* test2 = create_queue(0);
+	if (create_queue(0) == NULL) {	
+		printf("\n\nThe queue has a NULL value.\n\n");
+
+        } else {
+                printf("\n\nThe queue does not have a NULL value.\n\n");
+
+
+	}
+        printf("Attempting to add %d\n\n", queue_enqueue(test2, 1));
+
+        printf("Attempting to add %d\n\n", queue_enqueue(test2, 1));
+
+        printf("Attempting to add %d\n\n", queue_enqueue(test2, 1));
+
+        if (queue_enqueue(test2, 1) == -1) {
+                printf("Can't enqueue on a NULL queue.\n\n");
+
+        } else if (queue_enqueue(test2, 1) == 0) {
+                printf("Can't enqueue on a full queue.\n\n");
+
+        } else {
+                printf("Continuing.\n\n");
+        }
+
+	printf("Removing %d:\n\n", queue_dequeue(test2));
+
+        if (queue_dequeue(test2) == -1) {
+                printf("The queue has a NULL value.\n\n");
+
+        } else if (queue_dequeue(test2) == 0) {
+                printf("The queue is empty and can't remove from it.\n\n");
+
+        } else if (queue_dequeue(test2) == 1) {
+                printf("Decreasing the queue size by 1.\n\n");
+        
+	} else {
+                printf("Checking to see if the queue is full.\n\n");
+
+        }
+        queue_full(test2);
+       
+	// Checking to see if queue is full
+      	if (queue_full(test2) == 1) {
+      		printf("The queue is full.\n\n");
+      
+	} else if (queue_full(test2) == -1) {
+      		printf("The queue is NULL.\n\n");
+        
+	} else {
+		printf("The queue is not full.\n\n");
+     	}
+	// Checking to see if the queue is empty
+     	if (queue_empty(test2) == -1) {
+      		printf("The queue is NULL.\n\n");
+	
+	} else if (queue_empty(test2) == 0) {
+		printf("The queue is not empty.\n\n");
+	
+	} else if (queue_empty(test2) == 1) {
+		printf("The queue is empty!\n\n"); 
+	}
+ }
+
+
 
 void unitTest3() {
 	
