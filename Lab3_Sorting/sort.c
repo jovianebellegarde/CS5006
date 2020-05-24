@@ -72,7 +72,6 @@ int main(){
   int dataset5[] = {100,201,52,3223,24,55,623,75,8523,-9,150};
   int dataset6[] = {-1,1,2,-3,4,5,-6,7,8,-9,10};
   int dataset7[] = {0};
-  int dataset8[] = { };
 
   // Sort our integer array
   sortIntegers(dataset1, 11);
@@ -82,7 +81,6 @@ int main(){
   sortIntegers(dataset5, 11);
   sortIntegers(dataset6, 11);
   sortIntegers(dataset7, 1);	 
-  sortIntegers(dataset8, 0);
 
   // Print out an array
   printIntArray(dataset1, 11);
@@ -92,7 +90,6 @@ int main(){
   printIntArray(dataset5, 11);
   printIntArray(dataset6, 11);
   printIntArray(dataset7, 1);
-  printIntArray(dataset8, 0);
 
   return 0;
 }
