@@ -11,7 +11,7 @@
 //        stop - End of where to search. Typically the 'size' of the array.
 // Output: The index in an array of the minimum value between a range [start,stop]
 int findMinimum(int* array, int start, int stop){
-	intminimumIndex = start;
+	int minimumIndex = start;
 	int minimumValue = array[start];
 	int iterator = 0;
 
@@ -72,7 +72,7 @@ int main(){
   int dataset5[] = {100,201,52,3223,24,55,623,75,8523,-9,150};
   int dataset6[] = {-1,1,2,-3,4,5,-6,7,8,-9,10};
   int dataset7[] = {0};
-  int dataset8[] = 0;
+  int dataset8[] = NULL;
 
   // Sort our integer array
   sortIntegers(dataset1, 11);
