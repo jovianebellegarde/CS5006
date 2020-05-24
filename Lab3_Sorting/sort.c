@@ -11,16 +11,26 @@
 //        stop - End of where to search. Typically the 'size' of the array.
 // Output: The index in an array of the minimum value between a range [start,stop]
 int findMinimum(int* array, int start, int stop){
-    // TODO: Iterate through a subset of the array and find the minimum value.
-    //       Return the index of that minimum value.
-  
-    return -1; // TODO: Modify this to return the
+	intminimumIndex = start;
+	int minimumValue = array[start];
+	int iterator = 0;
+
+	for (iterator = minimumIndex + 1; iterator < stop; iterator++) {
+		if (array[iterator] < minimumValue) {
+			minimumIndex = iterator;
+			minimumValue = array[iterator];
+		}
+	}
+	return minimumIndex;
+
 }
 
 // Swaps two numbers in an array
 // Input: The 'address of' an index into an array for positions in an array.
 void swap(int* a, int* b){
-    // TODO: Swap two integers in an array.
+	int temp = *a;
+	*a = *b;
+	*b = temp;
 }
 
 // Provided below is a sort function. I have also
@@ -33,15 +43,20 @@ void swap(int* a, int* b){
 //          (2) 'size' tells us how big the array of data is we are sorting.
 // Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
 void sortIntegers(int* array, unsigned int size){
-    // TODO: Implement selection sort
+	int i;
+	for(i = 0; i < size - 1; i++) {
+		int minimum = findMinimum(array, i, size);
+		if (array[minimum] != array[i]) {
+			swap(&array[minimum], &array[i]);
+		}
+	}
 }
-
 
 // Input: A pointer to an array (i.e. the array itself points to the first index)
 //        The size of the array (Because we do not know how big the array is automatically)
 void printIntArray(int* array, unsigned int size){
   unsigned int i; // Note: 'unsigned int' is a datatype for storing positive integers.
-  for(i = 0; i < size; i=i+1){
+  for(i = 0; i < size; i = i + 1){
     printf("%d ",array[i]);
   }
   printf("\n");
@@ -56,7 +71,9 @@ int main(){
   int dataset4[] = {2,1,1,1,1,1,1,1,1,1,1};
   int dataset5[] = {100,201,52,3223,24,55,623,75,8523,-9,150};
   int dataset6[] = {-1,1,2,-3,4,5,-6,7,8,-9,10};
-  
+  int dataset7[] = {0};
+  int dataset8[] = 0;
+
   // Sort our integer array
   sortIntegers(dataset1, 11);
   sortIntegers(dataset2, 11);
@@ -64,7 +81,9 @@ int main(){
   sortIntegers(dataset4, 11);
   sortIntegers(dataset5, 11);
   sortIntegers(dataset6, 11);
-  
+  sortIntegers(dataset7, 1);
+  sortIntegers(dataset8, 0);	 
+
   // Print out an array
   printIntArray(dataset1, 11);
   printIntArray(dataset2, 11);
@@ -72,6 +91,8 @@ int main(){
   printIntArray(dataset4, 11);
   printIntArray(dataset5, 11);
   printIntArray(dataset6, 11);
-  
+  printIntArray(dataset7, 1);
+  printIntArray(dataset8, 0);
+
   return 0;
 }
