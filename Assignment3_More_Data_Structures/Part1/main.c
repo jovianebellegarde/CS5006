@@ -20,6 +20,36 @@
 // ================== Program Entry ===================
 // ====================================================
 int main(){
-    dll_t * dll = create_dll();
-    return 0;
+	dll_t * dll = create_dll();
+	
+	if (dll_empty(dll)) {
+        printf("This list is empty.\n\n");
+    	
+	}	
+	
+	// Pushing 10 nodes to the front
+	printf("Pushing forward: %d.\n\n", 1, dll_push_front(dll,0));
+    	printf("Pushing forward: %d.\n\n", 2, dll_push_front(dll, 1));
+    	printf("Pushing forward: %d.\n\n", 3, dll_push_front(dll, 2));
+    	printf("Pushing forward: %d.\n\n", 4, dll_push_front(dll, 3));
+    	printf("Pushing forward: %d.\n\n", 5, dll_push_front(dll, 4));
+    	printf("Pushing forward: %d.\n\n", 6, dll_push_front(dll, 5));
+    	printf("Pushing forward: %d.\n\n", 7, dll_push_front(dll, 6));
+    	printf("Pushing forward: %d.\n\n", 8, dll_push_front(dll, 7));
+    	printf("Pushing forward: %d.\n\n", 9, dll_push_front(dll, 8));
+    	printf("Pushing forward: %d.\n\n", 10, dll_push_front(dll,9)); 
+
+	// Printing the size of the list
+	printf("The list size is %d.\n\n", dll_size(dll));
+
+	// Looping through to get each item at each position
+	for (int i = 0; i < dll_size(dll); i++) {
+        	printf("%d position: %d\n\n", i, dll_get(dll, i));
+    	}
+
+
+	free(dll);
+	return 0;
+    	
+
 }
