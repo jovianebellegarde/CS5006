@@ -43,7 +43,8 @@ int main(){
 	printf("The list size is %d.\n\n", dll_size(dll));
 
 	// Looping through to get each item at each position
-	for (int i = 0; i < dll_size(dll); i++) {
+	int i;
+	for (i = 0; i < dll_size(dll); i++) {
         	printf("%d position: %d\n\n", i, dll_get(dll, i));
     	}
 
