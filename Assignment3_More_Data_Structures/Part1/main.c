@@ -29,6 +29,7 @@ int main(){
 	
 	// Pushing 10 nodes to the front
 	printf("Pushing forward: %d.\n\n", 1, dll_push_front(dll,0));
+	
     	printf("Pushing forward: %d.\n\n", 2, dll_push_front(dll, 1));
     	printf("Pushing forward: %d.\n\n", 3, dll_push_front(dll, 2));
     	printf("Pushing forward: %d.\n\n", 4, dll_push_front(dll, 3));
@@ -37,22 +38,16 @@ int main(){
     	printf("Pushing forward: %d.\n\n", 7, dll_push_front(dll, 6));
     	printf("Pushing forward: %d.\n\n", 8, dll_push_front(dll, 7));
     	printf("Pushing forward: %d.\n\n", 9, dll_push_front(dll, 8));
-    	printf("Pushing forward: %d.\n\n", 10, dll_push_front(dll,9)); 
+    	printf("Pushing forward: %d.\n\n", 10, dll_push_front(dll, 9)); 
+	
+//	printf("Inserting: ",  dll_insert(dll, 5, 78));
 
-	// Printing the size of the list
-	printf("The list size is %d.\n\n", dll_size(dll));
-
-	printf("Getting %d from position %d.\n\n", 1, dll_get(dll, 0));
-	printf("Getting %d from position %d.\n\n", 2, dll_get(dll, 1));
-	printf("Getting %d from position %d.\n\n", 3, dll_get(dll, 2));
-	printf("Getting %d from position %d.\n\n", 4, dll_get(dll, 3));
-	printf("Getting %d from position %d.\n\n", 5, dll_get(dll, 4));
-	printf("Getting %d from position %d.\n\n", 6, dll_get(dll, 5));
-	printf("Getting %d from position %d.\n\n", 7, dll_get(dll, 6));
-	printf("Getting %d from position %d.\n\n", 8, dll_get(dll, 7));
-	printf("Getting %d from position %d.\n\n", 9, dll_get(dll, 8));
-	printf("Getting %d from position %d.\n\n", 10, dll_get(dll, 9));
     
+//	printf("Popping back: %d.\n", dll_pop_back(dll));
+
+	printf("The size of the is is %d.\n\n", dll_size(dll));
+
+
 	free(dll);
 	return 0;
 

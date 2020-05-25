@@ -42,8 +42,7 @@ dll_t* create_dll(){
 	
 	if (myDLL == NULL) {
 		return NULL;
-    	}
-	
+    	}	
     	myDLL->count = 0;
     	myDLL->head = NULL;
     	myDLL->tail = NULL;	
@@ -81,7 +80,7 @@ int dll_push_front(dll_t* l, int item){
         	return 0;
     	}
 
-    	if (dll_empty(l) == 0) {
+	if (dll_empty(l) == 0) {
         	l->head = pushFrontNode;
         	l->tail = pushFrontNode;
         	pushFrontNode->next = NULL;
@@ -89,8 +88,11 @@ int dll_push_front(dll_t* l, int item){
         	pushFrontNode->data = item;
         	l->count++;
         	return 1;
+	
+	} 
 
-    	} else {
+	if (dll_empty(l) == 1) {
+    
         	pushFrontNode->data = item;
         	pushFrontNode->next = l->head;
         	l->head = pushFrontNode;
@@ -115,7 +117,7 @@ int dll_push_back(dll_t* l, int item){
         	return 0;
     	}	
 
-    	if(dll_empty(l) == 0) {
+    	if (dll_empty(l) == 0) {
 		l->tail = pushBackNode;
         	l->head = pushBackNode;
         	pushBackNode->next = NULL;
@@ -306,11 +308,12 @@ int dll_remove(dll_t* l, int pos){
 int dll_size(dll_t* t){
 	if (t == NULL) {
         	return -1;
-
     	} else {
-        	return t->count;
-    	}
+       	
+	return t->count;
+	}
 }
+
 
 // Free DLL
 // Removes a DLL and all of its elements from memory.
@@ -319,14 +322,16 @@ void free_dll(dll_t* t){
 	if (t == NULL) {
         	return;
     	}
-
     	node_t* tempNode = t->head;
+	node_t* nextNode = NULL;
     	while(tempNode != NULL) {
-        	node_t* nextNode = tempNode->next;
+        	nextNode = tempNode->next;
         	free(tempNode);
         	tempNode = nextNode;
+		
     	}	
     	free(t);
+
 }
 
 
