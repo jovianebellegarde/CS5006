@@ -89,9 +89,9 @@ Discuss and answer the following questions:
 
 ## Answers:
 
-1. *edit your answer here for Part 2 question 1*
-2. *edit your answer here for Part 2 question 2*
-3. *edit your answer here for Part 2 question 3*
+1. I think that the worst case scenario for Big 0 would be O(n^2) with O(n) amount of swaps. You will have to check that each element is sorted in the array.
+2. The best case scenario would be if the array was somewhat sorted, so O(n^2) with O(n) amount of swaps.
+3. Yes, it requires to have a temporary storage to swap the smallest and biggest values in the array. In this lab, we used a function to swap the min and max values.
 
 # Deliverable
 
