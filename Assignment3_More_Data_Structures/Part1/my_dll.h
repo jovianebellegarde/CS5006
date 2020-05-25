@@ -304,8 +304,12 @@ int dll_remove(dll_t* l, int pos){
 // Queries the current size of a DLL
 // Returns -1 if the DLL is NULL.
 int dll_size(dll_t* t){
-	
-		return -1; // Note: This line is a 'filler' so the code compiles.
+	if (t == NULL) {
+        	return -1;
+
+    	} else {
+        	return t->count;
+    	}
 }
 
 // Free DLL
