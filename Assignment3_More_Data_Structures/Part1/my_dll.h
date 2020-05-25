@@ -73,7 +73,32 @@ int dll_empty(dll_t* l){
 // Returns -1 if DLL is NULL.
 // (i.e. the memory allocation for a new node failed).
 int dll_push_front(dll_t* l, int item){
-		return -1;
+    if (l == NULL) {
+        return -1;
+    }
+
+    node_t* pushFrontNode = (node_t*)malloc(sizeof(node_t));
+    if (pushFrontNode == NULL) {
+        return 0;
+    }
+
+    if (dll_empty(l) == 0) {
+        l->head = pushFrontNode;
+        l->tail = pushFrontNode;
+        pushFrontNode->next = NULL;
+        pushFrontNode->previous = NULL;
+        pushFrontNode->data = item;
+        l->count++;
+        return 1;
+
+    } else {
+        pushFrontNode->data = item;
+        pushFrontNode->next = l->head;
+        l->head = pushFrontNode;
+        pushFrontNode->previous = NULL;
+        l->count++;
+        return 1;
+    }
 }
 
 // push a new item to the end of the DLL (after the last node in the list).
