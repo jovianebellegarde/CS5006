@@ -73,32 +73,32 @@ int dll_empty(dll_t* l){
 // Returns -1 if DLL is NULL.
 // (i.e. the memory allocation for a new node failed).
 int dll_push_front(dll_t* l, int item){
-    if (l == NULL) {
-        return -1;
-    }
+	if (l == NULL) {
+        	return -1;
+    	}	
 
-    node_t* pushFrontNode = (node_t*)malloc(sizeof(node_t));
-    if (pushFrontNode == NULL) {
-        return 0;
-    }
+    	node_t* pushFrontNode = (node_t*)malloc(sizeof(node_t));
+    	if (pushFrontNode == NULL) {
+        	return 0;
+    	}
 
-    if (dll_empty(l) == 0) {
-        l->head = pushFrontNode;
-        l->tail = pushFrontNode;
-        pushFrontNode->next = NULL;
-        pushFrontNode->previous = NULL;
-        pushFrontNode->data = item;
-        l->count++;
-        return 1;
+    	if (dll_empty(l) == 0) {
+        	l->head = pushFrontNode;
+        	l->tail = pushFrontNode;
+        	pushFrontNode->next = NULL;
+        	pushFrontNode->previous = NULL;
+        	pushFrontNode->data = item;
+        	l->count++;
+        	return 1;
 
-    } else {
-        pushFrontNode->data = item;
-        pushFrontNode->next = l->head;
-        l->head = pushFrontNode;
-        pushFrontNode->previous = NULL;
-        l->count++;
-        return 1;
-    }
+    	} else {
+        	pushFrontNode->data = item;
+        	pushFrontNode->next = l->head;
+        	l->head = pushFrontNode;
+        	pushFrontNode->previous = NULL;
+        	l->count++;
+        	return 1;
+    	}
 }
 
 // push a new item to the end of the DLL (after the last node in the list).
@@ -107,7 +107,32 @@ int dll_push_front(dll_t* l, int item){
 // Returns -1 if DLL is NULL.
 // (i.e. the memory allocation for a new node failed).
 int dll_push_back(dll_t* l, int item){
-		return -1; 
+	if (l == NULL) {
+        return -1;
+    	}	
+
+    	node_t* pushBackNode = (node_t*)malloc(sizeof(node_t));
+    	if (pushBackNode == NULL) {
+        	return 0;
+    	}	
+
+    	if(dll_empty(l) == 0) {
+		l->tail = pushBackNode;
+        	l->head = pushBackNode;
+        	pushBackNode->next = NULL;
+        	pushBackNode->previous = NULL;
+        	pushBackNode->data = item;
+        	l->count++;
+        	return 1;
+
+    	} else {
+        	pushBackNode->data = item;
+        	pushBackNode->previous = l->tail;
+        	l->tail = pushBackNode;
+        	pushBackNode->next = NULL;
+        	l->count++;
+        	return 1;
+    	} 
 }
 
 // Returns the first item in the DLL and also removes it from the list.
