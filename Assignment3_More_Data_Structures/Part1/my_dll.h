@@ -231,7 +231,7 @@ int dll_insert(dll_t* l, int pos, int item){
     	}
 
     	node_t* tempNode = l->head;
-    	int i;
+    	int i = 0;
 	for (i = 0; i < pos; i++) {
         	tempNode = tempNode->next;
     	}
@@ -257,7 +257,7 @@ int dll_get(dll_t* l, int pos){
         	return 0;
     	}
 	node_t* tempNode = l->head;
-	int i;
+	int i = 0;
 	for (i = 0; i < pos; i++) {
         	tempNode = tempNode->next;
     	}
@@ -288,7 +288,7 @@ int dll_remove(dll_t* l, int pos){
     	}
 
     	node_t* tempNode = l->head;
-	int i;
+	int i = 0;
 	for (i = 0; i < pos; i++) {
         	tempNode = tempNode->next;
     	}
