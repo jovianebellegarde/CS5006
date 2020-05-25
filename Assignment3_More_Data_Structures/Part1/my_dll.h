@@ -12,7 +12,6 @@ i// =================== Support Code =================
 // ==================================================
 #ifndef MYDLL_H
 #define MYDLL_H
-#include <stdlib.h>
 
 // Create a node data structure to store data within
 // our DLL. In our case, we will stores 'integers'
@@ -196,7 +195,7 @@ int dll_pop_back(dll_t* t){
 	t->count--;
 	free(tempNode);
 	return tempItem;
-
+}
 // Inserts a new node before the node at the specified position.
 // Returns 1 on success
 // Retruns 0 on failure:
