@@ -206,8 +206,39 @@ int dll_pop_back(dll_t* t){
 //   (inserting at the size should be equivalent as calling push_back).
 // Returns -1 if the list is NULL
 int dll_insert(dll_t* l, int pos, int item){
-		
-		return -1; // Note: This line is a 'filler' so the code compiles.
+	if (l == NULL) {
+        return -1;
+    	}	
+
+    	if (pos < 0) {
+        	return 0;
+    	}
+
+    	if (pos >= l->count) {
+        	return 0;
+    	}
+
+    	node_t* insertNode = (node_t*)malloc(sizeof(node_t));
+    	if (insertNode == NULL) {
+        	return -1;
+    	}
+
+    	if (pos == 0) {
+        	return dll_push_front(l, item);
+    	}
+
+    	if (pos == l->count - 1) {
+        	return dll_push_back(l, item);
+    	}
+
+    	node_t* tempNode = l->head;
+    	for (int i = 0; i < pos; i++) {
+        	tempNode = tempNode->next;
+    	}
+	insertNode->next = tempNode;
+	insertNode->previous = tempNode->previous;
+	tempNode->previous = insertNode;
+	insertNode->previous->next = insertNode;
 }
 
 // Returns the item at position pos starting at 0 ( 0 being the first item )
