@@ -258,7 +258,7 @@ int dll_get(dll_t* l, int pos){
         	return 0;
     	}
 	node_t* tempNode = l->head;
-	int ;
+	int i;
 	for (i = 0; i < pos; i++) {
         tempNode = tempNode->next;
     	}
