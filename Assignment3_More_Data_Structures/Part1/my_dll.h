@@ -58,7 +58,13 @@ dll_t* create_dll(){
 // Returns 0 if false (the DLL has at least one element enqueued)
 // Returns -1 if the dll is NULL.
 int dll_empty(dll_t* l){
-	return -1;
+	if (l == NULL) {
+        	return -1;
+
+    	} else if (l->count == 0) {
+        	return 1;
+    	}	
+    	return 0;
 }
 
 // push a new item to the front of the DLL ( before the first node in the list).
