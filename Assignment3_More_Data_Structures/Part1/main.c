@@ -42,10 +42,16 @@ int main(){
 	// Printing the size of the list
 	printf("The list size is %d.\n\n", dll_size(dll));
 
-	// Looping through to get each item at each position
-	int i;
-	for (i = 0; i < dll_size(dll); i++) {
-        	printf("%d position: %d\n\n", i, dll_get(dll, i));
+	printf("Getting %d from position %d.\n\n", 1, dll_get(dll, 0));
+	printf("Getting %d from position %d.\n\n", 2, dll_get(dll, 1));
+	printf("Getting %d from position %d.\n\n", 3, dll_get(dll, 2));
+	printf("Getting %d from position %d.\n\n", 4, dll_get(dll, 3));
+	printf("Getting %d from position %d.\n\n", 5, dll_get(dll, 4));
+	printf("Getting %d from position %d.\n\n", 6, dll_get(dll, 5));
+	printf("Getting %d from position %d.\n\n", 7, dll_get(dll, 6));
+	printf("Getting %d from position %d.\n\n", 8, dll_get(dll, 7));
+	printf("Getting %d from position %d.\n\n", 9, dll_get(dll, 8));
+	printf("Getting %d from position %d.\n\n", 10, dll_get(dll, 9));
     	}
 
 
