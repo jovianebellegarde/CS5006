@@ -249,8 +249,19 @@ int dll_insert(dll_t* l, int pos, int item){
 // Returns -1 if the list is NULL
 // Assume no negative numbers in the list or the number zero.
 int dll_get(dll_t* l, int pos){
-		
-		return -1; // Note: This line is a 'filler' so the code compiles.
+	if (l == NULL) {
+        return -1;
+    	}
+
+    	if (pos >= l->count || pos < 0) {
+        	return 0;
+    	}
+	node_t* tempNode = l->head;
+	
+	for (int i = 0; i < pos; i++) {
+        tempNode = tempNode->next;
+    	}
+	return tempNode->data;
 }
 
 // Removes the item at position pos starting at 0 ( 0 being the first item )
