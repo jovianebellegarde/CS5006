@@ -42,7 +42,7 @@ dll_t* create_dll(){
 	dll_t* myDLL=(dll_t*)malloc(sizeof(dll_t));
 	
 	if (myDLL == NULL) {
-        return NULL;
+		return NULL;
     	}
 	
     	myDLL->count = 0;
@@ -157,11 +157,11 @@ int dll_pop_front(dll_t* t){
 
     	} else {
 
-	t->head = t->head->next;
-	t->head->previous = NULL;
+		t->head = t->head->next;
+		t->head->previous = NULL;
 
 	}
-	t->count --;
+	t->count--;
 	free(tempNode);
 	return tempItem;
 }
@@ -188,8 +188,8 @@ int dll_pop_back(dll_t* t){
         	t->tail = NULL;
 
     	} else {
-	t->tail = t->tail->previous;
-	t->tail->next = NULL;
+		t->tail = t->tail->previous;
+		t->tail->next = NULL;
 
 	}
 	
@@ -260,7 +260,7 @@ int dll_get(dll_t* l, int pos){
 	node_t* tempNode = l->head;
 	int i;
 	for (i = 0; i < pos; i++) {
-        tempNode = tempNode->next;
+        	tempNode = tempNode->next;
     	}
 	return tempNode->data;
 }
@@ -291,7 +291,7 @@ int dll_remove(dll_t* l, int pos){
     	node_t* tempNode = l->head;
 	int i;
 	for (i = 0; i < pos; i++) {
-        tempNode = tempNode->next;
+        	tempNode = tempNode->next;
     	}
 	
 	int tempItem = tempNode->data;

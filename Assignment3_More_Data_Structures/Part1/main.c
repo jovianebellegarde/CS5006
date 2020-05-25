@@ -52,11 +52,8 @@ int main(){
 	printf("Getting %d from position %d.\n\n", 8, dll_get(dll, 7));
 	printf("Getting %d from position %d.\n\n", 9, dll_get(dll, 8));
 	printf("Getting %d from position %d.\n\n", 10, dll_get(dll, 9));
-    	}
-
-
+    
 	free(dll);
 	return 0;
-    	
 
 }
