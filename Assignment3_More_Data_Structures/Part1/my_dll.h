@@ -140,9 +140,32 @@ int dll_push_back(dll_t* l, int item){
 // Returns a -1 if the DLL is NULL. 
 // Assume no negative numbers in the list or the number zero.
 int dll_pop_front(dll_t* t){
+	if (t == NULL) {
+        return -1;
+    	}
 
-		return -1; // Note: This line is a 'filler' so the code compiles.
+    	if  (dll_empty(t) == 1) {
+        	return 0;
+    	}
+
+    	int tempItem = t->head->data;
+    	node_t* tempNode = t->head;
+
+    	if (t->count == 1) {
+        	t->head = NULL;
+        	t->tail = NULL;
+
+    	} else {
+
+	t->head = t->head->next;
+	t->head->previous = NULL;
+
+	}
+	t->count --;
+	free(tempNode);
+	return tempItem;
 }
+
 
 // Returns the last item in the DLL, and also removes it from the list.
 // Returns 0 on failure, i.e. there is noting to pop from the list.
