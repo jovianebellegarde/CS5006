@@ -271,8 +271,33 @@ int dll_get(dll_t* l, int pos){
 // Returns -1 if the list is NULL
 // Assume no negative numbers in the list or the number zero.
 int dll_remove(dll_t* l, int pos){
-		
-		return -1; // Note: This line is a 'filler' so the code compiles.
+	if (l == NULL) {
+        return -1;
+    	}
+
+    	if (pos < 0 || pos >= l->count) {
+        	return 0;
+    	}
+
+    	if (pos == 0) {
+        	return dll_pop_front(l);
+    	}
+
+    	if (pos == l->count - 1) {
+        	return dll_pop_back(l);
+    	}
+
+    	node_t* tempNode = l->head;
+	
+	for (int i = 0; i < pos; i++) {
+        tempNode = tempNode->next;
+    	}
+	
+	int tempItem = tempNode->data;
+	tempNode->previous->next = tempNode->next;
+	tempNode->next->previous = tempNode->previous;
+    	free(tempNode);
+    	return tempItem;
 }
 
 // DLL Size
