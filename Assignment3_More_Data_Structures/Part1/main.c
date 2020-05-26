@@ -21,93 +21,79 @@
 // ====================================================
 //
 void unitTest1() {
+	// Pushing front on empty and on partial list
+	printf("Printing TEST 1\n\n");
+        dll_t * dll = create_dll();
+        if (dll_push_front(dll, 1) == -1) {
+                printf("This is NULL\n\n");
 
-	dll_t * dll = create_dll();
+        } else {
+                printf("This test passed\n\n");
 
-        if (dll_empty(dll)) {
-        printf("This list is empty.\n\n");
+        }
 
-
-	}
-
-	printf("Pushing forward: %d.\n\n", 1, dll_push_front(dll, 1));
-	
-	printf("Pushing back: %d.\n\n", 2, dll_push_back(dll, 2));
-	printf("Pushing forward: %d.\n\n", 2, dll_push_front(dll, 2));
-	printf("Pushing forward: %d.\n\n", 3, dll_push_front(dll, 3));
-	printf("The size is %d\n\n", dll_size(dll));
-
-	printf("Inserting %d\n\n", 4, dll_insert(dll, 0, 4));
-
-//	printf("getting stuff now at %d\n\n", 3, dll_get(dll, 3));
-
-
-	printf("The size is %d\n\n", dll_size(dll));
-	printf("This is the current tail %d\n\n", dll->tail->data);
-	printf("This is the current head %d\n\n", dll->head->data);
-	
-	
-	printf("The current tails is %d\n\n", dll->tail->data);
-	printf("This is the current tail previous %d\n\n", dll->tail->previous->data);
-//	printf("This is the dll tail previous previous%d\n\n", dll->tail->previous->previous);	
 	free_dll(dll);	
 
-
 }
-/*
-	printf("Pushing forward: %c.\n\n", b, dll_push_front(dll, 2)); 
-	printf("Pushing forward: %c.\n\n", c, dll_push_front(dll, 3));                                                          
-
-	if (dll_empty(dll)) {
-	printf("This list is empty.\n\n");
-
-	} else {
-		printf("This list is not empty.\n\n");
-	}
-	
-
-	printf("The size of this list is %d.\n\n", dll_size(dll));
-
-	printf("Pushing back %c.\n\n", d, dll_push_back(dll, d));
-	printf("Pushing front %c.\n\n", e, dll_push_front(dll, e));
-	
-		
-	printf("The size of this list is %d.\n\n", dll_size(dll));
-	
-	printf("Popping %c off the front.\n\n", dll_pop_front(dll));
-
-	printf("Popping %c off the back.\n\n", dll_pop_back(dll));
-	
-	printf("The size of the is list is %d.\n\n", dll_size(dll));
-
-	printf("Inserting D at position %d.\n\n", dll_insert(dll, 0, d));
-	printf("The size of this list is %d.\n\n", dll_size(dll));
-
-	printf("Removing D at position %d.\n\n", dll_get(dll, 0));
-*/
 
 
 void unitTest2() {
-
 	
-	dll_t * dll = create_dll();
+	// Pushing on NULL list
+	dll_t * testNull = NULL;
 
-        if (dll_empty(dll)) {
-        printf("This list is empty.\n\n");
+	printf("Test 2: pushing NULL\n\n");
+	if (dll_push_front(testNull, 1) == -1) {
+                printf("This test passed.\n\n");
+        } else if (dll_push_front(testNull, 0)) {
+                printf("This test failed\n\n");
+
+        } else {
+                printf("This test failed\n\n");
+        }
+        free_dll(testNull);
+}
+
+
+void unitTest3() {
+	// Pushing back on empty and partial list
+	printf("Printing TEST 3\n\n");
+        dll_t * dll = create_dll();
+	if (dll_push_back(dll, 1) == -1) {
+		printf("This is NULL\n\n");
+
+	} else {
+		printf("This test passed\n\n");
+
+	}
+	free_dll(dll);
+}
+
+
+void unitTest4() {
+        printf("Printing TEST 4\n\n");
+        dll_t * testNull = NULL;
+        if (dll_push_back(testNull, 1) == -1) {
+                printf("This test passed\n\n");
+
+        } else {
+                printf("This test failed\n\n");
 
         }
-	printf("Pushing back %d\n\n", dll_push_back(dll, 20));
-	printf("pushing back %d\n\n", dll_push_back(dll, 30));
-	free_dll(dll);
-
+        free_dll(testNull);
 }
+
+
 
 
 int main(){
 	
 	unitTest1();
-
 	unitTest2();
+	unitTest3();
+	unitTest4();
+
+
 	return 0;
 }
 
