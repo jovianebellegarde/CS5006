@@ -320,9 +320,8 @@ void free_dll(dll_t* t){
         	return;
     	}
     	node_t* tempNode = t->head;
-	node_t* nextNode = NULL;
     	while(tempNode != NULL) {
-        	nextNode = tempNode->next;
+        	node_t* nextNode = tempNode->next;
         	free(tempNode);
         	tempNode = nextNode;
 		
