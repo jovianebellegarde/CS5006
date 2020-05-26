@@ -21,6 +21,11 @@
 // ====================================================
 //
 void unitTest1() {
+	char a = 'A';
+	char b = 'B';
+	char c = 'C';
+	char d = 'D';
+	char e = 'E';
 
 	dll_t * dll = create_dll();
 
@@ -28,9 +33,9 @@ void unitTest1() {
         printf("This list is empty.\n\n");
 	}
      
-  	printf("Pushing forward: %d.\n\n", 1, dll_push_front(dll, 0));
-	printf("Pushing forward: %d.\n\n", 2, dll_push_front(dll, 1)); 
-	printf("Pushing forward: %d.\n\n", 3, dll_push_front(dll, 2));                                                          
+  	printf("Pushing forward: %c.\n\n", a, dll_push_front(dll, 1));
+	printf("Pushing forward: %c.\n\n", b, dll_push_front(dll, 2)); 
+	printf("Pushing forward: %c.\n\n", c, dll_push_front(dll, 3));                                                          
 
 	if (dll_empty(dll)) {
 	printf("This list is empty.\n\n");
@@ -38,18 +43,29 @@ void unitTest1() {
 	} else {
 		printf("This list is not empty.\n\n");
 	}
+	
+	printf("The size of this list is %d.\n\n", dll_size(dll));
 
-	printf("Pushing back %d.\n\n", 4, dll_push_back(dll, 0));
-	printf("Pushing back %d.\n\n", 5, dll_push_back(dll, 1));
-	printf("Pushing back %d.\n\n", 6, dll_push_back(dll, 2));
+	printf("Pushing back %c.\n\n", d, dll_push_back(dll, d));
+	printf("Pushing front %c.\n\n", e, dll_push_front(dll, e));
 	
 		
 	printf("The size of this list is %d.\n\n", dll_size(dll));
 	
-	printf("Popping off %d off the front.\n\n", dll_pop_front(dll));
+	printf("Popping %c off the front.\n\n", dll_pop_front(dll));
 
-	printf("Popping off %d off the back.\n\n", dll_pop_back(dll));
+	printf("Popping %c off the back.\n\n", dll_pop_back(dll));
+	
+	printf("The size of the is list is %d.\n\n", dll_size(dll));
+
+	printf("Inserting D at position %d.\n\n", dll_insert(dll, 0, d));
+	printf("The size of this list is %d.\n\n", dll_size(dll));
+
+	printf("Removing D at position %d.\n\n", dll_get(dll, 0));
+
+
 	free_dll(dll);
+
 
 }
 
