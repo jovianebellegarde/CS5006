@@ -117,25 +117,27 @@ int dll_push_back(dll_t* l, int item){
         	return 0;
     	}	
 
-    	if (dll_empty(l) == 1) {
+    	if (l->count== 0) {
+     		l->head = pushBackNode;
 		l->tail = pushBackNode;
-        	l->head = pushBackNode;
-        	pushBackNode->next = NULL;
-        	pushBackNode->previous = NULL;
+		pushBackNode->next = NULL;
+		pushBackNode->previous = NULL;
+		pushBackNode->data = item;
+		l->count++;
+		return 1;
+	
+	} else {	
+	 	pushBackNode->next = NULL;
+      
         	pushBackNode->data = item;
-        	l->count++;
+		l->tail->next = pushBackNode;
+		pushBackNode->previous = l->tail;
+		l->tail = pushBackNode;
+		l->count++;
         	return 1;
 
-    	} else {
-        	pushBackNode->data = item;
-        	pushBackNode->previous = l->tail;
-        	l->tail = pushBackNode;
-        	pushBackNode->next = NULL;
-        	l->count++;
-        	return 1;
-    	} 
+	}
 }
-
 // Returns the first item in the DLL and also removes it from the list.
 // Returns 0 on failure, i.e. there is noting to pop from the list.
 // Returns a -1 if the DLL is NULL. 
@@ -211,34 +213,41 @@ int dll_insert(dll_t* l, int pos, int item){
         return -1;
     	}	
 
-    	if (pos < 0 || pos >= l->count) {
+    	if (pos < 0 || pos > l->count) {
         	return 0;
     	}
 
-
-    	node_t* insertNode = (node_t*)malloc(sizeof(node_t));
-    	if (insertNode == NULL) {
-        	return -1;
-    	}
-
     	if (pos == 0) {
-		return dll_push_front(l, item);
+		 dll_push_front(l, item);
+		return 1;
     	}
 
-	if (pos == l ->count -1) {
-		return dll_push_back(l, item);
+	if (pos == l->count) {
+		dll_push_back(l, item);
+		return 1;
 	}
 
+	node_t* insertNode = (node_t*)malloc(sizeof(node_t));
+        if (insertNode == NULL) {
+                return -1;
+        }
+
+	insertNode->data = item;
     	node_t* tempNode = l->head;
     	int i = 0;
 	for (i = 0; i < pos; i++) {
         	tempNode = tempNode->next;
     	}
-	insertNode->next = tempNode;
+
+	tempNode->previous->next = insertNode;
 	insertNode->previous = tempNode->previous;
 	tempNode->previous = insertNode;
-	insertNode->previous->next = insertNode;
+	insertNode->next = tempNode;
+
 }
+
+
+
 
 // Returns the item at position pos starting at 0 ( 0 being the first item )
 //  (does not remove the item)
@@ -322,9 +331,8 @@ void free_dll(dll_t* t){
     	node_t* tempNode = t->head;
     	while(tempNode != NULL) {
         	node_t* nextNode = tempNode->next;
-        	free(tempNode);
-        	tempNode = nextNode;
-		
+        	free(tempNode); 
+		tempNode = nextNode;
     	}	
     	free(t);
 

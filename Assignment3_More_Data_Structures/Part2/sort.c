@@ -19,12 +19,12 @@ void swap(int* a, int* b){
 // Name: sort
 // Input(s):
 //          (1) 'array' is a pointer to an integer address. 
-//              This is the start of some 'contiguous block of memory' that we will sort.
+//              This is e start of some 'contiguous block of memory' that we will sort.
 //          (2) 'size' tells us how big the array of data is we are sorting.
 // Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
 void sortIntegers(int* array, unsigned int size){
-    // TODO: Implement insertion sort
-}
+    	int i = 0;
+	int j = i - 1;
 
 
 // Input: A pointer to an array (i.e. the array itself points to the first index)
