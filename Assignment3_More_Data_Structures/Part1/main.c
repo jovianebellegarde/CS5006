@@ -50,9 +50,11 @@ int main(){
 	printf("Pushing back : %d.\n\n", 8, dll_push_back(dll, 8));
 	printf("Pushing back : %d.\n\n", 9, dll_push_back(dll, 9));
 	printf("Pushing back : %d.\n\n", 10, dll_push_back(dll, 10));
+
+	
 	
 	printf("The size of the list is %d.\n\n", dll_size(dll));
-
+	printf("Popping back %d.\n\n", dll_pop_back(dll));
 
 	free(dll);
 	return 0;
