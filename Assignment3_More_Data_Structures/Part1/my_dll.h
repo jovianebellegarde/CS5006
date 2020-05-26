@@ -38,7 +38,7 @@ typedef struct DLL{
 // Returns NULL if we could not allocate memory.
 dll_t* create_dll(){
 	// Modify the body of this function as needed.
-	dll_t* myDLL=(dll_t*)malloc(sizeof(dll_t));
+	dll_t* myDLL = (dll_t*)malloc(sizeof(dll_t));
 	
 	if (myDLL == NULL) {
 		return NULL;
@@ -211,13 +211,10 @@ int dll_insert(dll_t* l, int pos, int item){
         return -1;
     	}	
 
-    	if (pos < 0) {
+    	if (pos < 0 || pos >= l->count) {
         	return 0;
     	}
 
-    	if (pos >= l->count) {
-        	return 0;
-    	}
 
     	node_t* insertNode = (node_t*)malloc(sizeof(node_t));
     	if (insertNode == NULL) {
@@ -225,12 +222,12 @@ int dll_insert(dll_t* l, int pos, int item){
     	}
 
     	if (pos == 0) {
-        	return dll_push_front(l, item);
+		return dll_push_front(l, item);
     	}
 
-    	if (pos == l->count - 1) {
-        	return dll_push_back(l, item);
-    	}
+	if (pos == l ->count -1) {
+		return dll_push_back(l, item);
+	}
 
     	node_t* tempNode = l->head;
     	int i = 0;
