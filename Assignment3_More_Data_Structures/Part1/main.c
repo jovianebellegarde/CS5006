@@ -39,13 +39,19 @@ int main(){
     	printf("Pushing forward: %d.\n\n", 8, dll_push_front(dll, 7));
     	printf("Pushing forward: %d.\n\n", 9, dll_push_front(dll, 8));
     	printf("Pushing forward: %d.\n\n", 10, dll_push_front(dll, 9)); 
-	
-//	printf("Inserting: ",  dll_insert(dll, 5, 78));
-
     
-//	printf("Popping back: %d.\n", dll_pop_back(dll));
-
-	printf("The size of the is is %d.\n\n", dll_size(dll));
+	printf("Pushing back : %d.\n\n", 1, dll_push_back(dll, 1));
+	printf("Pushing back : %d.\n\n", 2, dll_push_back(dll, 2));
+	printf("Pushing back : %d.\n\n", 3, dll_push_back(dll, 3));
+	printf("Pushing back : %d.\n\n", 4, dll_push_back(dll, 4));
+	printf("Pushing back : %d.\n\n", 5, dll_push_back(dll, 5));
+	printf("Pushing back : %d.\n\n", 6, dll_push_back(dll, 6));
+	printf("Pushing back : %d.\n\n", 7, dll_push_back(dll, 7));
+	printf("Pushing back : %d.\n\n", 8, dll_push_back(dll, 8));
+	printf("Pushing back : %d.\n\n", 9, dll_push_back(dll, 9));
+	printf("Pushing back : %d.\n\n", 10, dll_push_back(dll, 10));
+	
+	printf("The size of the list is %d.\n\n", dll_size(dll));
 
 
 	free(dll);
