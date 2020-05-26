@@ -19,44 +19,47 @@
 // ====================================================
 // ================== Program Entry ===================
 // ====================================================
-int main(){
+//
+void unitTest1() {
+
 	dll_t * dll = create_dll();
-	
-	if (dll_empty(dll)) {
+
+        if (dll_empty(dll)) {
         printf("This list is empty.\n\n");
-    	
-	}	
-	
-	// Pushing 10 nodes to the front
-	printf("Pushing forward: %d.\n\n", 1, dll_push_front(dll,0));
-	
-    	printf("Pushing forward: %d.\n\n", 2, dll_push_front(dll, 1));
-    	printf("Pushing forward: %d.\n\n", 3, dll_push_front(dll, 2));
-    	printf("Pushing forward: %d.\n\n", 4, dll_push_front(dll, 3));
-    	printf("Pushing forward: %d.\n\n", 5, dll_push_front(dll, 4));
-    	printf("Pushing forward: %d.\n\n", 6, dll_push_front(dll, 5));
-    	printf("Pushing forward: %d.\n\n", 7, dll_push_front(dll, 6));
-    	printf("Pushing forward: %d.\n\n", 8, dll_push_front(dll, 7));
-    	printf("Pushing forward: %d.\n\n", 9, dll_push_front(dll, 8));
-    	printf("Pushing forward: %d.\n\n", 10, dll_push_front(dll, 9)); 
-    
-	printf("Pushing back : %d.\n\n", 1, dll_push_back(dll, 1));
-	printf("Pushing back : %d.\n\n", 2, dll_push_back(dll, 2));
-	printf("Pushing back : %d.\n\n", 3, dll_push_back(dll, 3));
-	printf("Pushing back : %d.\n\n", 4, dll_push_back(dll, 4));
-	printf("Pushing back : %d.\n\n", 5, dll_push_back(dll, 5));
-	printf("Pushing back : %d.\n\n", 6, dll_push_back(dll, 6));
-	printf("Pushing back : %d.\n\n", 7, dll_push_back(dll, 7));
-	printf("Pushing back : %d.\n\n", 8, dll_push_back(dll, 8));
-	printf("Pushing back : %d.\n\n", 9, dll_push_back(dll, 9));
-	printf("Pushing back : %d.\n\n", 10, dll_push_back(dll, 10));
+	}
+     
+  	printf("Pushing forward: %d.\n\n", 1, dll_push_front(dll, 0));
+	printf("Pushing forward: %d.\n\n", 2, dll_push_front(dll, 1)); 
+	printf("Pushing forward: %d.\n\n", 3, dll_push_front(dll, 2));                                                          
 
-	
-	
-	printf("The size of the list is %d.\n\n", dll_size(dll));
-	printf("Popping back %d.\n\n", dll_pop_back(dll));
+	if (dll_empty(dll)) {
+	printf("This list is empty.\n\n");
 
-	free(dll);
-	return 0;
+	} else {
+		printf("This list is not empty.\n\n");
+	}
+
+	printf("Pushing back %d.\n\n", 4, dll_push_back(dll, 0));
+	printf("Pushing back %d.\n\n", 5, dll_push_back(dll, 1));
+	printf("Pushing back %d.\n\n", 6, dll_push_back(dll, 2));
+	
+		
+	printf("The size of this list is %d.\n\n", dll_size(dll));
+	
+	printf("Popping off %d off the front.\n\n", dll_pop_front(dll));
+
+	printf("Popping off %d off the back.\n\n", dll_pop_back(dll));
+	free_dll(dll);
 
 }
+
+
+
+
+
+int main(){
+	
+	unitTest1();
+	return 0;
+}
+

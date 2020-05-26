@@ -80,7 +80,7 @@ int dll_push_front(dll_t* l, int item){
         	return 0;
     	}
 
-	if (dll_empty(l) == 0) {
+	if (dll_empty(l) == 1) {
         	l->head = pushFrontNode;
         	l->tail = pushFrontNode;
         	pushFrontNode->next = NULL;
@@ -91,7 +91,7 @@ int dll_push_front(dll_t* l, int item){
 	
 	} 
 
-	if (dll_empty(l) == 1) {
+	if (dll_empty(l) == 0) {
     
         	pushFrontNode->data = item;
         	pushFrontNode->next = l->head;
@@ -117,7 +117,7 @@ int dll_push_back(dll_t* l, int item){
         	return 0;
     	}	
 
-    	if (dll_empty(l) == 0) {
+    	if (dll_empty(l) == 1) {
 		l->tail = pushBackNode;
         	l->head = pushBackNode;
         	pushBackNode->next = NULL;
