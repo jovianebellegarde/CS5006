@@ -233,6 +233,19 @@ void unitTest14(){
 }
 
 
+void unitTest15() {
+	printf("Printing TEST 15 - Getting empty\n\n");
+        dll_t * dll = create_dll();
+        if (dll_get(dll, 1) == 0) {
+                printf("This test passed\n\n");
+
+        } else {
+                printf("This test failed\n");
+        }
+        free_dll(dll);
+
+}
+
 int main(){
 	
 	unitTest1();
@@ -249,6 +262,7 @@ int main(){
 	unitTest12();
 	unitTest13();
 	unitTest14();
+	unitTest15();
 	return 0;
 }
 
