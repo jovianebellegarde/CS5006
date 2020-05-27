@@ -171,10 +171,50 @@ void unitTest10() {
         }
         free_dll(testNull);
 
+}
 
+void unitTest11() {
+        printf("Printing TEST 11 - Inserting partial\n\n");
+        dll_t * dll = create_dll();
+        dll_push_front(dll, 1);
+        dll_push_back(dll, 1);
+        if (dll_insert(dll, 1, 2) != -1 || dll_insert(dll, 1, 2) != 0 
+		|| dll_insert(dll, 1, 2) != 1) {
+                printf("This test passed\n\n");
+
+        } else {
+                printf("This test failed\n");
+        }
+        free_dll(dll);
 
 }
 
+void unitTest12() {
+        printf("Printing TEST 12 - Inserting empty\n\n");
+        dll_t * dll = create_dll();
+        if (dll_insert(dll, 1, 2) == 0) {
+                printf("This test passed\n\n");
+
+        } else {
+                printf("This test failed\n");
+        }
+        free_dll(dll);
+
+}
+
+
+void unitTest13() {
+	printf("Printing TEST 12 - Inserting NULL\n\n");
+        dll_t * testNull = NULL;
+        if (dll_insert(testNull, 1, 2) == -1) {
+                printf("This test passed\n\n");
+
+        } else {
+                printf("This test failed\n");
+        }
+        free_dll(testNull);
+
+}
 
 
 int main(){
@@ -189,6 +229,9 @@ int main(){
 	unitTest8();
 	unitTest9();
 	unitTest10();
+	unitTest11();
+	unitTest12();
+	unitTest13();
 	return 0;
 }
 
