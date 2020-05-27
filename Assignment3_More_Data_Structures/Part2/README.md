@@ -49,11 +49,11 @@ When you have made an attempt at the sorting algorithm, go ahead and try to run 
 
 Discuss and answer the following questions (Please make sure to elaborate and justify your responses):
 
-1. Explain what do you think the Big-Oh (worst-case) complexity of this algorithm is? Why?
-2. What do you think the best-case complexity of this algorithm is?
+1. Explain what do you think the Big-Oh (worst-case) complexity of this algorithm is? Why? I think that the Big-Oh would probably be O(n^2) because there is a nested for loop that will need to be implemented for this to work.
+2. What do you think the best-case complexity of this algorithm is? Best case would be O(n^2). This is because there may be less swapping when going into the function, but still need to go inside the for loop. An array that would fit the best case would be one that is nearly sorted, but still needs n^2 steps to follow through.
    - Provide an example of an array of elements that fit the best-case.
 3. Does insertion sort require any additional storage beyond the original array? Explain why or why not.
-4. What is a 'stable sorting' algorithm? Is insertion sort a 'stable' algorithm, why or why not?
+4. What is a 'stable sorting' algorithm? Is insertion sort a 'stable' algorithm, why or why not? Stable sorting is if 2 things are equal and don't change in order from when they come in and out, then this algorithm is stable. Yes, because it will not change the order of the items in the array if they are equal to each other when looking for things to swap.
 
 ## Answers:
 
