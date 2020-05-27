@@ -23,13 +23,13 @@ void swap(int* a, int* b){
 //          (2) 'size' tells us how big the array of data is we are sorting.
 // Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
 void sortIntegers(int* array, unsigned int size){
-    	int i = 0;
-	int j;
+    	int a = 0;
+	int b;
 
-	for  (i = 0; i < size; i++) {
-		for (j = i - 1; j >= 0; j--) {
-			if (array[j] > array[j + 1]) {
-				swap(&array[j], &array[j + 1]);
+	for  (a = 0; a < size; a++) {
+		for (b = a - 1; b >= 0; b--) {
+			if (array[a] > array[a + 1]) {
+				swap(&array[b], &array[b + 1]);
 			}
 		}
 	}
