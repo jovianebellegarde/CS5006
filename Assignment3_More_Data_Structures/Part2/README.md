@@ -57,10 +57,10 @@ Discuss and answer the following questions (Please make sure to elaborate and ju
 
 ## Answers:
 
-1. *edit your answer here for Part 2 question 1*
-2. *edit your answer here for Part 2 question 2*
-3. *edit your answer here for Part 2 question 3*
-4. *edit your answer here for Part 2 question 3*
+1. I think that the Big-Oh would probably be O(n^2) because there is a nested for loop that will need to be implemented for this to work.
+2. Best case would be O(n^2). This is because there may be less swapping when going into the function, but still need to go inside the for loops. An array that would fit the best case would be one that is nearly sorted, but still needs n^2 steps to follow through.
+3. No, it does not because we are swapping using the memory location.
+4. Stable sorting is if 2 things are equal and don't change in order from when they come in and out, then this algorithm is stable. Yes, because it will not change the order of the items in the array if they are equal to each other when looking for things to swap.
 
 
 # Deliverable
