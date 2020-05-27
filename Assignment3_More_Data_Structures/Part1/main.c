@@ -204,7 +204,7 @@ void unitTest12() {
 
 
 void unitTest13() {
-	printf("Printing TEST 12 - Inserting NULL\n\n");
+	printf("Printing TEST 13 - Inserting NULL\n\n");
         dll_t * testNull = NULL;
         if (dll_insert(testNull, 1, 2) == -1) {
                 printf("This test passed\n\n");
@@ -213,6 +213,22 @@ void unitTest13() {
                 printf("This test failed\n");
         }
         free_dll(testNull);
+
+}
+
+
+void unitTest14(){
+	printf("Printing TEST 14 - Getting partial\n\n");
+        dll_t * dll = create_dll();
+	dll_push_front(dll, 1);
+	dll_push_back(dll, 1);
+        if (dll_get(dll, 1) != 0 || dll_get(dll, 1) != -1) {
+                printf("This test passed\n\n");
+
+        } else {
+                printf("This test failed\n");
+        }
+        free_dll(dll);	
 
 }
 
@@ -232,6 +248,7 @@ int main(){
 	unitTest11();
 	unitTest12();
 	unitTest13();
+	unitTest14();
 	return 0;
 }
 
