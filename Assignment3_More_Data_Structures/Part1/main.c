@@ -246,6 +246,64 @@ void unitTest15() {
 
 }
 
+void unitTest16() {
+	printf("Printing TEST 16 - Getting NULL\n\n");
+        dll_t * testNull = NULL;
+        dll_push_front(testNull, 1);
+        dll_push_back(testNull, 1);
+        if (dll_get(testNull, 1) == -1) {
+                printf("This test passed\n\n");
+
+        } else {
+                printf("This test failed\n");
+        }
+        free_dll(testNull);
+
+}
+
+void unitTest17() {
+	printf("Printing TEST 17 - Removing partial\n\n");
+        dll_t * dll = create_dll();
+        dll_push_front(dll, 1);
+        dll_push_back(dll, 1);
+        if (dll_remove(dll, 0) != 0 || dll_get(dll, 0) != -1) {
+                printf("This test passed\n\n");
+
+        } else {
+                printf("This test failed\n");
+        }
+        free_dll(dll);
+
+}
+
+void unitTest18() {
+	printf("Printing TEST 18 - Removing empty\n\n");
+        dll_t * dll = create_dll();
+        if (dll_remove(dll, 0) == 0) {
+                printf("This test passed\n\n");
+
+        } else {
+                printf("This test failed\n");
+        }
+        free_dll(dll);
+
+}
+
+void unitTest19() {
+	printf("Printing TEST 19 - Removing NULL\n\n");
+        dll_t * testNull = NULL;
+        dll_push_front(testNull, 1);
+        dll_push_back(testNull, 1);
+        if (dll_remove(testNull, 0) == -1) {
+                printf("This test passed\n\n");
+
+        } else {
+                printf("This test failed\n");
+        }
+        free_dll(testNull);
+
+}
+
 int main(){
 	
 	unitTest1();
@@ -263,6 +321,10 @@ int main(){
 	unitTest13();
 	unitTest14();
 	unitTest15();
+	unitTest16();
+	unitTest17();	
+	unitTest18();
+	unitTest19();
 	return 0;
 }
 
