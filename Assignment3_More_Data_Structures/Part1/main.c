@@ -161,8 +161,8 @@ void unitTest9() {
 void unitTest10() {
 	printf("Printing TEST 10 - Popping back NULL\n\n");
         dll_t * testNull = NULL;
-	dll_push_back(dll, 1);
-	dll_push_back(dll, 1);
+	dll_push_back(testNull, 1);
+	dll_push_back(testNull, 1);
         if (dll_pop_back(testNull) == -1) {
                 printf("This test passed\n\n");
 
