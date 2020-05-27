@@ -24,9 +24,16 @@ void swap(int* a, int* b){
 // Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
 void sortIntegers(int* array, unsigned int size){
     	int i = 0;
-	int j = i - 1;
+	int j;
 
-
+	for  (i = 0; i < size; i++) {
+		for (j = i - 1; j >= 0; j--) {
+			if (array[j] > array[j + 1]) {
+				swap(&array[j], &array[j + 1]);
+			}
+		}
+	}
+}
 // Input: A pointer to an array (i.e. the array itself points to the first index)
 //        The size of the array (Because we do not know how big the array is automatically)
 void printIntArray(int* array, unsigned int size){
