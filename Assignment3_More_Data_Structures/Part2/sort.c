@@ -28,7 +28,7 @@ void sortIntegers(int* array, unsigned int size){
 
 	for  (a = 0; a < size; a++) {
 		for (b = a - 1; b >= 0; b--) {
-			if (array[a] > array[a + 1]) {
+			if (array[b] > array[b + 1]) {
 				swap(&array[b], &array[b + 1]);
 			}
 		}
