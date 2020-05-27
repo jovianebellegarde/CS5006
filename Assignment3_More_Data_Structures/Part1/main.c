@@ -45,7 +45,7 @@ void unitTest2() {
 	printf("Test 2: pushing NULL\n\n");
 	if (dll_push_front(testNull, 1) == -1) {
                 printf("This test passed.\n\n");
-        } else if (dll_push_front(testNull, 0)) {
+        } else if (dll_push_front(testNull, 1)) {
                 printf("This test failed\n\n");
 
         } else {
@@ -84,6 +84,97 @@ void unitTest4() {
 }
 
 
+void unitTest5() {
+	//Partial pop front
+	printf("Printing TEST 5 - Popping front partial\n\n");
+        dll_t * dll = create_dll();
+        dll_push_front(dll, 1);
+	dll_push_front(dll, 1);
+	if (dll_pop_front(dll) == -1 || dll_pop_front == 0) {
+		printf("this test failed.\n\n");
+
+	} else {
+		printf("This test passed.\n\n");
+        free_dll(dll);
+	}	
+
+
+}
+
+void unitTest6() {
+	// Empty pop front
+	printf("Printing TEST 6 - Popping front empty\n\n");
+        dll_t * dll = create_dll();
+        if (dll_pop_front(dll)== 0) {
+                printf("This test passed\n\n");
+
+        } else {
+		printf("This test failed\n\n");
+	}
+        free_dll(dll);
+}
+
+void unitTest7() {
+	// NULL pop front 
+	printf("Printing TEST 7 - Popping front NULL\n\n");
+        dll_t * testNull = NULL;
+        if (dll_pop_front(testNull) == -1) {
+                printf("This test passed\n\n");
+
+        } else {
+                printf("This test failed\n\n");
+        }
+        free_dll(testNull);
+
+
+}
+
+
+void unitTest8() {
+	printf("Printing TEST 8 - Popping back partial\n\n");
+        dll_t * dll = create_dll();
+	dll_push_back(dll, 1);
+	dll_push_back(dll, 1);
+        if (dll_pop_back(dll) == -1 || dll_pop_back(dll)== 0)  {
+                printf("This test failed\n\n");
+
+        } else {
+                printf("This test passed\n\n");
+        }
+        free_dll(dll);
+
+}
+
+void unitTest9() {
+	printf("Printing TEST 9 - Popping back empty\n\n");
+        dll_t * dll = create_dll();  
+        if (dll_pop_back(dll) == 0) {
+                printf("This test passed\n\n");
+
+        } else {
+                printf("This test failed\n");
+        }
+        free_dll(dll);
+
+}
+
+void unitTest10() {
+	printf("Printing TEST 10 - Popping back NULL\n\n");
+        dll_t * testNull = NULL;
+	dll_push_back(dll, 1);
+	dll_push_back(dll, 1);
+        if (dll_pop_back(testNull) == -1) {
+                printf("This test passed\n\n");
+
+        } else {
+                printf("This test failed\n");
+        }
+        free_dll(testNull);
+
+
+
+}
+
 
 
 int main(){
@@ -92,8 +183,12 @@ int main(){
 	unitTest2();
 	unitTest3();
 	unitTest4();
-
-
+	unitTest5();
+	unitTest6();
+	unitTest7();
+	unitTest8();
+	unitTest9();
+	unitTest10();
 	return 0;
 }
 
