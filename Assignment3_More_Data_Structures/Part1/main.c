@@ -304,6 +304,66 @@ void unitTest19() {
 
 }
 
+void unitTest20() {
+	printf("Printing TEST 20 - Size partial\n\n");
+        dll_t * dll = create_dll();
+        dll_push_front(dll, 1);
+        dll_push_back(dll, 1);
+        if (dll_size(dll) == -1) {
+                printf("This test failed\n\n");
+
+        } else {
+                printf("This test passed\n\n:");
+        }
+        free_dll(dll);
+
+}
+
+void unitTest21() {
+	printf("Printing TEST 21 - Size partial\n\n");
+        dll_t * dll = create_dll();
+        dll_push_front(dll, 1);
+        dll_push_back(dll, 1);
+        if (dll_size(dll) == -1) {
+                printf("This test failed\n\n");
+
+        } else {
+                printf("This test passed\n\n:");
+        }
+        free_dll(dll);
+
+
+}
+
+void unitTest22() {
+	printf("Printing TEST 22 - Size empty\n\n");
+        dll_t * dll = create_dll();
+        if (dll_size(dll) == -1) {
+                printf("This test failed\n\n");
+
+        } else {
+                printf("This test passed\n\n:");
+        }
+        free_dll(dll);
+
+}
+
+void unitTest23() {
+	printf("Printing TEST 23 - Size NULL\n\n");
+        dll_t * testNull = NULL;
+        dll_push_front(testNull, 1);
+	dll_push_back(testNull, 1);
+        if (dll_size(testNull) == -1) {
+                printf("This test passed\n\n");
+
+        } else {
+                printf("This test failed\n\n:");
+        }
+        free_dll(testNull);
+
+}
+
+
 int main(){
 	
 	unitTest1();
@@ -325,6 +385,10 @@ int main(){
 	unitTest17();	
 	unitTest18();
 	unitTest19();
+	unitTest20();
+	unitTest21();
+	unitTest22();
+	unitTest23();
 	return 0;
 }
 
