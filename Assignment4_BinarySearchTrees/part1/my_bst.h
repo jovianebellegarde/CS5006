@@ -52,8 +52,8 @@ bst_t* create_bst(){
 // Returns 0 if false (the BST has at least one element enqueued)
 // Returns -1 if a NULL is passed to the function
 // Should run in constant time.
-int bst_empty(bst_t* t){
-	
+int bst_empty(bst_t* t){	
+
 	if (t == NULL) {
 		return -1;
 	}
@@ -193,22 +193,20 @@ int sum(bst_t *t){
 	} else {
 		int summing = 0;
 		summing = bstSumHelper(t->root);
-		return summing;
-			
-	}
-	
-	
-
+		return summing;		
+	}		
 }
 
-
 int bstSumHelper(node_t* node) {
-	
+	int adding = 0;
+	if (node->leftChild != NULL) {
+		adding += node->leftChild;
+		return adding;
 
-
-
-
-
+	} else {
+		adding += node->rightChild;
+		return adding; 
+	}
 }
 
 
@@ -217,7 +215,7 @@ int bstSumHelper(node_t* node) {
 // Returns -1 if a NULL tree has been passed to the function
 // It should run in O(log(n)) time.
 int find(bst_t * t, int value){
-  return 0;
+  	return 0;
 }
 
 // BST Size
