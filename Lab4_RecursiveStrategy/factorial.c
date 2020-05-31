@@ -3,16 +3,21 @@
 
 #include <stdio.h>
 
-// TODO: Implement iterative solution here
 int factorial(int n){
-
-  return 0;
+	int tempNum = 1;
+	while(n > 0) {
+		tempNum = tempNum * n;
+		n--;
+	}
+ 	return tempNum;
 };
 
-// TODO: Implement recursive solution here
-int factorial_rec(int n){
 
-  return 0;
+int factorial_rec(int n){
+	if (n < 1) {
+		return 1;
+	}
+	return n * factorial_rec(n - 1);
 }
 
 int main(){
