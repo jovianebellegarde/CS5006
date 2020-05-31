@@ -184,10 +184,33 @@ int bstDescendingHelper(node_t* node) {
 int sum(bst_t *t){
 	if (t == NULL) {
 		return -1;
-	}	
+	
+	} 
+		
+	if (bst_empty(t) == 1) {
+		return 0;
+	
+	} else {
+		int summing = 0;
+		summing = bstSumHelper(t->root);
+		return summing;
+			
+	}
+	
 	
 
 }
+
+
+int bstSumHelper(node_t* node) {
+	
+
+
+
+
+
+}
+
 
 // Returns 1 if value is found in the tree.
 // Returns 0 if the value is not found in three.
@@ -210,7 +233,17 @@ unsigned int bst_size(bst_t* t){
 // Removes a BST and ALL of its elements from memory.
 // This should be called before the proram terminates.
 void free_bst(bst_t* t){
+	if (t == NULL) {
+		return;
+	}
+	node_t* tempNode = t->head;
+	while(tempNode != NULL) {
+		node_t* nextTreeNode = tempNode->next;
+		free(tempNode);
+		tempNode = nextTreeNode;
 
+	}
+	free(t);
 }
 
 
