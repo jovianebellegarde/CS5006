@@ -133,7 +133,48 @@ int bstHelperAdd(node_t* root, node_t* newNode) {
 // For NULL tree it should print nothing. 
 // It should run in O(n) time.
 void bst_print(bst_t*t, int order){
+	if (t == NULL) {
+		printf("\n");
+		return;
+	}
 	
+	if (bst_empty(t) == 1) {
+		printf("\n");
+		return;
+	}
+
+
+	if (order == 0) {
+		bstAscendingHelper(t->root);
+
+	} else {
+
+		bstDescendingHelper(t->root);	
+	}	
+}
+
+int bstAscendingHelper(node_t* node) {
+	if (node->leftChild != NULL) {
+		bstAscendingHelper(node->leftChild);
+	}
+	printf("%d\n", node->data);
+
+	if (node->rightChild != NULL) {
+        bstAscendingHelper(node->rightChild);
+    	}	
+
+
+}
+
+int bstDescendingHelper(node_t* node) {
+	if (node->rightChild != NULL) {
+        	bstDescendingHelper(node->rightChild);
+    	}
+    	printf("%d\n", node->data);
+
+    	if (node->leftChild != NULL) {
+        	bstDescendingHelper(node->leftChild);
+    	}
 }
 
 // Returns the sum of all the nodes in the tree. 
