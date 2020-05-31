@@ -34,7 +34,14 @@ typedef struct BST{
 // Return NULL if we couldn't allocate memory for the BST.
 bst_t* create_bst(){
 	// Modify the body of this function as needed.
-	bst_t* myBST= NULL;	
+	bst_t* myBST = (bst_t*) malloc(sizeof(bst_t));
+
+	if (myBST == NULL) {
+	return NULL;
+	}	
+	
+	myBST->count = 0;
+	myBST->root = NULL;
 
 	return myBST;
 }
@@ -46,6 +53,15 @@ bst_t* create_bst(){
 // Returns -1 if a NULL is passed to the function
 // Should run in constant time.
 int bst_empty(bst_t* t){
+	
+	if (t === NULL) {
+		return -1;
+	}
+
+	if (t->count == 0) {
+		return 1;
+	}
+	
 	return 0;
 }
 
@@ -55,9 +71,63 @@ int bst_empty(bst_t* t){
 // Returns 0 if the operation fails ( we couldn't allocate enough memory for the new node)
 // Returns -1 of NULL tree has been passed in. 
 // It should run in O(log(n)) time.
-int bst_add(bst_t* t, int item){
-	return -1; // Note: you should have two return statements in this function.
+int bst_add(bst_t* t, int item){	
+	if (t == NULL) {
+        	return -1;
+    	}
+
+    	node_t* tempNode = (node_t*) malloc(sizeof(node_t));
+    	if(tempNode == NULL) {
+        	return -1;
+    	}
+
+    	if (bst_empty(t) == 1) {
+        	t->root = tempNode;
+        	t->count++;
+        	return 1;
+
+    	} else {
+        	int feedback = 0;
+        	feedback = bstHelperAdd(t->root, tempNode);
+        	if (feedback == 0) {
+            		t->count++;
+            		return 1;
+        	}
+
+	        return 0;	
+    	}	
+	return 0;
+    
 }
+
+int bstHelperAdd(node_t* root, node_t* newNode) {
+	// Check if duplicate data
+	if (root->data == newNode->data) {
+        	free(newNode);
+        	return 1;
+    	}
+
+    	if (root->data > newNode->data) {
+        	if (root->leftChild == NULL) {
+            		root->leftChild = newNode;
+            		return 0;
+
+        	} else {
+            	bstHelperAdd(root->leftChild, newNode);
+        	}	
+
+    	} else {
+        	if (root->rightChild == NULL) {
+            	root->rightChild = newNode;
+            	return 0;
+
+        	} else {
+            		bstHelperAdd(root->rightChild, newNode);
+        	}
+    	}
+
+}
+
 
 // Prints the tree in ascending order if order = 0, otherwise prints in descending order.
 // For NULL tree it should print nothing. 
