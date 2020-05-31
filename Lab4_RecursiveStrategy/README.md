@@ -40,8 +40,8 @@ Once you have solved the above, answer and modify your programs for the followin
 1. What is a bigger [data type](https://www.geeksforgeeks.org/data-types-in-c/) you can use to compute larger factorials? Change the 'return type' and input parameters to the factorial to something other than 'int' (and also change the format specifier in printf to something other than %d for the datatype you choose).
 2. Try computing factorials larger than say 15. At what point does your computer start to 'crash' or really slow down when you try a big enough factorial? Experiment and report your results.
 
-1. *put in a brief answer here to the experiment from question 1*
-2. *put in a brief answer here to the experiment from question 2*
+1. I tried a double as a bigger data type and the functions still worked. I asked the TA and was told it was okay to leave my functions in the original format after answering these 2 questions.
+2. The computer starts to crash around 19. I noticed there were negative values for the results.
 
 ## Compiling and running the program.
 

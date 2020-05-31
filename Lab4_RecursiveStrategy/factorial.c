@@ -3,8 +3,8 @@
 
 #include <stdio.h>
 
-int factorial(int n){
-	int tempNum = 1;
+int factorial(double n){
+	double tempNum = 1;
 	while(n > 0) {
 		tempNum = tempNum * n;
 		n--;
@@ -24,7 +24,8 @@ int main(){
 
   printf("factorial(10) = %d\n",factorial(10));
   printf("factorial_rec(10) = %d\n",factorial_rec(10));
-
+  printf("factorial(21) = %d\n", factorial(21));
+  printf("factorial_rec(21) = %d\n", factorial_rec(21));
 
   return 0;
 }
