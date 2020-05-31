@@ -113,7 +113,7 @@ int bstHelperAdd(node_t* root, node_t* newNode) {
             		return 0;
 
         	} else {
-            	bstHelperAdd(root->leftChild, newNode);
+ 	           	bstHelperAdd(root->leftChild, newNode);
         	}	
 
     	} else {
@@ -185,28 +185,26 @@ int sum(bst_t *t){
 	if (t == NULL) {
 		return -1;
 	
-	} 
-		
-	if (bst_empty(t) == 1) {
-		return 0;
-	
 	} else {
-		int summing = 0;
-		summing = bstSumHelper(t->root);
-		return summing;		
-	}		
+		return bstSumHelper(t->root);
+	}
+	
+			
 }
 
-int bstSumHelper(node_t* node) {
-	int adding = 0;
-	if (node->leftChild != NULL) {
-		adding += node->leftChild;
-		return adding;
 
-	} else {
-		adding += node->rightChild;
-		return adding; 
+int bstSumHelper(node_t* node) {
+	if (node != NULL) {
+		if (node->leftChild == NULL) {
+			if (node->rightChild == NULL) {
+				return t->data;
+			} else {
+				return t->data + bstSumHelper(t->leftChild) 
+					+ (bstSumHelper(t->rightChild);
+			}
+		}
 	}
+	
 }
 
 
@@ -214,8 +212,12 @@ int bstSumHelper(node_t* node) {
 // Returns 0 if the value is not found in three.
 // Returns -1 if a NULL tree has been passed to the function
 // It should run in O(log(n)) time.
-int find(bst_t * t, int value){
-  	return 0;
+int find(bst_t * t, int value) {
+	if (t == NULL)  {
+		return -1;
+	
+	}
+
 }
 
 // BST Size
@@ -224,7 +226,12 @@ int find(bst_t * t, int value){
 // Returns -1 if a NULL tree has been passed in.
 // Should run in constant time.
 unsigned int bst_size(bst_t* t){
-	return 0;
+	if (t == NULL) {
+		return -1;
+	
+	} else {
+		return t->count;
+	}
 }
 
 // Free BST
