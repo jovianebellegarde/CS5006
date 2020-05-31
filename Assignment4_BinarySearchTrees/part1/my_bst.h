@@ -199,8 +199,10 @@ int bstSumHelper(node_t* node) {
 			if (node->rightChild == NULL) {
 				return t->data;
 			} else {
-				return t->data + bstSumHelper(t->leftChild) 
-					+ (bstSumHelper(t->rightChild);
+				int added = t->data + bstSumHelper(t->leftChild) 
+					+ bstSumHelper(t->rightChild);
+				
+				return added;
 			}
 		}
 	}
