@@ -54,7 +54,7 @@ bst_t* create_bst(){
 // Should run in constant time.
 int bst_empty(bst_t* t){
 	
-	if (t === NULL) {
+	if (t == NULL) {
 		return -1;
 	}
 
@@ -182,7 +182,11 @@ int bstDescendingHelper(node_t* node) {
 // Returns -1 if a NULL tree is passed to the function.
 // It should run in O(n) time.
 int sum(bst_t *t){
-  return 0;
+	if (t == NULL) {
+		return -1;
+	}	
+	
+
 }
 
 // Returns 1 if value is found in the tree.
