@@ -12,6 +12,10 @@
 #ifndef MYBST_H
 #define MYBST_H
 
+#include <stdlib.h>
+#include <stdio.h>
+
+
 // Create a node data structure to store data within
 // our BST. In our case, we will stores 'integers'
 typedef struct node{
@@ -194,19 +198,16 @@ int sum(bst_t *t){
 
 
 int bstSumHelper(node_t* node) {
-	if (node != NULL) {
-		if (node->leftChild == NULL) {
-			if (node->rightChild == NULL) {
-				return t->data;
-			} else {
-				int added = t->data + bstSumHelper(t->leftChild) 
-					+ bstSumHelper(t->rightChild);
-				
-				return added;
-			}
-		}
-	}
-	
+	int sum = 0;
+
+	if (node->leftChild != NULL) {
+                sum = sum + bstSumHelper(node->leftChild);
+        }
+
+        if (node->rightChild != NULL) {
+        	sum = sum + bstSumHelper(node->rightChild);
+        }
+        return node->data + sum;	
 }
 
 
@@ -217,10 +218,42 @@ int bstSumHelper(node_t* node) {
 int find(bst_t * t, int value) {
 	if (t == NULL)  {
 		return -1;
+	}
 	
+	return findHelper(t->root, value);	
+}
+
+int findHelper(node_t* node, int value) {
+	if (node->data == value) {
+		return 1;
 	}
 
+	if (node->leftChild != NULL) {
+
+		int checkValue = 0;
+		
+		checkValue = findHelper(node->leftChild, value);
+		if (checkValue == 1) {
+			return 1;
+		}
+		
+		
+	}
+	if (node->rightChild != NULL) {
+		int checkValue = 0;
+		checkValue = findHelper(node->rightChild, value);
+		if (checkValue == 1) {
+			return 1;
+		}	
+
+
+	}
+	return 0;
 }
+
+
+
+
 
 // BST Size
 // Queries the current size of the BST
@@ -236,6 +269,21 @@ unsigned int bst_size(bst_t* t){
 	}
 }
 
+
+void freeHelper(node_t* node) {
+
+        if (node->leftChild != NULL) {
+                bstAscendingHelper(node->leftChild);
+        }
+
+        if (node->rightChild != NULL) {
+        bstAscendingHelper(node->rightChild);
+        }
+        free(node);
+
+}
+
+
 // Free BST
 // Removes a BST and ALL of its elements from memory.
 // This should be called before the proram terminates.
@@ -243,16 +291,27 @@ void free_bst(bst_t* t){
 	if (t == NULL) {
 		return;
 	}
-	node_t* tempNode = t->head;
-	while(tempNode != NULL) {
-		node_t* nextTreeNode = tempNode->next;
-		free(tempNode);
-		tempNode = nextTreeNode;
 
+
+	if (t->count != 0) {
+		freeHelper(t->root);
+		
 	}
 	free(t);
 }
 
+/*
+void freeHelper(node_t* node) {
 
-
+	if (node->leftChild != NULL) {
+                bstAscendingHelper(node->leftChild);
+        }
+       
+        if (node->rightChild != NULL) {
+        bstAscendingHelper(node->rightChild);
+        }
+	free(node);	
+	
+}
+*/
 #endif
