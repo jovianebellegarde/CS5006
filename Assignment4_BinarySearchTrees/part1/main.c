@@ -5,7 +5,6 @@
 // smart engineers.
 #include <stdio.h>  // For IO operations
 #include <stdlib.h> // for malloc/free
-
 // Our library that we have written.
 // Also, by a really smart engineer!
 #include "my_bst.h"
@@ -22,3 +21,10 @@ int main(){
     free_bst(testBST);    
     return 0;
 }
+
+
+
+
+
+
+
