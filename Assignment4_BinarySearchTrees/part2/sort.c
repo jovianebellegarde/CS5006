@@ -2,36 +2,39 @@
 
 // =================== Libraries ==================
 #include <stdio.h> // Include file for standart input/output
-// refered to geek for geeks: https://www.geeksforgeeks.org/merge-sort/
 // 
 // =============== Helper Functions ===============
 
+// Reference: // geek for geeks: https://www.geeksforgeeks.org/merge-sort/
+
 // Merges two subarrays of arr[]. 
 // First subarray is arr[l..m] 
-// Second subarray is arr[m+1..r] oid merge(int arr[], int l, int m, int r) {
-
+// Second subarray is arr[m+1..r]
+void merge(int arr[], int l, int m, int r) {
+	
+	// Making variable for temporary arrays to use during the sort
 	int a = 0;
 	int b = 0;
 	int c = l;
 
-	int left = m + 1 - l;
+	int left = m - l + 1;
 	int right = r - m;
 
 	int leftArray[left];
 	int rightArray[right];
 	
-	for (a = 0, a < left; a++) {
-		left[a] = arr[a + l];	
+	for (a = 0; a < left; a++) {
+		leftArray[a] = arr[a + l];	
 	}
 	 
 	for (b = 0; b < right; b++) {
-		rightArray[b] == arr[b + 1 + m];
+		rightArray[b] = arr[b + 1 + m];
 	}
 	
 	// Merging the temporary arrays to have the big one back again
-	while (a < leftArray && b < rightArray){
+	while (a < left && b < right){
 		if(rightArray[b] >= leftArray[a]) {
-			leftArray = arr[c];
+			leftArray[a] = arr[c];
 			a++;
 		
 		} else {
@@ -42,10 +45,19 @@
 	}
 	
 	// Going to copy any remaining components of leftArray
-	
+	while (left > a) {
+		leftArray[a] = arr[c];
+		a++;
+		c++;
+	}
+
+	// Going to copy any remaining components of rightArray
+	while (right > b) {
+		rightArray[b] = arr[c];
+		b++;
+		c++;
+	}
 }
-
-
 
 void mergeHelper(int arr[], int right, int left) {
 	int middle = (right + left) / 2;
@@ -54,16 +66,12 @@ void mergeHelper(int arr[], int right, int left) {
 	// as larger values are on the right side and smaller ones 
 	// are on the left side.
 	if (right > left) {
-		merge(arr[], left, middle);
-		merge(arr[], middle + left, right);
-		merge(array[], left, middle, right);	
+		merge(arr, left, middle, right);
+		merge(arr, middle + left, middle, right);
+		merge(arr, left, middle, right);	
 	}
 
 }
-
-
-
-
 
 
 // Provided below is a sort function. We have also
