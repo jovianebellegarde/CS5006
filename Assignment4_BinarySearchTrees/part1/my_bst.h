@@ -69,6 +69,38 @@ int bst_empty(bst_t* t){
 	return 0;
 }
 
+
+int bstHelperAdd(node_t* root, node_t* newNode) {
+        // Check if duplicate data
+        if (root->data == newNode->data) {
+                free(newNode);
+                return 1;
+        }
+
+        if (root->data > newNode->data) {
+                if (root->leftChild == NULL) {
+                        root->leftChild = newNode;
+                        return 0;
+
+                } else {
+                        bstHelperAdd(root->leftChild, newNode);
+                }
+
+        } else {
+                if (root->rightChild == NULL) {
+                root->rightChild = newNode;
+                return 0;
+
+                } else {
+                        bstHelperAdd(root->rightChild, newNode);
+                }
+        }
+
+}
+
+
+
+
 // Adds a new node containng item in the correct place of the BST.
 // If the data is less then the current node we go left, otherwise we go right.
 // Returns 1 if the operation suceeds
@@ -104,33 +136,7 @@ int bst_add(bst_t* t, int item){
     
 }
 
-int bstHelperAdd(node_t* root, node_t* newNode) {
-	// Check if duplicate data
-	if (root->data == newNode->data) {
-        	free(newNode);
-        	return 1;
-    	}
 
-    	if (root->data > newNode->data) {
-        	if (root->leftChild == NULL) {
-            		root->leftChild = newNode;
-            		return 0;
-
-        	} else {
- 	           	bstHelperAdd(root->leftChild, newNode);
-        	}	
-
-    	} else {
-        	if (root->rightChild == NULL) {
-            	root->rightChild = newNode;
-            	return 0;
-
-        	} else {
-            		bstHelperAdd(root->rightChild, newNode);
-        	}
-    	}
-
-}
 
 
 // Prints the tree in ascending order if order = 0, otherwise prints in descending order.
@@ -181,6 +187,20 @@ int bstDescendingHelper(node_t* node) {
     	}
 }
 
+int bstSumHelper(node_t* node) {
+        int sum = 0;
+
+        if (node->leftChild != NULL) {
+                sum = sum + bstSumHelper(node->leftChild);
+        }
+
+        if (node->rightChild != NULL) {
+                sum = sum + bstSumHelper(node->rightChild);
+        }
+        return node->data + sum;
+}
+
+        
 // Returns the sum of all the nodes in the tree. 
 // Returns 0 for an empty tree.
 // Returns -1 if a NULL tree is passed to the function.
@@ -210,6 +230,33 @@ int bstSumHelper(node_t* node) {
         return node->data + sum;	
 }
 
+int findHelper(node_t* node, int value) {
+        if (node->data == value) {
+                return 1;
+        }
+
+        if (node->leftChild != NULL) {
+
+                int checkValue = 0;
+
+                checkValue = findHelper(node->leftChild, value);
+                if (checkValue == 1) {
+                        return 1;
+                }
+
+
+        }
+        if (node->rightChild != NULL) {
+                int checkValue = 0;
+                checkValue = findHelper(node->rightChild, value);
+                if (checkValue == 1) {
+                        return 1;
+                }
+	}
+	return 0;
+
+}
+
 
 // Returns 1 if value is found in the tree.
 // Returns 0 if the value is not found in three.
@@ -221,34 +268,6 @@ int find(bst_t * t, int value) {
 	}
 	
 	return findHelper(t->root, value);	
-}
-
-int findHelper(node_t* node, int value) {
-	if (node->data == value) {
-		return 1;
-	}
-
-	if (node->leftChild != NULL) {
-
-		int checkValue = 0;
-		
-		checkValue = findHelper(node->leftChild, value);
-		if (checkValue == 1) {
-			return 1;
-		}
-		
-		
-	}
-	if (node->rightChild != NULL) {
-		int checkValue = 0;
-		checkValue = findHelper(node->rightChild, value);
-		if (checkValue == 1) {
-			return 1;
-		}	
-
-
-	}
-	return 0;
 }
 
 
