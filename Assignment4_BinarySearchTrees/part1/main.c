@@ -16,10 +16,22 @@
 // ====================================================
 // ================== Program Entry ===================
 // ====================================================
+
+unitTest1() {
+	bst_t* empty = create_bst();
+	if (bst_empty(empty) == 1) {
+		printf("This tree is empty\n\n");
+
+	} else {
+		printf("Test failed\n\n");
+	}
+	free_bst(empty);
+}
+
+
 int main(){
-    bst_t * testBST = create_bst();
-    free_bst(testBST);    
-    return 0;
+	unitTest1();   
+    	return 0;
 }
 
 
