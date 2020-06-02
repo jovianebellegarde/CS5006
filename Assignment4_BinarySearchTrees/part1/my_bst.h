@@ -300,18 +300,5 @@ void free_bst(bst_t* t){
 	free(t);
 }
 
-/*
-void freeHelper(node_t* node) {
 
-	if (node->leftChild != NULL) {
-                bstAscendingHelper(node->leftChild);
-        }
-       
-        if (node->rightChild != NULL) {
-        bstAscendingHelper(node->rightChild);
-        }
-	free(node);	
-	
-}
-*/
 #endif
