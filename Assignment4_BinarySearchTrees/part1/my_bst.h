@@ -217,18 +217,6 @@ int sum(bst_t *t){
 }
 
 
-int bstSumHelper(node_t* node) {
-	int sum = 0;
-
-	if (node->leftChild != NULL) {
-                sum = sum + bstSumHelper(node->leftChild);
-        }
-
-        if (node->rightChild != NULL) {
-        	sum = sum + bstSumHelper(node->rightChild);
-        }
-        return node->data + sum;	
-}
 
 int findHelper(node_t* node, int value) {
         if (node->data == value) {
