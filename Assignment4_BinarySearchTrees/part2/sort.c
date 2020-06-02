@@ -2,7 +2,8 @@
 
 // =================== Libraries ==================
 #include <stdio.h> // Include file for standart input/output
-
+// refered to geek for geeks: https://www.geeksforgeeks.org/merge-sort/
+// 
 // =============== Helper Functions ===============
 
 // Merges two subarrays of arr[]. 
@@ -22,7 +23,11 @@ void merge(int arr[], int l, int m, int r) {
 //          (2) 'size' tells us how big the array of data is we are sorting.
 // Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
 void sortIntegers(int* array, unsigned int size){
-    // TODO: Implement merge sort
+	int newSize = size - 1;
+	int zero = 0;
+	
+	// Calling the mergeSort function
+	mergeSort(array, zero, newSize);	
 }
 
 
