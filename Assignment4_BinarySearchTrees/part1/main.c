@@ -18,6 +18,8 @@
 // ====================================================
 
 unitTest1() {
+
+	printf("Running TEST 1\n\n");
 	bst_t* empty = create_bst();
 	if (bst_empty(empty) == 1) {
 		bst_print(empty, 1);
@@ -30,26 +32,27 @@ unitTest1() {
 }
 
 unitTest2() {
+	printf("Running TEST 2\n\n");
 	bst_t* partial = create_bst();
-	bst_add(partial, 1);
-        bst_add(partial, 2);
-	bst_add(partial, 6);
-	bst_add(partial, 4);
-	bst_add(partial, 3);
-	bst_add(partial, 5);
+	bst_add(partial, 50);
+        bst_add(partial, 20);
+	bst_add(partial, 60);
+	if (bst_add(partial, 70) == 0) {
+		printf("Couldn't add\n\n");
+	}
 	if (bst_empty(partial) == 0) {
-                printf("Tree not empty\n\n");
+                printf("Tree is not empty\n\n");
 
         } else {
                 printf("Test failed\n\n");
         }
 
-	bst_print(partial, 3);
-	printf("The sum is:%d\n\n", bst_sum(partial));
-	printf("Finding the number %d\n\n", 4, find(partial, 4));
+        bst_print(partial,0);
+	printf("\n\n");
+	printf("The sum is: %d\n\n", sum(partial));
+	//printf("Finding the number %d\n\n", find(partial, 4));
 
         free_bst(partial);
-
 
 }
 
