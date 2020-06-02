@@ -99,8 +99,6 @@ int bstHelperAdd(node_t* root, node_t* newNode) {
 }
 
 
-
-
 // Adds a new node containng item in the correct place of the BST.
 // If the data is less then the current node we go left, otherwise we go right.
 // Returns 1 if the operation suceeds
@@ -135,8 +133,6 @@ int bst_add(bst_t* t, int item){
 	return 0;
     
 }
-
-
 
 
 // Prints the tree in ascending order if order = 0, otherwise prints in descending order.
@@ -199,7 +195,6 @@ int bstSumHelper(node_t* node) {
         }
         return node->data + sum;
 }
-
         
 // Returns the sum of all the nodes in the tree. 
 // Returns 0 for an empty tree.
@@ -216,8 +211,6 @@ int sum(bst_t *t){
 			
 }
 
-
-
 int findHelper(node_t* node, int value) {
         if (node->data == value) {
                 return 1;
@@ -232,7 +225,6 @@ int findHelper(node_t* node, int value) {
                         return 1;
                 }
 
-
         }
         if (node->rightChild != NULL) {
                 int checkValue = 0;
@@ -242,7 +234,6 @@ int findHelper(node_t* node, int value) {
                 }
 	}
 	return 0;
-
 }
 
 
@@ -257,9 +248,6 @@ int find(bst_t * t, int value) {
 	
 	return findHelper(t->root, value);	
 }
-
-
-
 
 
 // BST Size
