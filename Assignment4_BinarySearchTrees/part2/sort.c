@@ -8,10 +8,63 @@
 
 // Merges two subarrays of arr[]. 
 // First subarray is arr[l..m] 
-// Second subarray is arr[m+1..r] 
-void merge(int arr[], int l, int m, int r) {
-  //TODO: implement merge.
+// Second subarray is arr[m+1..r] oid merge(int arr[], int l, int m, int r) {
+
+	int a = 0;
+	int b = 0;
+	int c = l;
+
+	int left = m + 1 - l;
+	int right = r - m;
+
+	int leftArray[left];
+	int rightArray[right];
+	
+	for (a = 0, a < left; a++) {
+		left[a] = arr[a + l];	
+	}
+	 
+	for (b = 0; b < right; b++) {
+		rightArray[b] == arr[b + 1 + m];
+	}
+	
+	// Merging the temporary arrays to have the big one back again
+	while (a < leftArray && b < rightArray){
+		if(rightArray[b] >= leftArray[a]) {
+			leftArray = arr[c];
+			a++;
+		
+		} else {
+			rightArray[b] = arr[c];
+			b++;	
+		}
+		c++;
+	}
+	
+	// Going to copy any remaining components of leftArray
+	
 }
+
+
+
+void mergeHelper(int arr[], int right, int left) {
+	int middle = (right + left) / 2;
+	
+	// Checking if the right node is bigger than the left node
+	// as larger values are on the right side and smaller ones 
+	// are on the left side.
+	if (right > left) {
+		merge(arr[], left, middle);
+		merge(arr[], middle + left, right);
+		merge(array[], left, middle, right);	
+	}
+
+}
+
+
+
+
+
 
 // Provided below is a sort function. We have also
 // provided a template for how to document functions
@@ -26,8 +79,8 @@ void sortIntegers(int* array, unsigned int size){
 	int newSize = size - 1;
 	int zero = 0;
 	
-	// Calling the mergeSort function
-	mergeSort(array, zero, newSize);	
+	// Calling the mergeHelper function
+	mergeHelper(array, zero, newSize);	
 }
 
 
