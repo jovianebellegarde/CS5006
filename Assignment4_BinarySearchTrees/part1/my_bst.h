@@ -112,7 +112,7 @@ int bst_add(bst_t* t, int item){
 
     	node_t* tempNode = (node_t*) malloc(sizeof(node_t));
     	if(tempNode == NULL) {
-        	return -1;
+        	return 0;
     	}
 
     	if (bst_empty(t) == 1) {

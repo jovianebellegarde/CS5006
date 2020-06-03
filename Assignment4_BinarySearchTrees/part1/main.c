@@ -85,10 +85,40 @@ unitTest2() {
 
 }
 
+unitTest3() {
+
+	bst_t* partial = create_bst();
+	bst_add(partial, 30);
+	//bst_print(partial, 0);
+	printf("The count is %d\n\n", bst_size(partial));
+	bst_add(partial, 10);	
+	//free_bst(partial);
+	bst_add(partial, 1);	
+	bst_add(partial, 2);	
+	bst_add(partial, 3);	
+	bst_add(partial, 4);	
+	bst_add(partial, 5);	
+	bst_add(partial, 6);
+	
+	printf("The sume is %d\n\n", sum(partial));
+
+	printf("The count is %d\n\n", partial->count);
+
+	printf("The size is %d\n\n", bst_size(partial));	
+
+	free_bst(partial);	
+
+	
+
+}
+
 int main(){
-	unitTest1();   
-	unitTest2();
-    	return 0;
+//	unitTest1();   
+//	unitTest2();
+
+
+	unitTest3();
+	return 0; 
 }
 
 
