@@ -62,15 +62,24 @@ unitTest2() {
 
 	printf("TEST 2\n\n");
 	bst_t* partial = create_bst();
-	bst_add(partial, 20);
+	//bst_add(partial, 20);
+	
+	if (bst_empty(partial) == 0) {
+		printf("The tree is not empty\n\n");
+	} else if (bst_empty(partial) == 1) {
+
+		printf("The tree is empty\n\n");
+	}
 	
 	if (bst_add(partial, 20) == 0) {
 
 		printf("Test has failed\n\n");
 	} else if (bst_add(partial, 20) == 1) {
 		printf("Means the node was empty\n\n");
-	} else {
+	} else if (bst_add(partial, 20) == -1) {
 		printf("This printed meaning that returned NULL\n\n");
+	} else {
+		printf("Could not add at all\n\n");
 	}
 	free_bst(partial);
 
