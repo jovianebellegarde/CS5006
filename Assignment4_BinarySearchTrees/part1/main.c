@@ -47,7 +47,7 @@ unitTest2() {
                 printf("Test failed\n\n");
         }
 
-        bst_print(partial,0);
+        bst_print(partial, 10);
 	printf("\n\n");
 	printf("The sum is: %d\n\n", sum(partial));
 	//printf("Finding the number %d\n\n", find(partial, 4));
