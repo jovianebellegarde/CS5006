@@ -30,7 +30,7 @@ unitTest1() {
 	}
 	
 }
-
+/*
 unitTest2() {
 	printf("Running TEST 2\n\n");
 	bst_t* partial = create_bst();
@@ -56,7 +56,25 @@ unitTest2() {
 
 }
 
+*/
 
+unitTest2() {
+
+	printf("TEST 2\n\n");
+	bst_t* partial = create_bst();
+	bst_add(partial, 20);
+	
+	if (bst_add(partial, 20) == 0) {
+
+		printf("Test has failed\n\n");
+	} else if (bst_add(partial, 20) == 1) {
+		printf("Means the node was empty\n\n");
+	} else {
+		printf("This printed meaning that returned NULL\n\n");
+	}
+	free_bst(partial);
+
+}
 
 int main(){
 	unitTest1();   
