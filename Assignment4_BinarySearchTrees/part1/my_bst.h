@@ -156,6 +156,7 @@ int bstDescendingHelper(node_t* node) {
         if (node->leftChild != NULL) {
                 bstDescendingHelper(node->leftChild);
         }
+
 }
 
 // Prints the tree in ascending order if order = 0, otherwise prints in descending order.
