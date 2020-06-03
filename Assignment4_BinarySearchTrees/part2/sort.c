@@ -6,71 +6,71 @@
 // =============== Helper Functions ===============
 
 // Reference: // geek for geeks: https://www.geeksforgeeks.org/merge-sort/
-
 // Merges two subarrays of arr[]. 
 // First subarray is arr[l..m] 
 // Second subarray is arr[m+1..r]
 void merge(int arr[], int l, int m, int r) {
 	
-	// Making variable for temporary arrays to use during the sort
-	int a = 0;
-	int b = 0;
-	int c = l;
+    // Implement merge
+    int left = m-l+1;
+    int right = r - m;
+    int leftArray[left];
+    int rightArray[right];
+    int i;
 
-	int left = m - l + 1;
-	int right = r - m;
+    for (i = 0; i <left; i++) {
+       
+        leftArray[i] = arr[l + i];
+    }
+    for (i = 0; i < right; i++) {
+       
+        rightArray[i] = arr[i + m + 1];
+    }
+    
+    // Merging
+    i = 0;
+    int j = 0;
+    int k = l;
 
-	int leftArray[left];
-	int rightArray[right];
-	
-	for (a = 0; a < left; a++) {
-		leftArray[a] = arr[a + l];	
-	}
-	 
-	for (b = 0; b < right; b++) {
-		rightArray[b] = arr[b + 1 + m];
-	}
-	
-	// Merging the temporary arrays to have the big one back again
-	while (a < left && b < right){
-		if(rightArray[b] >= leftArray[a]) {
-			leftArray[a] = arr[c];
-			a++;
-		
-		} else {
-			rightArray[b] = arr[c];
-			b++;	
-		}
-		c++;
-	}
-	
-	// Going to copy any remaining components of leftArray
-	while (left > a) {
-		leftArray[a] = arr[c];
-		a++;
-		c++;
-	}
+    while (i < left && j < right) {
+       
+        if (leftArray[i] < rightArray[j]) {
+    
+            arr[k] = leftArray[i];
+            i++;
+        } else {
+      
+            arr[k] = rightArray[j];
+            j++;
+        }
+        k++;
+    }
 
-	// Going to copy any remaining components of rightArray
-	while (right > b) {
-		rightArray[b] = arr[c];
-		b++;
-		c++;
-	}
+    while (i < left) {
+
+        arr[k] = leftArray[i];
+        i++;
+        k++;
+    }
+
+    while (j < right) {
+       
+        arr[k] = rightArray[j];
+        j++;
+        k++;
+    }
 }
 
-void mergeHelper(int arr[], int right, int left) {
-	int middle = (right + left) / 2;
-	
-	// Checking if the right node is bigger than the left node
-	// as larger values are on the right side and smaller ones 
-	// are on the left side.
-	if (right > left) {
-		merge(arr, left, middle, right);
-		merge(arr, middle + left, middle, right);
-		merge(arr, left, middle, right);	
-	}
 
+
+void mergeSort(int arr[], int l, int r) {
+    if (l == r) return;
+    else {
+        int m = (l + r) / 2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+        merge(arr, l, m, r);
+    }
 }
 
 
@@ -88,7 +88,7 @@ void sortIntegers(int* array, unsigned int size){
 	int zero = 0;
 	
 	// Calling the mergeHelper function
-	mergeHelper(array, zero, newSize);	
+	mergeSort(array, zero, newSize);	
 }
 
 
