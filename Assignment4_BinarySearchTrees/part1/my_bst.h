@@ -134,6 +134,29 @@ int bst_add(bst_t* t, int item){
     
 }
 
+int bstAscendingHelper(node_t* node) {
+        if (node->leftChild != NULL) {
+                bstAscendingHelper(node->leftChild);
+        }
+        printf("%d\n", node->data);
+
+        if (node->rightChild != NULL) {
+        bstAscendingHelper(node->rightChild);
+        }
+
+
+}
+
+int bstDescendingHelper(node_t* node) {
+        if (node->rightChild != NULL) {
+                bstDescendingHelper(node->rightChild);
+        }
+        printf("%d\n", node->data);
+
+        if (node->leftChild != NULL) {
+                bstDescendingHelper(node->leftChild);
+        }
+}
 
 // Prints the tree in ascending order if order = 0, otherwise prints in descending order.
 // For NULL tree it should print nothing. 
@@ -159,29 +182,6 @@ void bst_print(bst_t*t, int order){
 	}	
 }
 
-int bstAscendingHelper(node_t* node) {
-	if (node->leftChild != NULL) {
-		bstAscendingHelper(node->leftChild);
-	}
-	printf("%d\n", node->data);
-
-	if (node->rightChild != NULL) {
-        bstAscendingHelper(node->rightChild);
-    	}	
-
-
-}
-
-int bstDescendingHelper(node_t* node) {
-	if (node->rightChild != NULL) {
-        	bstDescendingHelper(node->rightChild);
-    	}
-    	printf("%d\n", node->data);
-
-    	if (node->leftChild != NULL) {
-        	bstDescendingHelper(node->leftChild);
-    	}
-}
 
 int bstSumHelper(node_t* node) {
         int sum = 0;
