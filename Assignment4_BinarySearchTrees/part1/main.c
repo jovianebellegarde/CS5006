@@ -90,7 +90,7 @@ unitTest3() {
 	bst_t* partial = create_bst();
 	bst_add(partial, 30);
 	//bst_print(partial, 0);
-	printf("The count is %d\n\n", bst_size(partial));
+	printf("The sum is %d\n\n", bst_size(partial));
 	bst_add(partial, 10);	
 	//free_bst(partial);
 	bst_add(partial, 1);	
@@ -99,6 +99,9 @@ unitTest3() {
 	bst_add(partial, 4);	
 	bst_add(partial, 5);	
 	bst_add(partial, 6);
+
+	printf("printing print function\n\n");
+	bst_print(partial, 0); 
 	
 	printf("The sume is %d\n\n", sum(partial));
 

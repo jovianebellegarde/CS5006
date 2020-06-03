@@ -70,17 +70,17 @@ int bst_empty(bst_t* t){
 }
 
 
-int bstHelperAdd(node_t* root, node_t* newNode) {
+void  bstHelperAdd(node_t* root, node_t* newNode) {
         // Check if duplicate data
         if (root->data == newNode->data) {
                 free(newNode);
-                return 1;
+               
         }
 
         if (root->data > newNode->data) {
                 if (root->leftChild == NULL) {
                         root->leftChild = newNode;
-                        return 0;
+                       
 
                 } else {
                         bstHelperAdd(root->leftChild, newNode);
@@ -89,7 +89,7 @@ int bstHelperAdd(node_t* root, node_t* newNode) {
         } else {
                 if (root->rightChild == NULL) {
                 root->rightChild = newNode;
-                return 0;
+                
 
                 } else {
                         bstHelperAdd(root->rightChild, newNode);
@@ -109,28 +109,27 @@ int bst_add(bst_t* t, int item){
 	if (t == NULL) {
         	return -1;
     	}
-
     	node_t* tempNode = (node_t*) malloc(sizeof(node_t));
+       
     	if(tempNode == NULL) {
         	return 0;
     	}
-
+         tempNode->data=item;
+         tempNode->leftChild=NULL;
+         tempNode->rightChild=NULL;
     	if (bst_empty(t) == 1) {
         	t->root = tempNode;
         	t->count++;
         	return 1;
 
     	} else {
-        	int feedback = 0;
-        	feedback = bstHelperAdd(t->root, tempNode);
-        	if (feedback == 0) {
+        
+        bstHelperAdd(t->root, tempNode);
+      
             		t->count++;
             		return 1;
-        	}
-
-	        return 0;	
+    	
     	}	
-	return 0;
     
 }
 
@@ -149,7 +148,8 @@ int bstAscendingHelper(node_t* node) {
 
 int bstDescendingHelper(node_t* node) {
         if (node->rightChild != NULL) {
-                bstDescendingHelper(node->rightChild);
+                
+	bstDescendingHelper(node->rightChild);
         }
         printf("%d\n", node->data);
 
@@ -269,11 +269,11 @@ unsigned int bst_size(bst_t* t){
 void freeHelper(node_t* node) {
 
         if (node->leftChild != NULL) {
-                bstAscendingHelper(node->leftChild);
+                freeHelper(node->leftChild);
         }
 
         if (node->rightChild != NULL) {
-        bstAscendingHelper(node->rightChild);
+        	freeHelper(node->rightChild);
         }
         free(node);
 
