@@ -114,10 +114,12 @@ int bst_add(bst_t* t, int item){
     	if(tempNode == NULL) {
         	return 0;
     	}
-         tempNode->data=item;
-         tempNode->leftChild=NULL;
-         tempNode->rightChild=NULL;
-    	if (bst_empty(t) == 1) {
+        
+	tempNode->data=item;
+        tempNode->leftChild=NULL;
+        tempNode->rightChild=NULL;
+    	
+	if (bst_empty(t) == 1) {
         	t->root = tempNode;
         	t->count++;
         	return 1;
@@ -126,12 +128,13 @@ int bst_add(bst_t* t, int item){
         
         bstHelperAdd(t->root, tempNode);
       
-            		t->count++;
-            		return 1;
+         	t->count++;
+            	return 1;
     	
     	}	
     
 }
+
 
 int bstAscendingHelper(node_t* node) {
         if (node->leftChild != NULL) {
@@ -146,6 +149,8 @@ int bstAscendingHelper(node_t* node) {
 
 }
 
+
+
 int bstDescendingHelper(node_t* node) {
         if (node->rightChild != NULL) {
                 
@@ -158,6 +163,7 @@ int bstDescendingHelper(node_t* node) {
         }
 
 }
+
 
 // Prints the tree in ascending order if order = 0, otherwise prints in descending order.
 // For NULL tree it should print nothing. 
@@ -208,8 +214,7 @@ int sum(bst_t *t){
 	} else {
 		return bstSumHelper(t->root);
 	}
-	
-			
+				
 }
 
 int findHelper(node_t* node, int value) {
@@ -269,7 +274,7 @@ unsigned int bst_size(bst_t* t){
 void freeHelper(node_t* node) {
 
         if (node->leftChild != NULL) {
-                freeHelper(node->leftChild);
+        	freeHelper(node->leftChild);
         }
 
         if (node->rightChild != NULL) {
