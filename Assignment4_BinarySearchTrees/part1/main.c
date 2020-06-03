@@ -17,82 +17,85 @@
 // ================== Program Entry ===================
 // ====================================================
 
-unitTest1() {
+void unitTest1() {
+	printf("Test 1 - Emtpy Create and add\n\n");
 
-	printf("Running TEST 1\n\n");
 	bst_t* empty = create_bst();
-	if (bst_empty(empty) == 1) {
-		bst_print(empty, 1);
-		printf("This tree is empty\n\n");
 
-	} else {
-		printf("Test failed\n\n");
-	}
+	bst_add(empty, 15);
+	bst_add(empty, 10);
+	bst_add(empty, 20);
+	bst_add(empty, -3);
+	bst_add(empty, 100);
+
+	bst_print(empty, 0);
 	
-}
-/*
-unitTest2() {
-	printf("Running TEST 2\n\n");
-	bst_t* partial = create_bst();
-	bst_add(partial, 50);
-        bst_add(partial, 20);
-	bst_add(partial, 60);
-	if (bst_add(partial, 70) == 0) {
-		printf("Couldn't add\n\n");
-	}
-	if (bst_empty(partial) == 0) {
-                printf("Tree is not empty\n\n");
-
-        } else {
-                printf("Test failed\n\n");
-        }
-
-        bst_print(partial, 10);
-	printf("\n\n");
-	printf("The sum is: %d\n\n", sum(partial));
-	//printf("Finding the number %d\n\n", find(partial, 4));
-
-        free_bst(partial);
+	free_bst(empty);
 
 }
 
-*/
 
-unitTest2() {
+void unitTest2() {
+	printf("Test 2 - NULL create and add\n\n");
 
-	printf("TEST 2\n\n");
-	bst_t* partial = create_bst();
-	//bst_add(partial, 20);
+	bst_t* testNull = NULL;
+
+	bst_add(testNull, 7);
+	bst_add(testNull, 1);
+	bst_add(testNull, 5);
+	bst_add(testNull, 10);
 	
-	if (bst_empty(partial) == 0) {
-		printf("The tree is not empty\n\n");
-	} else if (bst_empty(partial) == 1) {
+	bst_print(testNull, 0);
+
+	free_bst(NULL);
+
+}
+
+
+
+void unitTest3() {
+	printf("Test 3 - empty create and print\n\n");
+
+	bst_t* empty = create_bst();
+	bst_print(empty, 0);
+	
+	if (bst_empty(empty) == -1) {
+
+		printf("There is a NULL\n\n");
+	
+	} else if (bst_empty(empty) == 1) {
 
 		printf("The tree is empty\n\n");
-	}
 	
-	if (bst_add(partial, 20) == 0) {
+	} else if (bst_empty(empty) == 0) {
 
-		printf("Test has failed\n\n");
-	} else if (bst_add(partial, 20) == 1) {
-		printf("Means the node was empty\n\n");
-	} else if (bst_add(partial, 20) == -1) {
-		printf("This printed meaning that returned NULL\n\n");
-	} else {
-		printf("Could not add at all\n\n");
+		printf("The tree is not empty\n\n");
 	}
-	free_bst(partial);
+
+	
+
+	if (bst_size(empty) == -1) {
+
+		printf("The tree is NULL\n\n");
+	} else {
+		printf("The size is %d\n\n", bst_size(empty));
+	}
+
+	
+
+	free_bst(empty);
 
 }
 
-unitTest3() {
+void unitTest4() {
 
+	printf("Test 4 - partial, creating, adding, size, finding"); 
 	bst_t* partial = create_bst();
 	bst_add(partial, 30);
-	//bst_print(partial, 0);
-	printf("The sum is %d\n\n", bst_size(partial));
+	
+	//printf("The sum is %d\n\n", bst_size(partial));
 	bst_add(partial, 10);	
-	//free_bst(partial);
+	
 	bst_add(partial, 1);	
 	bst_add(partial, 2);	
 	bst_add(partial, 3);	
@@ -100,27 +103,121 @@ unitTest3() {
 	bst_add(partial, 5);	
 	bst_add(partial, 6);
 
-	printf("printing print function\n\n");
 	bst_print(partial, 0); 
 	
-	printf("The sume is %d\n\n", sum(partial));
-
-	printf("The count is %d\n\n", partial->count);
+	printf("The sum is %d\n\n", sum(partial));
 
 	printf("The size is %d\n\n", bst_size(partial));	
 
-	free_bst(partial);	
+	printf("Finding the number: %d\n\n", 4);
+	if (find(partial, 4) == 1) {
+		printf("Found the number 4\n\n");
+	}
 
-	
+	if (find(partial, 1) == 1) {
+                printf("Found the number 1\n\n");
+        }
+
+	if (find(partial, 6) == 1) {
+                printf("Found the number 6\n\n");
+        }
+
+	if (find(partial, 0) == 1) {
+                printf("Found the number 0\n\n");
+        }
+
+	free_bst(partial);	
 
 }
 
-int main(){
-//	unitTest1();   
-//	unitTest2();
+void unitTest5() {
+        printf("Test 5 - NULL create and print\n\n");
 
+        bst_t* testNull = NULL;
+        bst_print(testNull, 0);
+
+        if (bst_empty(testNull) == -1) {
+
+                printf("There is a NULL\n\n");
+
+        } else if (bst_empty(testNull) == 1) {
+
+                printf("The tree is empty\n\n");
+
+        } else if (bst_empty(testNull) == 0) {
+
+                printf("The tree is not empty\n\n");
+        }
+
+	bst_add(testNull, 5);
+	bst_add(testNull, 1);
+	bst_add(testNull, 8);
+
+        if (bst_size(testNull) == -1) {
+
+                printf("The tree is NULL\n\n");
+        
+	} else {
+                printf("The size is %d\n\n", bst_size(testNull));
+        }
+
+	   
+        
+	if (find(testNull, 1) == 1) {
+                printf("Found the number 1\n\n");
+        
+	} else {
+		printf("Didn't find 1\n\n");
+
+	}
+
+        if (find(testNull, 5) == 1) {
+                printf("Found the number 5\n\n");
+        
+	} else {
+		printf("Didn't find 5\n\n");
+	}
+
+        if (find(testNull, 8) == 1) {
+                printf("Found the number 8\n\n");
+        
+	} else {
+                printf("Didn't find 8\n\n");
+	}
+        
+	if (find(testNull, 0) == 1) {
+                printf("Found the number 0\n\n");
+        
+	} else {
+		printf("Didn't find 0\n\n");
+	}
+
+	if (sum(testNull) == -1) {
+
+		printf("Sum: NULL\n\n");
+	
+	} else {
+		printf("The sum is %d\n\n", sum(testNull));
+	}
+
+	if (bst_size(testNull) == -1) {
+		printf("The size is NULL\n\n");
+
+	} else {
+		printf("The size is %d\n\n", bst_size(testNull));
+	}
+        free_bst(testNull);
+}
+
+
+int main(){
+	unitTest1();   
+	unitTest2();
 
 	unitTest3();
+	unitTest4();
+	unitTest5();
+
 	return 0; 
 }
 
