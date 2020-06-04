@@ -12,7 +12,7 @@
 void merge(int arr[], int l, int m, int r) {
 	
     // Implement merge
-    int left = m-l+1;
+    int left = m - l + 1;
     int right = r - m;
     int leftArray[left];
     int rightArray[right];
