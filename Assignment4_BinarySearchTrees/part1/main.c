@@ -52,7 +52,6 @@ void unitTest2() {
 }
 
 
-
 void unitTest3() {
 	printf("Test 3 - empty create and print\n\n");
 
@@ -80,12 +79,12 @@ void unitTest3() {
 	} else {
 		printf("The size is %d\n\n", bst_size(empty));
 	}
-
 	
 
 	free_bst(empty);
 
 }
+
 
 void unitTest4() {
         printf("Test 4 - partial\n\n");
@@ -169,6 +168,8 @@ void unitTest4() {
 
         free_bst(partial);
 }
+
+
 
 void unitTest5() {
         printf("Test 5 - NULL create and print\n\n");
@@ -255,9 +256,9 @@ void unitTest5() {
 
 
 int main(){
+
 	unitTest1();   
 	unitTest2();
-
 	unitTest3();
 	unitTest4();
 	unitTest5();
