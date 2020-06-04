@@ -283,6 +283,29 @@ void unitTest6() {
 	bst_print(empty, 0);
 
 
+
+
+
+	if (find(empty, 1) == 1) {
+                printf("The value is 1\n\n");
+        
+	} else if (find(empty, 1) == 0) {
+		printf("This tree is empty\n\n");
+
+	} else {
+		printf("This is NULL\n\n");
+	}
+      
+	if (sum(empty) == -1) {
+
+		printf("Sum: NULL\n\n");
+	
+	} else {
+		printf("The sum is %d\n\n", sum(empty));
+	}
+
+
+
         free_bst(empty);
 }
 

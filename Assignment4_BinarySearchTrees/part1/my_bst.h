@@ -211,11 +211,12 @@ int sum(bst_t *t){
 	if (t == NULL) {
 		return -1;
 	}	
-	if (bst_empty(t) == 1){
-		return bstSumHelper(t->root);
+	if (bst_empty(t) == 1)	{
+		
+		return 0;
 	
 	} else {
-		return 0;
+		return bstSumHelper(t->root);;
 	}			
 }
 
@@ -253,9 +254,15 @@ int find(bst_t * t, int value) {
 	if (t == NULL)  {
 		return -1;
 	}
+	 else if (bst_empty(t) == 1) {
+		return 0;
+	
+	} else {
 	
 	return findHelper(t->root, value);	
+	}
 }
+
 
 
 // BST Size
