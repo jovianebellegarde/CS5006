@@ -88,53 +88,93 @@ void unitTest3() {
 }
 
 void unitTest4() {
+        printf("Test 4 - partial\n\n");
 
-	printf("Test 4 - partial, creating, adding, size, finding"); 
-	bst_t* partial = create_bst();
-	bst_add(partial, 30);
-	
-	//printf("The sum is %d\n\n", bst_size(partial));
-	bst_add(partial, 10);	
-	
-	bst_add(partial, 1);	
-	bst_add(partial, 2);	
-	bst_add(partial, 3);	
-	bst_add(partial, 4);	
-	bst_add(partial, 5);	
-	bst_add(partial, 6);
+        bst_t* partial = create_bst();
 
-	bst_print(partial, 0); 
-	
-	printf("The sum is %d\n\n", sum(partial));
 
-	printf("The size is %d\n\n", bst_size(partial));	
+        if (bst_empty(partial) == -1) {
 
-	printf("Finding the number: %d\n\n", 4);
-	if (find(partial, 4) == 1) {
-		printf("Found the number 4\n\n");
-	}
+                printf("There is a NULL\n\n");
 
+        } else if (bst_empty(partial) == 1) {
+
+                printf("The tree is empty\n\n");
+
+        } else if (bst_empty(partial) == 0) {
+
+                printf("The tree is not empty\n\n");
+        }
+
+	bst_add(partial, 5);
+	bst_add(partial, 1);
+	bst_add(partial, 8);
+
+        if (bst_size(partial) == -1) {
+
+                printf("The tree is NULL\n\n");
+        
+	} else {
+                printf("The size is %d\n\n", bst_size(partial));
+        }
+
+	   
+        
 	if (find(partial, 1) == 1) {
                 printf("Found the number 1\n\n");
-        }
+        
+	} else {
+		printf("Didn't find 1\n\n");
 
-	if (find(partial, 6) == 1) {
-                printf("Found the number 6\n\n");
-        }
+	}
 
+        if (find(partial, 5) == 1) {
+                printf("Found the number 5\n\n");
+        
+	} else {
+		printf("Didn't find 5\n\n");
+	}
+
+        if (find(partial, 8) == 1) {
+                printf("Found the number 8\n\n");
+        
+	} else {
+                printf("Didn't find 8\n\n");
+	}
+        
 	if (find(partial, 0) == 1) {
                 printf("Found the number 0\n\n");
-        }
+        
+	} else {
+		printf("Didn't find 0\n\n");
+	}
 
-	free_bst(partial);	
+	if (sum(partial) == -1) {
 
+		printf("Sum: NULL\n\n");
+	
+	} else {
+		printf("The sum is %d\n\n", sum(partial));
+	}
+
+	if (bst_size(partial) == -1) {
+		printf("The size is NULL\n\n");
+
+	} else {
+		printf("The size is %d\n\n", bst_size(partial));
+	}
+
+	bst_print(partial, 0);
+
+
+        free_bst(partial);
 }
 
 void unitTest5() {
         printf("Test 5 - NULL create and print\n\n");
 
         bst_t* testNull = NULL;
-        bst_print(testNull, 0);
+ 
 
         if (bst_empty(testNull) == -1) {
 
@@ -206,6 +246,10 @@ void unitTest5() {
 	} else {
 		printf("The size is %d\n\n", bst_size(testNull));
 	}
+ 
+	bst_print(testNull, 0);
+
+
         free_bst(testNull);
 }
 
