@@ -210,11 +210,13 @@ int bstSumHelper(node_t* node) {
 int sum(bst_t *t){
 	if (t == NULL) {
 		return -1;
+	}	
+	if (bst_empty(t) == 1){
+		return bstSumHelper(t->root);
 	
 	} else {
-		return bstSumHelper(t->root);
-	}
-				
+		return 0;
+	}			
 }
 
 int findHelper(node_t* node, int value) {

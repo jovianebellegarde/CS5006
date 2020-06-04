@@ -254,6 +254,38 @@ void unitTest5() {
         free_bst(testNull);
 }
 
+void unitTest6() {
+        printf("Test 6 - NULL create and print\n\n");
+
+        bst_t* empty = create_bst();
+ 
+
+        if (bst_empty(empty) == 1) {
+
+                printf("The tree is empty\n\n");
+
+        } else if (bst_empty(empty) == -1) {
+
+                printf("The tree is NULL\n\n");
+
+        } else {
+
+                printf("The tree is not empty\n\n");
+        }
+       
+	if (bst_size(empty) == -1) {
+		printf("The size is NULL\n\n");
+
+	} else {
+		printf("The size is %d\n\n", bst_size(empty));
+	}
+ 
+	bst_print(empty, 0);
+
+
+        free_bst(empty);
+}
+
 
 int main(){
 
@@ -262,9 +294,10 @@ int main(){
 	unitTest3();
 	unitTest4();
 	unitTest5();
-
+	unitTest6();
 	return 0; 
 }
+
 
 
 
