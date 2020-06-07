@@ -222,12 +222,12 @@ int dll_insert(dll_t* l, int pos, void* item){
 
     	if (pos == 0) {
 		 dll_push_front(l, item);
-		return 1;
+		return dll_push_front(l, item);
     	}
 
 	if (pos == l->count) {
 		dll_push_back(l, item);
-		return 1;
+		return dll_push_back(l, item);
 	}
 
 	node_t* insertNode = (node_t*)malloc(sizeof(node_t));
@@ -241,12 +241,16 @@ int dll_insert(dll_t* l, int pos, void* item){
 	for (i = 0; i < pos; i++) {
         	tempNode = tempNode->next;
     	}
-
+	/*
 	tempNode->previous->next = insertNode;
 	insertNode->previous = tempNode->previous;
 	tempNode->previous = insertNode;
 	insertNode->next = tempNode;
-
+	*/
+	insertNode->next = tempNode;
+	insertNode->previous = tempNode->previous;
+	tempNode->previous->next = insertNode;
+	tempNode->previous = insertNode;
 }
 
 // Returns the item at position pos starting at 0 ( 0 being the first item )

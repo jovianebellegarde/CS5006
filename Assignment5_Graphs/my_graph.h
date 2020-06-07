@@ -36,9 +36,15 @@ typedef struct graph_node{
 graph_t* create_graph(){
     // Modify the body of this function as needed.
     graph_t* myGraph= malloc(sizeof(graph_t));
+    
     myGraph->nodes = create_dll();
+	if(myGraph == NULL) {
+		return NULL;
+	}
     myGraph->numEdges = 0;
     myGraph->numNodes = 0;
+
+    myGraph->nodes = create_dll();
     return myGraph;
 }
 
@@ -56,7 +62,7 @@ graph_node_t * create_graph_node(int value){
     graph_node->data = value;
     graph_node->inNeighbors = create_dll();
     graph_node->outNeighbors = create_dll();
-    
+
     return graph_node;
 }
 
