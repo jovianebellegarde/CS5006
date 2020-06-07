@@ -91,7 +91,10 @@ void printGraph(int* g){
 // compute the degree.
 int nodeDegree(int* g, int node){
     // TODO
-    return 999999;
+    int i, j;
+    for (i = 0; i < ROWS; i++) {
+
+    }
 }
 
 
