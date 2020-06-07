@@ -1,2 +1,13 @@
 eat sleep
 eat exercise
+shower eat
+shower exercise
+shower leave
+eat leave
+sleep leave
+leave drive
+leave bus
+leave walk
+drive work
+walk work
+bus work
