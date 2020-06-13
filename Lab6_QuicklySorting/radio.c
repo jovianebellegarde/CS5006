@@ -5,6 +5,8 @@
 #include <string.h>
 #include <time.h>
 
+// Reference: Geek for geeks - https://www.geeksforgeeks.org/quick-sort/
+
 // @Name    loadMusicFile
 // @Brief   Load the music database
 //          'size' is the size of the database.
@@ -71,11 +73,31 @@ void bruteForceSort(char** array, unsigned int start, unsigned int end){
 // @Name    partition
 // @Brief   Helper funcion for quicksort
 int partition(char** array, unsigned int low, unsigned int high){
-    // TODO:
-}
+	int pivotElement;
+	int i = (low - 1);
+	int j;
+
+
+	for (j = low; j <= high - 1; j++) {
+		if (array[j] < pivotElement) {
+			i++;
+			swapStrings(&array[i], &array[j]);
+
+		}
+
+	}
+	swapStrings(&array[i + 1], &array[high]);
+	return (i + 1);	 
+}	
 
 void quicksort(char** array, unsigned int low, unsigned int high){
-    // TODO:
+	if (high > low) {
+
+	int partitionIndex;
+	partitionIndex = (array, low, high);
+	quicksort(array, low, partitionIndex - 1);
+	quicksort(array, partitionIndex + 1, high);
+	}
 }
 
 
