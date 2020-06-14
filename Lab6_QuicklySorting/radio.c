@@ -75,9 +75,9 @@ void bruteForceSort(char** array, unsigned int start, unsigned int end){
 int partition(char** array, unsigned int low, unsigned int high) {
 	int i = (low - 1);
 	int j = low;
-
+	char** pivotElement;
 	for (j = low; j <= high - 1; j++) {
-		if (strcmp(array[j], pivotElement) > 0) {
+		if (strcmp(array[j], *pivotElement) > 0) {
 			i++;
 			swapStrings(&array[i], &array[j]);
 			
