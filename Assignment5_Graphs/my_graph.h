@@ -51,7 +51,16 @@ graph_t* create_graph(){
 //Returns the node pointer if the node exists.
 //Returns NULL if the node doesn't exist or the graph is NULL
 graph_node_t* find_node( graph_t * g, int value){
-       return NULL;
+	
+	if (g == NULL) {
+		return NULL;
+	
+	}
+	
+	node_t* tempNode = g->nodes;
+	if (tempNode-> == value) {
+		return tempNode;
+	}		
 }
 
 graph_node_t * create_graph_node(int value){
@@ -90,7 +99,12 @@ int graph_add_node(graph_t* g, int value){
 int graph_remove_node(graph_t* g, int value){
     //The function removes the node from the graph along with any edges associated with it.
     //That is, this node would have to be removed from all the in and out neighbor's lists that countain it.
-    return -1;
+    if (g == NULL) {
+        return -1;	
+    }
+
+    if (  
+
 }
 
 //Returns 1 on success
