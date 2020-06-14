@@ -202,6 +202,28 @@ void* dll_pop_back(dll_t* t){
 	return tempItem;
 }
 
+int dll_find(dll_t* l, void* data){
+	if (l == NULL) {
+		return 1;
+	}
+
+	node_t* iterator = l->head;
+	// while not end of list yet
+	while (iterator != NULL) {
+		if (iterator->data == data) {
+			return 1;
+		}
+		iterator = iterator->next;
+	}
+	return 0;
+
+}
+
+
+
+
+
+
 // Inserts a new node before the node at the specified position.
 // Returns 1 on success
 // Retruns 0 on failure:
@@ -276,6 +298,39 @@ void* dll_get(dll_t* l, int pos){
 	return tempNode->data;
 }
 
+
+int dll_remove_value(dll_t* l, void* data) {
+	if (l == NULL) {
+		return -1;
+	}
+
+	node_t* iterator = l->head;
+	
+	int i = 0;
+
+	for (i = 0; i < l->count; i++) {
+		if (iterator->data == data){
+			if (i == 0) {
+				dll_popfront(l);
+			// means a tail
+			} else if (i == l->count - 1) {
+				dll_popback(l);
+			} else {
+			iterator->previous->next = iterator->next;
+			iterator->next->previous = iterator->previous;
+			free(iterator);
+			l->count --;
+		}
+		return 1;
+	}
+	iterator = iterator->next;
+
+	}
+	return 0;
+
+}
+
+
 // Removes the item at position pos starting at 0 ( 0 being the first item )
 // Retruns NULL on failure:
 //  * we tried to remove at a negative location.
@@ -342,7 +397,7 @@ if (t == NULL) {
     	free(t);
 
 }
-}
+
 
 
 
