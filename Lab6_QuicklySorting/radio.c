@@ -6,7 +6,7 @@
 #include <time.h>
 
 // Reference: Geek for geeks - https://www.geeksforgeeks.org/quick-sort/
-
+// Reference: Example of quicksort in C - https://www.lemoda.net/c/qsort-example
 // @Name    loadMusicFile
 // @Brief   Load the music database
 //          'size' is the size of the database.
@@ -72,17 +72,15 @@ void bruteForceSort(char** array, unsigned int start, unsigned int end){
 
 // @Name    partition
 // @Brief   Helper funcion for quicksort
-int partition(char** array, unsigned int low, unsigned int high){
-	int pivotElement;
+int partition(char** array, unsigned int low, unsigned int high) {
 	int i = (low - 1);
-	int j;
-
+	int j = low;
 
 	for (j = low; j <= high - 1; j++) {
-		if (array[j] < pivotElement) {
+		if (strcmp(array[j], pivotElement) > 0) {
 			i++;
 			swapStrings(&array[i], &array[j]);
-
+			
 		}
 
 	}
