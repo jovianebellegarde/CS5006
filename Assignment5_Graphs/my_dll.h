@@ -204,10 +204,11 @@ void* dll_pop_back(dll_t* t){
 
 int dll_find(dll_t* l, void* data){
 	if (l == NULL) {
-		return 1;
+		return -1;
 	}
 
 	node_t* iterator = l->head;
+	
 	// while not end of list yet
 	while (iterator != NULL) {
 		if (iterator->data == data) {
