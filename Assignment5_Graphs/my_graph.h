@@ -222,11 +222,11 @@ int contains_edge( graph_t * g, int source, int destintaion){
 	inNode = dll_find(destNode->inNeighbors, sourceNode);
 
 	if (inNode == 1) {
-		return numEdge++;
+		return 1;
 	} 
 
 	if (outNode == 1) {
-		return numEdge++;
+		return 1;
 	}
 
 	return 0;
