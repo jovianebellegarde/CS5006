@@ -137,38 +137,22 @@ int graph_add_edge(graph_t * g, int source, int destination){
         if ((sourceNode == NULL) || (destNode == NULL)) {
 		return 0;
          }
- 
-	/*
-        graph_node_t* destNode = find_node(g, dest);
-        if (destNode == NULL) {
-                 return 0;
-        }
-	*/
-	/*
-	// Check if the node is on the destination out neighbors list
-	int outNeighbor;
-	outNeighbor = dll_find(sourceNode->outNeighbors, destNode);
-
-	// Check if the node is on the source in neighbors list
-	int inNeighbor;
-	inNeighbor = dll_find(destNode->inNeighbors, sourceNode);
-	*/
 	
 	// Checking to see if the node for the destination node is on the inNeighbors list
 	// Checking to see if the node for the inNeighbor is on the outNeighbors list	
-	int inNeighbor;
-	int outNeighbor;
+	int inNode;
+	int outNode;
 
-	inNeighbor = dll_find(destNode->inNeighbors, sourceNode);
-	outNeighbor = dll_find(sourceNode->outNeighbors, destNode);
+	inNode = dll_find(destNode->inNeighbors, sourceNode);
+	outNode = dll_find(sourceNode->outNeighbors, destNode);
 	
 	// If there is an out neighbor edge that exists return 1
-	if (outNeighbor == 1) {
+	if (outNode == 1) {
 		return 1;
 	}
 
 	// If there is an in neighbor edge that exists return 1
-	if (inNeighbor == 1) {
+	if (inNode == 1) {
 		return 1;
 
 	}
@@ -185,14 +169,43 @@ int graph_remove_edge(graph_t * g, int source, int destination){
     //The function removes an edge from source to destination but not the other way.
     //Make sure you remove destination from the out neighbors of source.
     //Make sure you remove source from the in neighbors of destination.
-    return -1;
+    	if (g == NULL) {
+		return -1;
+	}
+
+	if 
 }
 
 //Returns 1 on success
 //Returns 0 on failure ( or if the source or destination nodes don't exist )
 //Returns -1 if the graph is NULL.
 int contains_edge( graph_t * g, int source, int destintaion){
-    return -1;
+	if (g == NULL) {
+		return -1;
+	}
+
+	graph_node_t* sourceNode = find_node(g, source);
+	graph_node_t* destNode = find_node(g, dest);
+
+	if ((sourceNode == NULL) || (destNode == NULL)) {	
+		return 0;
+	} 	
+	
+	int inNode;
+	int outNode;
+
+	outNode = dll_find(sourceNode->outNeighbors, destNode);
+	inNode = dll_find(destNode->inNeighbors, sourceNode);
+
+	if (inNode == 1) {
+		return numEdge++;
+	} 
+
+	if (outNode == 1) {
+		return numEdge++;
+	}
+
+	return 0;
 }
 
 //Returns dll_t* of all the in neighbors of this node.
