@@ -107,10 +107,18 @@ int graph_add_node(graph_t* g, int value){
 int graph_remove_node(graph_t* g, int value){
     //The function removes the node from the graph along with any edges associated with it.
     //That is, this node would have to be removed from all the in and out neighbor's lists that countain it.
-    if (g == NULL) {
-        return -1;	
-    }  
-
+    	if (g == NULL) {
+        	return -1;	
+    	}  
+	
+	if (find_node(g, value) == NULL) {
+		return -1;
+	}
+	
+	dll_remove(g->nodes, value);
+	g->numNodes--;
+	
+	return 1;
 }
 
 //Returns 1 on success
@@ -125,15 +133,18 @@ int graph_add_edge(graph_t * g, int source, int destination){
 		return -1;
 	}
 	graph_node_t* sourceNode = find_node(g, source);
-        if (sourceNode == NULL) {
+	graph_node_t* destNode = find_node(g, dest);
+        if ((sourceNode == NULL) || (destNode == NULL)) {
 		return 0;
          }
  
+	/*
         graph_node_t* destNode = find_node(g, dest);
         if (destNode == NULL) {
                  return 0;
         }
-	
+	*/
+	/*
 	// Check if the node is on the destination out neighbors list
 	int outNeighbor;
 	outNeighbor = dll_find(sourceNode->outNeighbors, destNode);
@@ -141,6 +152,15 @@ int graph_add_edge(graph_t * g, int source, int destination){
 	// Check if the node is on the source in neighbors list
 	int inNeighbor;
 	inNeighbor = dll_find(destNode->inNeighbors, sourceNode);
+	*/
+	
+	// Checking to see if the node for the destination node is on the inNeighbors list
+	// Checking to see if the node for the inNeighbor is on the outNeighbors list	
+	int inNeighbor;
+	int outNeighbor;
+
+	inNeighbor = dll_find(destNode->inNeighbors, sourceNode);
+	outNeighbor = dll_find(sourceNode->outNeighbors, destNode);
 	
 	// If there is an out neighbor edge that exists return 1
 	if (outNeighbor == 1) {
@@ -152,10 +172,10 @@ int graph_add_edge(graph_t * g, int source, int destination){
 		return 1;
 
 	}
-	// g->numEdges++;
+	g->numEdges++;
 	
 	// If returning 1, successfully added the nodes because the edges for inNeighbor and outNeighbor are on each other's list
-	return (dll_push_back(sourceNode->outNeighbors, destination) && dll_push_back(destNode->inNeighbors, source));
+	return ((dll_push_back(sourceNode->outNeighbors, destination) && (dll_push_back(destNode->inNeighbors, source));
 }
 
 //Returns 1 on success
