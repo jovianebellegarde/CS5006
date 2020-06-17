@@ -159,7 +159,7 @@ int graph_add_edge(graph_t * g, int source, int destination){
 	g->numEdges++;
 	
 	// If returning 1, successfully added the nodes because the edges for inNeighbor and outNeighbor are on each other's list
-	return ((dll_push_back(sourceNode->outNeighbors, destination) && (dll_push_back(destNode->inNeighbors, source));
+	return ((dll_push_back(destNode->inNeighbors, source) && (dll_push_back(sourceNode->outNeighbors, destination));
 }
 
 //Returns 1 on success
@@ -173,7 +173,29 @@ int graph_remove_edge(graph_t * g, int source, int destination){
 		return -1;
 	}
 
-	if 
+	graph_node_t* sourceNode = find_node(g, source);
+        graph_node_t* destNode = find_node(g, dest);
+        if ((sourceNode == NULL) || (destNode == NULL)) {
+                return 0;
+        }
+
+	int inNode;
+	int outNode;
+
+	inNode = dll_find(destNode->inNeighbors, sourceNode);
+	outNode = dll_find(sourceNode->outNeighbors, destNode);
+
+	if (outNode == 1) {
+		return 1;
+	}
+
+	if (inNode == 1) {
+		return 1;
+	}
+	
+	return ((dll_remove(destNode->inNeighbors, source) && (dll_remove(sourceNode->outNeighbors, destination));	
+
+ 
 }
 
 //Returns 1 on success
