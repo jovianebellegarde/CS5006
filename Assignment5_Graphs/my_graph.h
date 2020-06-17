@@ -192,7 +192,8 @@ int graph_remove_edge(graph_t * g, int source, int destination){
 	if (inNode == 1) {
 		return 1;
 	}
-	
+
+	g->numEdges--;
 	return ((dll_remove(destNode->inNeighbors, source) && (dll_remove(sourceNode->outNeighbors, destination));	
 
  
