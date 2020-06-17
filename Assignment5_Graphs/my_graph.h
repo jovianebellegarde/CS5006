@@ -157,7 +157,7 @@ int graph_add_edge(graph_t * g, int source, int destination){
 
 	}
 	g->numEdges++;
-	
+	g->nodes++;	
 	// If returning 1, successfully added the nodes because the edges for inNeighbor and outNeighbor are on each other's list
 	return ((dll_push_back(destNode->inNeighbors, source) && (dll_push_back(sourceNode->outNeighbors, destination));
 }
@@ -194,6 +194,7 @@ int graph_remove_edge(graph_t * g, int source, int destination){
 	}
 
 	g->numEdges--;
+	g->nodes--;
 	return ((dll_remove(destNode->inNeighbors, source) && (dll_remove(sourceNode->outNeighbors, destination));	
 
  
