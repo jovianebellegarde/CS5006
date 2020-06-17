@@ -210,13 +210,36 @@ int getNumInNeighbors( graph_t * g, int value){
 //Returns dll_t* of all the out neighbors of this node.
 //Returns NULL if thte node doesn't exist or if the graph is NULL.
 dll_t* getOutNeighbors( graph_t * g, int value ){
-    return NULL;
+    
+	if (g == NULL) {
+		return NULL;
+	}
+
+	graph_node_t* node = find_node(g, value);
+
+	if (node == NULL) {
+		return NULL;
+	}
+
+	return node->outNeighbors;
+
 }
 
 //Returns the number of out neighbors of this node.
 //Returns -1 if the graph is NULL or the node doesn't exist.
 int getNumOutNeighbors( graph_t * g, int value){
-    return -1;
+
+	if (g == NULL) {
+		return NULL;
+	}
+
+	graph_node_t* node = find_node(g, value);
+
+	if (node == NULL) {
+		return NULL;
+	}
+
+	return node->outNeighbors->count;
 }
 
 // Returns the number of nodes in the graph
