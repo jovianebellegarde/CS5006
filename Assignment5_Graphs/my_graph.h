@@ -150,8 +150,8 @@ int graph_add_edge(graph_t * g, int source, int destination){
 		int iNode;
 		int oNode;
 
-		iNode = dll_find(destNode->inNeighbors, sNode);
-		oNode = dll_find(sourceNode->outNeighbors, oNode);
+		iNode = dll_find(dNode->inNeighbors, sNode);
+		oNode = dll_find(sNode->outNeighbors, oNode);
 		
 		// If there is an out neighbor or in neighbor edge that exits, return 1
 		if (oNode == 1 || iNode == 1) {
@@ -189,8 +189,9 @@ int graph_remove_edge(graph_t * g, int source, int destination){
 		int iNode;
         	int oNode;
 
-        	iNode = dll_find(destNode->inNeighbors, sNode);
-        	oNode = dll_find(sourceNode->outNeighbors, dNode);
+		oNode = dll_find(sNode->outNeighbors, dNode);
+        	iNode = dll_find(dNode->inNeighbors, sNode);
+        
 
         	if (oNode == 1 || iNode == 1) {
                 	return 1;
@@ -309,6 +310,7 @@ int graph_num_nodes(graph_t* g){
 	if (g == NULL) {
 		return -1;
 	}
+	
 	return g->numNodes;
 }
 
@@ -318,6 +320,7 @@ int graph_num_edges(graph_t* g){
        	if (g == NULL) {
              return -1;
         }
+
         return g->numEdges;
 }
 
