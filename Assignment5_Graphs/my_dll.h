@@ -207,15 +207,16 @@ int dll_find(dll_t* l, void* data){
 		return -1;
 	}
 
-	node_t* iterator = l->head;
+	node_t* tempNode = l->head;
 	
-	// while not end of list yet
-	while (iterator != NULL) {
-		if (iterator->data == data) {
+	while (tempNode != NULL) {
+		if (tempNode->data == data) {
 			return 1;
 		}
-		iterator = iterator->next;
+
+		tempNode = tempNode->next;
 	}
+	
 	return 0;
 
 }
