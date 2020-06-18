@@ -495,42 +495,41 @@ void print_path(graph_t * g, int source, int dest){
 		printf("Path does not exist\n\n");
 	}
     	
-	graph_node_t* destNode = find_node(g, dest);
-	graph_node_t* sourceNode = find_node(g, source);
+	graph_node_t* dNode = find_node(g, dest);
+	graph_node_t* sNode = find_node(g, source);
 	
-	if (sourceNode == NULL || destNode == NULL) {
+	if (sNode == NULL || dNode == NULL) {
 		printf("Path does not exist\n\n");
 	}
 
-	dll_t* visited = create_dll();
-	dll_t* unvisited = create_dll();
+	dll_t* reached = create_dll();
+	dll_t* unreached = create_dll();
 
-	dll_push_back(unvisited, sourceNode);
+	dll_push_back(unreached, sNode);
 
-	while (dll_empty(unvisited) != 1) {
-		graph_node_t* node = dll_pop_back(unvisited);
+	while (dll_empty(unreached) != 1) {
+		graph_node_t* node = dll_pop_back(unreached);
 
-		dll_push_back(visited, node);
+		dll_push_back(reached, node);
 
 
 		if (node->data == dest) {
-			printf(node->data);
+	
+			node_t* iterator = reached->head;
+	
+			while (iterator != NULL) {
+				graph_node_t* printNode = (graph_node_t*) iterator->data;
+				printf("%d\n\n", printNode->data);
+				iterator = iterator->next;
+
+				printf("\n");
+				return;
+			}	
 		}
-		node_t* iterator = node->outNeighbors->head;
-
-		while (iterator != NULL) {
-			graph_node_t* graphNode = (graph_node_t*) iterator->data;
-
-
-
-			if (dll_find(visited, graphNode) != 1) {
-				printf(visited->head->data);
-			}
-			iterator = iterator->next;
-		}
-
-	}
+		
 	return 0;
+	}
+
 }
 
 // Free graph
