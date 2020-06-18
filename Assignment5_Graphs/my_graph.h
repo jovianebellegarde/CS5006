@@ -344,8 +344,8 @@ static int is_reachable_dfs(graph_t* g, int source, int dest) {
 
 	// Create 2 dlls
 	// These dlls keep track of which we visited and which ones we didn't visit
-	dll_*t visited = create_dll();
-	dll_*t unvisted = create_dll();
+	dll_t* visited = create_dll();
+	dll_t* unvisted = create_dll();
 	
 	// push the source node on to the back of the unvisited list
 	dll_push_back(unvisited, sourceNode);
