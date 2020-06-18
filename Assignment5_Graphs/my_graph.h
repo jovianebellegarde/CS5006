@@ -58,8 +58,10 @@ graph_node_t* find_node( graph_t * g, int value){
 	}
 	
 	node_t* tempNode = g->nodes->head;
+	
 	// while not end of the list
 	while (tempNode != NULL) {
+	
 	// graph_node_t* node = (graph_node_t*) iterator->data;
 	graph_node_t* node = (graph_node_t*) tempNode->data;
 	if (tempNode->data == value) {
@@ -333,7 +335,63 @@ int graph_num_edges(graph_t* g){
 int is_reachable(graph_t * g, int source, int dest){
     //Implement using BFS.
     //Make sure you don't get stuck into an infinite loop.
-    return -1;
+ 	if (g == NULL) {
+		return -1;
+	}   
+		
+	graph_node_t* destNode = find_node(g, dest);
+        graph_node_t* sourceNode = find_node(g, source);
+        if (sourceNode == NULL || destNode == NULL) {
+                return 0;
+		
+	}
+	
+	// Creating 2 dlls
+	// These dlls keep track of which node we visted and which ones we didn't visit
+	dll_t* visited = create_dll();
+        dll_t* unvisited = create_dll();
+	
+	// Pushing source node from the back of unvisited dll to the back of the visited dll
+	dll_push_back(unvisited, sourceNode);
+
+	// While the unvisted list of nodes is not empty, continue looping through
+	while (dll_empty(unvisited) != 1) {
+	
+		// Saving the node from the visited list
+		graph_node_t* node = dll_push_front(unvisited, sourceNode);
+
+		// Pushing the node from the back of the unvisited dll to the back fo the visted dll
+		dll_push_back(visited, node);
+
+
+		// Checking to see if we've arrived at the destination
+		if (node->data == dest) {
+			return 1;
+		}
+
+		// Iterating through the node through the outNeighbor list
+		node_t* iterator = node->outNeighbors->head;
+		
+		while (iterator != NULL) {
+			graph_node_t* graphNode = (graph_node_t*) iterator->data;
+
+			// These lines of code is for the BFS
+			// If the node has not yet visited, will not find in visited dll list
+			// Add the node to the unvisited list if not yet visited
+			if (dll_find(visited, graphNode) == 1) {
+				dll_pop_front(unvisited);
+			
+			}							
+			iterator = iterator->next;
+
+
+		}
+		
+			
+							
+
+	}	
+	return 0;
 }
 
 
@@ -341,17 +399,19 @@ static int is_reachable_dfs(graph_t* g, int source, int dest) {
 	if (g == NULL) {
 		return -1;
 	}
-
+	
+	graph_node_t* destNode = find_node(g, dest);
 	graph_node_t* sourceNode = find_node(g, source);
-	if (sourceNode == NULL) {
+	if (sourceNode == NULL || destNode == NULL) {
 		return 0;
 	}
-
+	/*
 	graph_node_t* destNode = find_node(g, dest);
 	if (destNode == NULL) {
 		return 0;
 	}
-
+	*/
+	
 	// Create 2 dlls
 	// These dlls keep track of which we visited and which ones we didn't visit
 	dll_t* visited = create_dll();
