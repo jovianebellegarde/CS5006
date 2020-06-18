@@ -312,10 +312,10 @@ int dll_remove_value(dll_t* l, void* data) {
 	for (i = 0; i < l->count; i++) {
 		if (iterator->data == data){
 			if (i == 0) {
-				dll_popfront(l);
+				dll_pop_front(l);
 			// means a tail
 			} else if (i == l->count - 1) {
-				dll_popback(l);
+				dll_pop_back(l);
 			} else {
 			iterator->previous->next = iterator->next;
 			iterator->next->previous = iterator->previous;

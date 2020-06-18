@@ -60,12 +60,14 @@ graph_node_t* find_node( graph_t * g, int value){
 	node_t* tempNode = g->nodes->head;
 	// while not end of the list
 	while (tempNode != NULL) {
-	graph_node_t* node = (graph_node_t*) iterator->data;
+	// graph_node_t* node = (graph_node_t*) iterator->data;
+	graph_node_t* node = (graph_node_t*) tempNode->data;
 	if (tempNode->data == value) {
                 return tempNode;
         }
 
-	iterator = iterator->next;	
+	//iterator = iterator->next;
+	tempNode = tempNode->next;	
 	}
 
 	return NULL;
@@ -132,34 +134,34 @@ int graph_add_edge(graph_t * g, int source, int destination){
     	if (g == NULL) {
 		return -1;
 	}
-	graph_node_t* sourceNode = find_node(g, source);
-	graph_node_t* destNode = find_node(g, dest);
-        if ((sourceNode == NULL) || (destNode == NULL)) {
-		return 0;
-         }
-	
-	// Checking to see if the node for the destination node is on the inNeighbors list
-	// Checking to see if the node for the inNeighbor is on the outNeighbors list	
-	int inNode;
-	int outNode;
 
-	inNode = dll_find(destNode->inNeighbors, sourceNode);
-	outNode = dll_find(sourceNode->outNeighbors, destNode);
-	
-	// If there is an out neighbor edge that exists return 1
-	if (outNode == 1) {
-		return 1;
+	while (g != NULL) {
+
+		graph_node_t* sourceNode = find_node(g, source);
+        	graph_node_t* destNode = find_node(g, destination);
+        	if ((sourceNode == NULL) || (destNode == NULL)) {
+                	return 0;
+        	}
+
+		// Checking to see if destination node is on inNeighbors list
+		// Checking to see if the node for the inNeighbor is on the outNeighbors list
+		int inNode;
+		int outNode;
+
+		inNode = dll_find(destNode->inNeighbors, sourceNode);
+		outNode = dll_find(destNode->outNeighbors, destNode);
+		
+		// If there is an out neighbor or in neighbor edge that exits, return 1
+		if (outNode == 1 || inNode == 1) {
+			return 1;
+		}
+		g->numEdges++;
+		g->nodes++;
+				
+		// If returning 1, successfully added nodes since the edges for inNeighbor and outNeighbor are on each other's lists
+		return (dll_push_back(destNode->inNeighbors, source) && dll_push_back(sourceNode->outNeighbors, destination));
 	}
-
-	// If there is an in neighbor edge that exists return 1
-	if (inNode == 1) {
-		return 1;
-
-	}
-	g->numEdges++;
-	g->nodes++;	
-	// If returning 1, successfully added the nodes because the edges for inNeighbor and outNeighbor are on each other's list
-	return ((dll_push_back(destNode->inNeighbors, source) && (dll_push_back(sourceNode->outNeighbors, destination));
+	return 0;
 }
 
 //Returns 1 on success
@@ -173,63 +175,71 @@ int graph_remove_edge(graph_t * g, int source, int destination){
 		return -1;
 	}
 
-	graph_node_t* sourceNode = find_node(g, source);
-        graph_node_t* destNode = find_node(g, dest);
-        if ((sourceNode == NULL) || (destNode == NULL)) {
-                return 0;
-        }
+	while (g != NULL) {
 
-	int inNode;
-	int outNode;
+		graph_node_t* sourceNode = find_node(g, source);
+        	graph_node_t* destNode = find_node(g, destination);
+        	if ((sourceNode == NULL) || (destNode == NULL)) {
+                	return 0;
+        	}
+		
+		int inNode;
+        	int outNode;
 
-	inNode = dll_find(destNode->inNeighbors, sourceNode);
-	outNode = dll_find(sourceNode->outNeighbors, destNode);
+        	inNode = dll_find(destNode->inNeighbors, sourceNode);
+        	outNode = dll_find(sourceNode->outNeighbors, destNode);
 
-	if (outNode == 1) {
-		return 1;
+        	if (outNode == 1 || inNode == 1) {
+                	return 1;
+        	}
+
+        	g->numEdges--;
+        	g->nodes--;
+        	return (dll_remove(destNode->inNeighbors, source) && dll_remove(sourceNode->outNeighbors, destination));
+
 	}
-
-	if (inNode == 1) {
-		return 1;
-	}
-
-	g->numEdges--;
-	g->nodes--;
-	return ((dll_remove(destNode->inNeighbors, source) && (dll_remove(sourceNode->outNeighbors, destination));	
-
- 
+	return 0;
 }
 
 //Returns 1 on success
 //Returns 0 on failure ( or if the source or destination nodes don't exist )
 //Returns -1 if the graph is NULL.
-int contains_edge( graph_t * g, int source, int destintaion){
+int contains_edge( graph_t * g, int source, int destination){
 	if (g == NULL) {
 		return -1;
 	}
 
 	graph_node_t* sourceNode = find_node(g, source);
-	graph_node_t* destNode = find_node(g, dest);
+	graph_node_t* destNode = find_node(g, destination);
 
 	if ((sourceNode == NULL) || (destNode == NULL)) {	
 		return 0;
 	} 	
-	
-	int inNode;
-	int outNode;
 
-	outNode = dll_find(sourceNode->outNeighbors, destNode);
-	inNode = dll_find(destNode->inNeighbors, sourceNode);
+	while (g != NULL) {
 
-	if (inNode == 1) {
-		return 1;
-	} 
+		graph_node_t* sourceNode = find_node(g, source);
+        	graph_node_t* destNode = find_node(g, destination);
 
-	if (outNode == 1) {
-		return 1;
+        	if ((sourceNode == NULL) || (destNode == NULL)) {
+                	return 0;
+        	}
+		int inNode;
+        	int outNode;
+
+        	outNode = dll_find(sourceNode->outNeighbors, destNode);
+        	inNode = dll_find(destNode->inNeighbors, sourceNode);
+
+        	if (inNode == 1) {
+                	return 1;
+        	} 
+
+        	if (outNode == 1) {
+                	return 1;
+        	}
+
+        	return 0;
 	}
-
-	return 0;
 }
 
 //Returns dll_t* of all the in neighbors of this node.
@@ -345,7 +355,7 @@ static int is_reachable_dfs(graph_t* g, int source, int dest) {
 	// Create 2 dlls
 	// These dlls keep track of which we visited and which ones we didn't visit
 	dll_t* visited = create_dll();
-	dll_t* unvisted = create_dll();
+	dll_t* unvisited = create_dll();
 	
 	// push the source node on to the back of the unvisited list
 	dll_push_back(unvisited, sourceNode);
@@ -357,7 +367,7 @@ static int is_reachable_dfs(graph_t* g, int source, int dest) {
 		graph_node_t* node = dll_pop_back(unvisited);
 	
 		// push the node from back of unvisited dll to the back of the visted dll
-		dll_push_back(visted, node);
+		dll_push_back(visited, node);
 
 		// check to see if arrived at dest node
 		// dest is parameter that was passed in
@@ -375,7 +385,7 @@ static int is_reachable_dfs(graph_t* g, int source, int dest) {
 			// Next line of code differentiates DFS from BFS
 			// If node not yet visited, will not find in visited dll
 			// Add the node to unvisited list if not visited yet
-			if (dll_find(visted, graphNode) != 1) {
+			if (dll_find(visited, graphNode) != 1) {
 				dll_push_back(unvisited, graphNode);
 
 			}
@@ -414,7 +424,7 @@ int has_cycle(graph_t * g){
 		// this line iterators through a dll inside the graph node	
 		node_t* inNeighborsIterator = node->inNeighbors->head;
 		
-		while (inNeihborsIterator != NULL) {
+		while (inNeighborsIterator != NULL) {
 			
 			// Saving the origin node to pass a parameter into is reachable DFS and see if it comes back to itself
 			graph_node_t* originNode = (graph_node_t*) inNeighborsIterator->data;
