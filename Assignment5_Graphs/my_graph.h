@@ -230,7 +230,6 @@ int contains_edge( graph_t * g, int source, int destination){
         	if (iNode == 1 || oNode == 1) {
         		return 1;
         	}
-
         	
 	}
 	
@@ -360,9 +359,9 @@ int is_reachable(graph_t * g, int source, int dest){
 
 
 		// Checking to see if we've arrived at the destination
-		if (node->data == dest) {
-			return 1;
-		}
+//		if (node->data == dest) {
+//			return 1;
+//		}
 
 		// Iterating through the node through the outNeighbor list
 		node_t* iterator = node->outNeighbors->head;
@@ -373,10 +372,16 @@ int is_reachable(graph_t * g, int source, int dest){
 			// These lines of code is for the BFS
 			// If the node has not yet visited, will not find in visited dll list
 			// Add the node to the unvisited list if not yet visited
-			if (dll_find(reached, graphNode) == 1) {
-				dll_pop_front(unreached);
-			
-			}
+//			if (dll_find(reached, graphNode) == 1) {
+//				dll_pop_front(unreached);
+//			
+//			}
+
+			if (dll_find(reached, graphNode) != 1 && dll_find(unreached, graphNode) == 1) {
+                                dll_push_back(unreached, graphNode);
+
+                        }
+
 								
 			iterator = iterator->next;
 		}
@@ -404,6 +409,12 @@ static int is_reachable_dfs(graph_t* g, int source, int dest) {
 	
 	// push the source node on to the back of the unvisited list
 	dll_push_back(unreached, sNode);
+
+	// Checking to see if we've arrived at the destination
+//	if (node->data == dest) {
+//		return 1;
+
+//	}
 	
 	// while the unvistied list of nodes is not empty, continue looping through
 	while (dll_empty(unreached) != 1) {
@@ -430,9 +441,13 @@ static int is_reachable_dfs(graph_t* g, int source, int dest) {
 			// Next line of code differentiates DFS from BFS
 			// If node not yet visited, will not find in visited dll
 			// Add the node to unvisited list if not visited yet
-			if (dll_find(reached, graphNode) != 1 && dll_find(unreached, graphNode) == 1) {
-				dll_push_back(unreached, graphNode);
+//			if (dll_find(reached, graphNode) != 1 && dll_find(unreached, graphNode) == 1) {
+//				dll_push_back(unreached, graphNode);
+//
+//			}
 
+			if (dll_find(reached, graphNode) != 1) {
+				dll_push_back(unreached, node);
 			}
 
 			iterator = iterator->next;
@@ -505,10 +520,10 @@ void print_path(graph_t * g, int source, int dest){
 	dll_t* reached = create_dll();
 	dll_t* unreached = create_dll();
 
-	dll_push_back(unreached, sNode);
+	dll_push_front(unreached, sNode);
 
 	while (dll_empty(unreached) != 1) {
-		graph_node_t* node = dll_pop_back(unreached);
+		graph_node_t* node = dll_pop_front(unreached);
 
 		dll_push_back(reached, node);
 
@@ -519,18 +534,18 @@ void print_path(graph_t * g, int source, int dest){
 	
 			while (iterator != NULL) {
 				graph_node_t* printNode = (graph_node_t*) iterator->data;
-				printf("%d\n\n", printNode->data);
+			
 				iterator = iterator->next;
-
-				printf("\n");
-				return;
+				printf("%d\n\n", printNode->data);
+                                printf("\n");
+				}
+				
 			}	
 		}
 		
 	return 0;
-	}
-
 }
+
 
 // Free graph
 // Removes a graph and ALL of its elements from memory.
