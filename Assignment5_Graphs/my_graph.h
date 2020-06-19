@@ -273,13 +273,13 @@ int getNumInNeighbors( graph_t * g, int value){
 dll_t* getOutNeighbors( graph_t * g, int value ){
     
 	if (g == NULL) {
-		return -1;
+		return NULL;
 	}
 
 	graph_node_t* node = find_node(g, value);
 
 	if (node == NULL) {
-		return -1;
+		return NULL;
 	}
 
 	return node->outNeighbors;
@@ -291,13 +291,13 @@ dll_t* getOutNeighbors( graph_t * g, int value ){
 int getNumOutNeighbors( graph_t * g, int value){
 
 	if (g == NULL) {
-		return NULL;
+		return -1;
 	}
 
 	graph_node_t* node = find_node(g, value);
 
 	if (node == NULL) {
-		return NULL;
+		return -1;
 	}
 
 	return node->outNeighbors->count;
